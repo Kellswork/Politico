@@ -5,9 +5,9 @@ Politico is an online voting platform that lets users vote for candidates runnin
 ### Required Features
 
 - Users can create an account and login
-- Admin can create a political party
-- Admin(electorial body) can delete a political party
-- Admin can create different political offices
+- Admin (electorial body) can create a political party
+- Admin (electorial body) can delete a political party
+- Admin (electorial body) can create different political offices
 - Users can vote for only one politican per political office
 - Users can see the results of election
 
