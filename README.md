@@ -17,7 +17,7 @@ Politico is an online voting platform that lets users vote for candidates runnin
 
 ## INSTALLATION
 - Install Node js
-- Clone the repository `https://github.com/Kellswork/SendIT.git`
+- Clone the repository
 - Navigate to the location of the folder
 - Run `npm install` to install dependencies
 - Run `npm start` to get the app started on your local machine
@@ -36,9 +36,9 @@ To run tests for the server side
 
 The frontend was implmented using:
 
-- [HTML]() A standard markup language for creating websites.
-- [CSS]() This describes how HTML elements are to be displayed on screen.
-- [JAVASCRIPT](https://www.javascript.com/) A programing language of html and the web.
+- [HTML]() A standard markup language for creating websites
+- [CSS]() This describes how HTML elements are to be displayed on screen
+- [JAVASCRIPT](https://www.javascript.com/) A programing language of html and the web
 
 ### Backend
 The backend was implemented using:
@@ -51,7 +51,7 @@ The backend was implemented using:
 
 ## Authors
 
-- Kelechi Ogbonna - [Politica]()
+- Kelechi Ogbonna - [Politico]()
 
 ## License
 MIT License
