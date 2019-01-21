@@ -33,6 +33,11 @@ nav {
   padding-left: 2%;
   color: #09574b;
 }
+.logo h1 a {
+  text-decoration: none;
+  color: #09574b;
+  cursor: pointer;
+}
 .logo img {
   width: 50px;
   height: 53px;
@@ -74,10 +79,10 @@ color: #eee764;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
 }
-.login::before {
+.login-nav::before {
   font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f2f6";
 }
-.signup::before {
+.signup-nav::before {
   font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f234";
 }
 /* style for the intro section */

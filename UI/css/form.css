@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css?family=Bree+Serif|Scada');
+/* font-family: 'Bree Serif', serif;
+font-family: 'Scada', sans-serif;
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+}
+input, span, p{
+  font-family: 'Scada', sans-serif;
+}
+.fixed-img {
+  background: url(../images/vote.jpg);
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  z-index: -10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  z-index: -5;
+}
+.logo-img img {
+  width: 120px;
+  height: 120px;
+  cursor: pointer;
+}
+.signup-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 30px;
+  background-image: linear-gradient(to right top, #09574b, #155d52, #1e6458, #266a5f, #2e7166);
+  
+}
+.signup-form {
+  width: 600px;
+  margin-bottom: 10px;
+}
+.input-group{
+  width: 90%;
+  margin: 0 auto;
+  padding: 0px 0px 10px 0px;
+}
+.input-group input {
+  margin-top: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 54px;
+  border: 2px solid  #eee764;;
+  border-radius: 6px;
+  outline: none;
+  font-size: 15px;
+  color: #09574b;
+  padding: 5px 20px 5px 25px;
+}
+.signup-form .btn {
+  width: 90%;
+  height: 54px;
+  box-sizing: border-box;
+  text-align: center;
+  margin-left: 5%;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  outline: none;
+  border: 1px solid  #eee764;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  background-image: linear-gradient(to right top, #09574b, #007d58, #23a356, #62c844, #a8eb12);
+}
+.signup-form .btn:hover {
+  color: #09574b;
+  background:#f4eeee;
+  
+}
+.signup-form .btn:active {
+  top: 0px;
+  outline: none;
+}
+.signup-form .input-group {
+position: relative;
+top: 0;
+left: 0;
+}
+.signup-form .input-group span {
+  position: absolute;
+  top: 25px;
+  left: 30px;
+  color: rgba(0, 0, 0, 0.5);
+  background-color:white;
+  font-size: 15px;
+  transition: 500ms;
+  pointer-events: none;
+  text-transform: uppercase;
+}
+.input-group input:focus ~ span, .input-group input:valid ~ span {
+  top: 3px;
+  left: 20px;
+  font-size: 13px;
+  background: #eee764;
+  color: #09574b;
+  padding: 2px 5px;
+  border-radius: 5px;
+}
+.signup-form h2 {
+  text-align: center;
+  text-transform: uppercase;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  color: white;
+}
+.signup-box p{
+  color: white;
+}
+.signup-box p a {
+  font-size: 15px;
+  text-decoration: none;
+  text-transform: capitalize;
+  color: #eee764;
+}
+
