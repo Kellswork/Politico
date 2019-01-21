@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Bree+Serif|Scada');
+@import url('https://fonts.googleapis.com/css?family=Bree+Serif|News+Cycle');
 /* font-family: 'Bree Serif', serif;
 font-family: 'Scada', sans-serif;
+font-family: 'News Cycle', sans-serif;
 */
 
 * {
@@ -11,7 +12,7 @@ h1,h2,h3, footer {
   font-family: 'Bree Serif', serif;
 }
 p {
-  font-family: 'Scada', sans-serif;
+  font-family: 'News Cycle', sans-serif;
 }
 body {
   background:#f4eeee;
@@ -229,7 +230,7 @@ background: #f4eeee;
 .card a{
   text-decoration: none;
   border: 1px solid white;
-  font-family: 'Scada', sans-serif;
+  font-family: 'News Cycle', sans-serif;
   color:  #eee764;
   padding: 7px 15px 7px 15px;
   box-sizing: border-box;
