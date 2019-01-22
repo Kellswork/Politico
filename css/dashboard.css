@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css?family=Bree+Serif|News+Cycle');
+/* font-family: 'Bree Serif', serif;
+font-family: 'Scada', sans-serif;
+font-family: 'News Cycle', sans-serif;
+*/
+
+*{
+  padding: 0;
+  margin: 0;
+  font-family: 'Bree Serif', serif;
+}
+:root {
+  --color : linear-gradient(to right top, #09574b, #155d52, #1e6458, #266a5f, #2e7166);
+}
+nav {
+  display: flex;
+  font-family: 'Bree Serif', serif;
+  width: 100%;
+  height: 60px;
+  background:#f4eeee;
+  align-items: center;
+  border-bottom: 1px solid #09574b;
+}
+.logo {
+  display: flex;
+  width: 70%;
+  font-size: 32px;
+  box-sizing: border-box;
+  padding-left: 2%;
+  color: #09574b;
+}
+.logo h1 a {
+  text-decoration: none;
+  color: #09574b;
+  cursor: pointer;
+}
+.logo img {
+  width: 50px;
+  height: 53px;
+  padding-top: 11px;
+}
+
+/* style for election container */
+.container {
+  display: flex;
+  background:#ffffff;
+  height: 90vh;
+}
+.sidebar {
+  width: 250px;
+  box-sizing: border-box;
+  color: white;
+  padding-top: 39px;
+  padding-left: 5px;
+  background-image: var(--color);
+}
+.sidebar ul {
+  list-style: none;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+.sidebar ul li {
+  border: 1px solid white;
+  padding: 12px 15px 12px 15px;
+  margin-bottom: 17px;
+  cursor: pointer;
+  transition: 300ms;
+  border-radius: 4px;
+}
+.sidebar ul li:hover {
+  background-color:#358679;
+}
+.sidebar ul li.active {
+  border: none;
+  background: #358679;
+
+}
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+}
+.nav-profile {
+  width: 30%;
+  display: flex;
+justify-content: center;
+}
+nav .nav-profile img {
+  width: 50px;
+  border-radius: 50%;
+  padding-right: 7px;
+  position: relative;
+}
+.nav-profile h4 {
+  padding-top: 20px;
+}
+input.search-input{
+  background: transparent;
+  outline: 0;
+  border: 1px solid transparent;
+  border-bottom: 1px solid white;
+  padding-left: 5px;
+  padding-right: 15px;
+  color: white;
+}
+input::placeholder {
+  color: white !important;
+}
+.election-container {
+  width: 100%;
+  margin: 0 auto;
+}
+.election-container h2 {
+  padding-top: 35px;
+  text-transform: uppercase;
+  margin-left: 5%;
+}
+.election-details {
+  width: 90%;
+  margin: 0 auto;
+  background:white; 
+  text-align: left;
+}
+.election-office {
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid #09574b;
+  margin-top: 12px;
+}
+.election-office {
+  border-collapse: separate !important;
+  border-spacing: 0;
+  border-radius: 5px;
+  box-shadow: 0px 2px 0px 2px #1a615545;
+  
+}
+.election-office td, .election-office th {
+  padding: 15px;
+  border-bottom: 1px solid #09574b;
+}
+.election-office td a {
+  color : #a8eb12;
+}
+.election-office td a:hover {
+  color: #eee764;
+}
+.pagination {
+  width: 95%;
+ box-sizing: border-box;
+}
+/* pagination */
+.pagination a {
+  float: right;
+  margin-top: 10px;
+  text-decoration: none;
+  color: #09574b;
+  transition: background-color 300ms;
+  margin-right: 5px;
+  outline: none;
+  border: 1px solid  #09574b;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 5px;
+  vertical-align: middle;
+  box-sizing: border-box;
+  width: 40px;
+  height: 35px;
+}
+.pagination a .fas {
+  border: none;
+  font-size: 20px;
+}
+/* style for the footer */
+footer {
+  border-top: 1px solid #09574b;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:#f4eeee;
+  color: #09574b;
+}
