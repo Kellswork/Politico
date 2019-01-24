@@ -34,8 +34,8 @@
       </div>
       <ul>
         <li><a href="dashboard.html"> Dashboard</a></li>
-        <li class="active"><a href="political_party.html"> Political Parties</a></li>
-        <li><a href="government_office.html">Political Offices</a></li>
+        <li><a href="political_party.html"> Political Parties</a></li>
+        <li class="active"><a href="government_office.html">Government Offices</a></li>
         <li><a href="#">Candidates</a></li>
         <li><a href="#">Election Results</a></li>
         <li><a href="login.html">Logout</a></li>
@@ -43,26 +43,28 @@
     </aside>
     <section class="election-container">
       <section class="box-one">
-          <h2>Political Parties</h2>
+          <h2>Government Offices</h2>
         <div class="create-party">
-          <button class="create-party-button">Add a New Party</button>
+          <button class="create-party-button">Add New Office</button>
         </div>
         <div class="party-modal">
     <div class="modal-content">
       <span class="close">&times;</span>
       <form action="#" class="party-form">
-        <h2>Create Political Party</h2>
-        <div class="inputgroup">
-            <label for="logo">upload a logo</label>
-            <input type="file" accept="image/*" name="" id="">
-        </div>
+        <h2>Create Government Office</h2>
        <div class="inputgroup">
-          <label for="name">Party Name</label>
+          <label for="name">Office Name</label>
           <input type="text" placeholder=" Enter party name">
        </div>
        <div class="inputgroup">
-          <label for="aaddress">HQ address</label>
-          <input type="text" placeholder="Enter Head Quaters Address">
+          <label for="type">Type</label>
+          <select id="pet-select">
+            <option value="">--Please choose an option--</option>
+            <option value="federal">Federal</option>
+            <option value="legislative">Legislative</option>
+            <option value="state">State</option>
+            <option value="local-government">Local Government</option>
+        </select>
        </div>
         <button id="modal-btn">Submit</button>
       </form>
@@ -73,39 +75,33 @@
         <table class="election-office">
           <tbody>
             <tr>
-              <th>Logo</th>
-              <th>Name</th>
-              <th>HQ Address</th>
+              <th>Office</th>
+              <th>Type</th>
               <th>Action</th>
             </tr>
             <tr>
-              <td class="party-logo"><img src="./images/logos/Niplogo.jpg" alt=""> </td>
-              <td>National Interest Party(NIP)</td>
-              <td>Suite 101, NCWS Building, Area 11, Garki, FCT, Abuja</td>
+              <td>President</td>
+              <td>Federal</td>
               <td><a href=""><i class="far fa-edit"></i></a></i><a href=""><i class="far fa-trash-alt"></i></a></td>
             </tr>
             <tr>
-              <td></td>
-              <td>Abundance Nigeria Renewal Party(ANRP)</td>
-              <td>Km. 27, Umaru Musa Yaradua Way, Airport Road,Lugbe, Abuja</td>
+              <td>Vice President</td>
+              <td>Federal</td>
               <td><a href=""><i class="far fa-edit"></i></a></i><a href=""><i class="far fa-trash-alt"></i></a></td>
             </tr>
             <tr>
-              <td class="party-logo"><img src="./images/logos/Niplogo.jpg" alt=""> </td>
-              <td>National Interest Party(NIP)</td>
-              <td>Suite 101, NCWS Building, Area 11, Garki, FCT, Abuja</td>
+              <td>Senator</td>
+              <td>Federal</td>
               <td><a href=""><i class="far fa-edit"></i></a></i><a href=""><i class="far fa-trash-alt"></i></a></td>
             </tr>
             <tr>
-              <td class="party-logo"><img src="./images/logos/Niplogo.jpg" alt=""> </td>
-              <td>National Interest Party(NIP)</td>
-              <td>Suite 101, NCWS Building, Area 11, Garki, FCT, Abuja</td>
+              <td>Imo State Governor</td>
+              <td>State</td>
               <td><a href=""><i class="far fa-edit"></i></a></i><a href=""><i class="far fa-trash-alt"></i></a></td>
             </tr>
             <tr>
-              <td class="party-logo"><img src="./images/logos/Niplogo.jpg" alt=""> </td>
-              <td>National Interest Party(NIP)</td>
-              <td>Suite 101, NCWS Building, Area 11, Garki, FCT, Abuja</td>
+              <td>President</td>
+              <td>Federal</td>
               <td><a href=""><i class="far fa-edit"></i></a></i><a href=""><i class="far fa-trash-alt"></i></a></td>
             </tr>
           </tbody>
