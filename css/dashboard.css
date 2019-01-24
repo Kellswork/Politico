@@ -44,7 +44,7 @@ nav {
 .container {
   display: flex;
   background:#ffffff;
-  min-height: 90vh;
+  min-height: 82vh;
 }
 .sidebar {
   width: 250px;
@@ -61,8 +61,7 @@ nav {
 }
 .sidebar ul li {
   border: 1px solid white;
-  padding: 12px 15px 12px 15px;
-  margin-bottom: 17px;
+  margin-bottom: 20px;
   cursor: pointer;
   transition: 300ms;
   border-radius: 4px;
@@ -78,6 +77,8 @@ nav {
 .sidebar ul li a {
   color: white;
   text-decoration: none;
+  padding: 12px 15px 12px 15px;
+display: block;
 }
 .nav-profile {
   width: 30%;
@@ -137,6 +138,7 @@ input::placeholder {
 .election-office td, .election-office th {
   padding: 15px;
   border-bottom: 1px solid #09574b;
+  text-transform: capitalize;
 }
 .election-office td a {
   color : #a8eb12;
@@ -144,11 +146,11 @@ input::placeholder {
 .election-office td a:hover {
   color: #eee764;
 }
+/* pagination */
 .pagination {
   width: 95%;
  box-sizing: border-box;
 }
-/* pagination */
 .pagination a {
   float: right;
   margin-top: 10px;

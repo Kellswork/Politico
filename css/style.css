@@ -57,7 +57,6 @@ nav li {
   margin-left: 10%;
   border: 1px solid #09574b;
   border-radius: 16px;
-  padding: 5px 10px 5px 10px;
   width: 80px;
   text-align: center;
   color: #f4eeee;
@@ -66,6 +65,8 @@ nav li {
 nav li a {
 color: #09574b;
 transition: 0.3s;
+padding: 5px 10px 5px 10px;
+display: block;
 }
 nav li:hover {
 background: #f4eeee;
