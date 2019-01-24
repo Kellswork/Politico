@@ -44,6 +44,8 @@ nav {
 .container {
   display: flex;
   background:#ffffff;
+  width: 100%;
+  min-height: 82vh;
 }
 .sidebar {
   width: 250px;
@@ -280,8 +282,16 @@ padding-bottom: 15px;
   padding-top: 10px ;
   background:#ffff; 
   border: 2px solid #09574b;
-  
 }
+.inputgroup select {
+  width: 95%;
+  height: 40px;
+  font-size: 15px;
+  padding-left: 10px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+
 .modal-content button {
   width: 50%;
   height: 50px;
