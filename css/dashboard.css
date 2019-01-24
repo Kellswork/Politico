@@ -44,7 +44,7 @@ nav {
 .container {
   display: flex;
   background:#ffffff;
-  height: 90vh;
+  min-height: 90vh;
 }
 .sidebar {
   width: 250px;
@@ -113,6 +113,7 @@ input::placeholder {
   padding-top: 35px;
   text-transform: uppercase;
   margin-left: 5%;
+  text-align: center;
 }
 .election-details {
   width: 90%;
@@ -180,3 +181,6 @@ footer {
   background:#f4eeee;
   color: #09574b;
 }
+td.party-logo>img{
+  width: 80px;
+ }
