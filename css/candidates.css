@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css?family=Bree+Serif|News+Cycle');
+/* font-family: 'Bree Serif', serif;
+font-family: 'Scada', sans-serif;
+font-family: 'News Cycle', sans-serif;
+*/
+
+* {
+  padding: 0;
+  margin: 0;
+}
+h1,h2,h3, footer {
+  font-family: 'Bree Serif', serif;
+}
+p {
+  font-family: 'News Cycle', sans-serif;
+}
+nav {
+  display: flex;
+  font-family: 'Bree Serif', serif;
+  width: 100%;
+  height: 60px;
+  background:#f4eeee;
+  align-items: center;
+  border-bottom: 1px solid #09574b;
+}
+.nav-profile {
+  width: 30%;
+  display: flex;
+justify-content: center;
+}
+nav .nav-profile img {
+  width: 50px;
+  border-radius: 50%;
+  padding-right: 7px;
+  position: relative;
+}
+.nav-profile h4 {
+  padding-top: 20px;
+}
+.logo {
+  display: flex;
+  width: 70%;
+  font-size: 32px;
+  box-sizing: border-box;
+  padding-left: 2%;
+  color: #09574b;
+}
+.logo h1 a {
+  text-decoration: none;
+  color: #09574b;
+  cursor: pointer;
+}
+.logo img {
+  width: 50px;
+  height: 53px;
+  padding-top: 11px;
+}
+
+.container {
+  background:url(../images/vote1.jpg);
+  background-position: center;
+  background-size: cover;
+  padding-bottom: 25px;
+  padding-top: 25px;
+}
+.card-box {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: wrap;
+}
+.container h1 {
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+  margin-top: 20px;
+  margin-bottom: 3%;
+  font-size: 33px;
+}
+.card {
+  box-sizing: border-box;
+  width: 30%;
+  text-align: center;
+  margin-left: 17px;
+  border: 1px solid #f4eeee;
+  min-height: 200px;
+  background: #00000080;
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 3px 0px #f4eeee;
+
+}
+.card p {
+  color: white;
+  line-height: 1.5;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 20px;
+}
+.card h3 {
+  color: #eee764;
+  padding-bottom: 5px;
+}
+.card img {
+  width: 80px;
+  border-radius: 50%;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+ button.login-link{
+  width: 140px;
+  height: 30px;
+  border-radius: 20px;
+  background: transparent;
+  border: 2px solid white;
+  color: #eee764;
+  font-size: 15px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+button.login-link:hover {
+  color: white;
+  border: 2px solid #eee764;
+}
+footer {
+  border-top: 1px solid #09574b;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:#f4eeee;
+  color: #09574b;
+}
