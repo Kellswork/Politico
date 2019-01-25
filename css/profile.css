@@ -1,0 +1,85 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+.account-container {
+  width:100%;
+  background-color: #f4eeee;
+}
+.account-img {
+    text-align: center;
+    background-image: linear-gradient(to bottom, #37393b, #5b6264, #838e8d, #b1bcb5, #e7ebde);
+    padding: 2%;
+    width: 75%;
+    margin: 0 auto;
+    height: 200px;
+    margin-top: 20px;
+    box-shadow: 0px 2px 1px 1px #afbab3,
+    0px -4px 1px #d7ddd2;
+    border-radius: 5px;
+}
+.personal-details {
+  width: 76%;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  line-height: 2;
+  background: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 1px 1px #afbab3,
+                0px -4px 1px #d7ddd2;
+}
+
+.account-data-value {
+    float: right;
+}
+.votes {
+  width: 78%;
+  margin: 0% auto;
+  background: white;
+}
+.votes h2 {
+  background: #fff;
+  box-shadow: 0px 2px 1px 1px #afbab3;
+  padding: 5px;
+  border-radius: 5px;
+}
+.election-office {
+  width: 100%;
+}
+.user-votes {
+  width: 100%;
+  margin: 0 auto;
+  background:white;
+  text-align: left;
+
+}
+/* pagination */
+.pagination {
+  width: 95%;
+ box-sizing: border-box;
+}
+.pagination a {
+  float: right;
+  margin-top: 10px;
+  text-decoration: none;
+  color: #09574b;
+  transition: background-color 300ms;
+  margin-right: 5px;
+  outline: none;
+  border: 1px solid  #09574b;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 5px;
+  vertical-align: middle;
+  box-sizing: border-box;
+  width: 40px;
+  height: 35px;
+  margin-bottom: 30px;
+  box-shadow: 0px 2px 1px 1px #d7ddd2;
+}
+.pagination a .fas {
+  border: none;
+  font-size: 20px;
+}
