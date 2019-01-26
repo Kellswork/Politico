@@ -10,7 +10,7 @@ font-family: 'News Cycle', sans-serif;
   padding: 0;
   margin: 0;
 }
-h1,h2,h3, footer {
+h1,h2,h3,h4,footer {
   font-family: 'Bree Serif', serif;
 }
 p {
@@ -21,7 +21,7 @@ nav {
   font-family: 'Bree Serif', serif;
   width: 100%;
   height: 60px;
-  background:#f4eeee;
+  background:#358679;
   align-items: center;
   border-bottom: 1px solid #09574b;
 }
@@ -38,6 +38,7 @@ nav .nav-profile img {
 }
 .nav-profile h4 {
   padding-top: 20px;
+  color: #f7f6f1;
 }
 .logo {
   display: flex;
@@ -49,13 +50,15 @@ nav .nav-profile img {
 }
 .logo h1 a {
   text-decoration: none;
-  color: #09574b;
+  color: #f7f6f1;
   cursor: pointer;
+  padding-left: 44px;
 }
 .logo img {
-  width: 50px;
-  height: 53px;
-  padding-top: 11px;
+  width: 52px;
+  height: 58px;
+  padding-top: 6px;
+  position: absolute;
 }
 
 .container {
@@ -64,6 +67,20 @@ nav .nav-profile img {
   background-size: cover;
   padding-bottom: 25px;
   padding-top: 25px;
+  width: 100%;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+}
+.overlay {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  z-index: -5;
 }
 .card-box {
   width: 90%;
@@ -123,6 +140,7 @@ button.login-link:hover {
   color: white;
   border: 2px solid #eee764;
 }
+
 footer {
   border-top: 1px solid #09574b;
   height: 70px;
@@ -166,11 +184,202 @@ footer {
   width: 100%;
   height: 10px;
 }
+.candidate-form {
+  width: 600px;
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+
+.input-group input {
+    margin-top: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    height: 45px;
+    border: 2px solid #09574b;
+    border-radius: 6px;
+    outline: none;
+    font-size: 15px;
+    color: #09574b;
+    padding: 5px 20px 5px 25px;
+   background: #fff;
+}
+.select-group select {
+  width: 100%;
+  height: 40px;
+  margin-top: 10px;
+}
+.input-group textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 6px;
+  margin-bottom: 3%;
+  padding: 8px;
+  margin-top: 10px;
+}
+.candidate-form h1 {
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+.candidate-form input[type='file'] {
+  margin-top: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 45px;
+  border: 2px solid #09574b;
+  border-radius: 6px;
+  outline: none;
+  font-size: 15px;
+  color: #09574b;
+  padding: 5px 20px 5px 25px;
+}
+.candidate-form label {
+  display: block;
+  margin-top: 10px;
+  font-family: 'Bree Serif', serif;
+  text-transform: capitalize;
+  padding-left: 4px;
+}
+.candidate-form button {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px;
+  border-radius:  6px;
+  background: #09574b;
+  border: 1px solid #09574b;
+  color: white;
+  height: 40px;
+}
+.candidate-form button:hover{
+  background: #fff;
+}
+
+/* mobile nav */
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-image: var(--color);
+  transition: 0.5s;
+  padding-top: 60px;
+  overflow-x: hidden;
+}
+.sidenav a {
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+  box-sizing: border-box;
+  padding-left: 5px;
+  padding: 12px 15px 12px 15px;
+  font-family: 'Bree Serif', serif;
+}
+
+.sidenav a:hover {
+  color: #eee764;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  color: white;
+}
+.mobile-nav {
+  font-size: 35px;
+  cursor: pointer;
+  display: none;
+}
+
+.mobile-profile {
+  padding: 12px 15px 12px 15px;
+}
+
+.mobile-profile h4 {
+  color: white;
+  font-size: 18px
+}
+
+#profile-img {
+  width: 50px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+input.search-input {
+  background: transparent;
+  outline: 0;
+  border: 1px solid transparent;
+  border-bottom: 1px solid white;
+  padding-left: 5px;
+  padding-right: 15px;
+  color: white;
+  width: 100px;
+  transition: all 500ms ease-in-out;
+}
+input.search-input:focus {
+  width: 160px;
+}
+
+input::placeholder {
+  color: white !important;
+}
+
+a.active {
+  background: #13423a;
+}
+
 @media (max-width:700px) {
+  .nav-profile {
+    display: none;
+  }
+  .mobile-nav {
+    display: block;
+    margin-left: 30px;
+    color: #f7f6f1;
+    width: 30%;
+    margin-right: 7px;
+  }
 .container h1 {
   font-size: 25px;
 }
 .card {
   width: 90%;
+}
+.logo img {
+  width: 41px;
+  height: 43px;
+  padding-top: 10px;
+  position: absolute;
+}
+.logo h1 a {
+  padding-left: 35px;
+  font-size: 36px;
+}
+.logo {
+  font-size: 27px;
+  width: 70%;
+  padding: 0;
+}
+input.search-input {
+  margin-bottom: 20px;
+  margin-left: 12px;
+
+}
+.candidate-form {
+  width: 100%;
+}
+.content {
+  width: 90%;
+  margin: 0 auto;
+}
+nav {
+  justify-content: space-around;
 }
 }
