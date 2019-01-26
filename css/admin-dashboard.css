@@ -42,3 +42,10 @@ i.far, i.fas {
   background: #09574b;
 
 }
+ @media (max-width: 700px) {
+  .info-box {
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+  }
+ }

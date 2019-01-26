@@ -83,3 +83,14 @@
   border: none;
   font-size: 20px;
 }
+@media (max-width: 600px) {
+  .account-img {
+    width: 93%;
+  }
+  .personal-details {
+    width: 93%;
+  }
+  .votes {
+    width: 100%;
+  }
+}

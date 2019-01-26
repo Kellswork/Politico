@@ -65,7 +65,7 @@ nav li {
 nav li a {
 color: #09574b;
 transition: 0.3s;
-padding: 5px 10px 5px 10px;
+padding: 5px 0px 5px 0px;
 display: block;
 }
 nav li:hover {
@@ -86,6 +86,9 @@ color: #eee764;
 }
 .signup-nav::before {
   font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f234";
+}
+header h2 {
+  font-size: 26px;
 }
 /* style for the intro section */
 .intro {
@@ -243,7 +246,7 @@ color: white;
 border: 1px solid #eee764;
 }
 .login-link {
-  margin-top: 10px; 
+  margin-top: 10px;
 }
 footer {
   height: 70px;
@@ -254,3 +257,38 @@ footer {
   color: #09574b;
 }
 
+@media (max-width: 700px) {
+  header h2 {
+    font-size: 17px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+   }
+   .intro h1 {
+     margin-top: 20px;
+     font-size: 27px;
+   }
+   header h1 {
+     font-size: 29px;
+   }
+   .box {
+     width: 100%;
+   }
+   .card {
+    width: 100%;
+    margin-left: 0px;
+   }
+   .logo img {
+    width: 41px;
+    height: 43px;
+    padding-top: 10px;
+   }
+   .logo {
+    font-size: 27px;
+    width: 50%;
+   }
+   .link {
+     width: 50%;
+   }
+}
