@@ -10,7 +10,7 @@ font-family: 'News Cycle', sans-serif;
 }
 input, span, p{
   font-family: 'Bree Serif', serif;
-  
+
 
 }
 .fixed-img {
@@ -50,7 +50,7 @@ input, span, p{
   align-items: center;
   padding-bottom: 30px;
   background-image: linear-gradient(to right top, #09574b, #155d52, #1e6458, #266a5f, #2e7166);
-  
+
 }
 .signup-form {
   width: 600px;
@@ -72,7 +72,7 @@ input, span, p{
   font-size: 15px;
   color: #09574b;
   padding: 5px 20px 5px 25px;
-  background:#f4eeee;  
+  background:#f4eeee;
 }
 .signup-form .btn {
   transition: background, 300ms;
@@ -150,4 +150,10 @@ left: 0;
 }
 .forgotpassword :hover {
 color: #a8eb12;
+}
+
+@media (max-width: 700px) {
+  .signup-form {
+    width: 100%;
+  }
 }
