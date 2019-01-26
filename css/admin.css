@@ -503,4 +503,7 @@ footer {
     margin-left: 5%;
     font-size: 20px;
 }
+.modal-content {
+  width: 90%;
+}
   }

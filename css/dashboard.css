@@ -4,24 +4,47 @@ font-family: 'Scada', sans-serif;
 font-family: 'News Cycle', sans-serif;
 */
 
-*{
+* {
   padding: 0;
   margin: 0;
+}
+
+:root {
+  --color: linear-gradient(to right top, #09574b, #155d52, #1e6458, #266a5f, #2e7166);
+}
+
+h2,
+h4,
+td,
+th {
+  color: #09574b;
+}
+
+h1,
+h2,
+h3,
+h4,
+th {
   font-family: 'Bree Serif', serif;
 }
-:root {
-  --color : linear-gradient(to right top, #09574b, #155d52, #1e6458, #266a5f, #2e7166);
+
+td,
+p,
+span {
+  font-family: 'News Cycle', sans-serif;
 }
+
 nav {
   display: flex;
   font-family: 'Bree Serif', serif;
   width: 100%;
   height: 60px;
-  background:#f4eeee;
+  background: #358679;
   align-items: center;
   border-bottom: 1px solid #09574b;
   justify-content: center;
 }
+
 .logo {
   display: flex;
   width: 70%;
@@ -30,23 +53,28 @@ nav {
   padding-left: 2%;
   color: #09574b;
 }
+
 .logo h1 a {
   text-decoration: none;
-  color: #09574b;
+  color: #f7f6f1;
   cursor: pointer;
+  padding-left: 44px;
 }
+
 .logo img {
-  width: 50px;
-  height: 53px;
-  padding-top: 11px;
+  width: 52px;
+  height: 58px;
+  padding-top: 6px;
+  position: absolute;
 }
 
 /* style for election container */
 .container {
   display: flex;
-  background:#ffffff;
+  background: #ffffff;
   min-height: 82vh;
 }
+
 .sidebar {
   width: 250px;
   box-sizing: border-box;
@@ -54,12 +82,15 @@ nav {
   padding-top: 39px;
   padding-left: 5px;
   background-image: var(--color);
+  font-family: 'Bree Serif', serif;
 }
+
 .sidebar ul {
   list-style: none;
   margin-top: 20px;
   margin-right: 20px;
 }
+
 .sidebar ul li {
   border: 1px solid white;
   margin-bottom: 20px;
@@ -67,35 +98,43 @@ nav {
   transition: 300ms;
   border-radius: 4px;
 }
+
 .sidebar ul li:hover {
-  background-color:#358679;
+  background-color: #358679;
 }
+
 .sidebar ul li.active {
   border: none;
   background: #358679;
 
 }
+
 .sidebar ul li a {
   color: white;
   text-decoration: none;
   padding: 12px 15px 12px 15px;
-   display: block;
+  display: block;
 }
+
 .nav-profile {
   width: 30%;
   display: flex;
-justify-content: center;
+  justify-content: center;
 }
+
 nav .nav-profile img {
   width: 50px;
   border-radius: 50%;
   padding-right: 7px;
   position: relative;
 }
+
 .nav-profile h4 {
   padding-top: 20px;
+  color: #f7f6f1;
 }
-input.search-input{
+
+input.search-input {
   background: transparent;
   outline: 0;
   border: 1px solid transparent;
@@ -106,6 +145,7 @@ input.search-input{
   width: 100px;
   transition: all 500ms ease-in-out;
 }
+
 input.search-input:focus {
   width: 160px;
 }
@@ -113,29 +153,33 @@ input.search-input:focus {
 input::placeholder {
   color: white !important;
 }
+
 .election-container {
   width: 100%;
   margin: 0 auto;
 }
+
 .election-container h2 {
   padding-top: 35px;
   text-transform: uppercase;
   margin-left: 5%;
   text-align: center;
 }
+
 .election-details {
   width: 90%;
   margin: 0 auto;
-  background:white;
+  background: white;
   text-align: left;
-  overflow: scroll;
 }
+
 .election-office {
   width: 100%;
   margin: 0 auto;
   border: 1px solid #09574b;
   margin-top: 12px;
 }
+
 .election-office {
   border-collapse: separate !important;
   border-spacing: 0;
@@ -143,22 +187,28 @@ input::placeholder {
   box-shadow: 0px 2px 0px 2px #1a615545;
 
 }
-.election-office td, .election-office th {
+
+.election-office td,
+.election-office th {
   padding: 15px;
   border-bottom: 1px solid #09574b;
   text-transform: capitalize;
 }
+
 .election-office td a {
-  color : #a8eb12;
+  color: #09574b;
 }
+
 .election-office td a:hover {
   color: #eee764;
 }
+
 /* pagination */
 .pagination {
   width: 95%;
- box-sizing: border-box;
+  box-sizing: border-box;
 }
+
 .pagination a {
   float: right;
   margin-top: 10px;
@@ -167,7 +217,7 @@ input::placeholder {
   transition: background-color 300ms;
   margin-right: 5px;
   outline: none;
-  border: 1px solid  #09574b;
+  border: 1px solid #09574b;
   padding-top: 5px;
   padding-left: 10px;
   padding-right: 5px;
@@ -177,10 +227,12 @@ input::placeholder {
   height: 35px;
   margin-bottom: 30px;
 }
+
 .pagination a .fas {
   border: none;
   font-size: 20px;
 }
+
 /* style for the footer */
 footer {
   border-top: 1px solid #09574b;
@@ -188,13 +240,15 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  background:#f4eeee;
+  background: #f4eeee;
   color: #09574b;
 }
-td.party-logo>img{
+
+td.party-logo>img {
   width: 80px;
- }
- .dropdown-content {
+}
+
+.dropdown-content {
   position: absolute;
   min-width: 100px;
   z-index: 1;
@@ -203,8 +257,9 @@ td.party-logo>img{
   display: none;
   border: 1px solid #09574b;
   margin-top: 10px;
- }
- .dropdown-content a {
+}
+
+.dropdown-content a {
   display: block;
   text-decoration: none;
   padding: 9px 16px;
@@ -212,13 +267,16 @@ td.party-logo>img{
   min-width: 100px;
   cursor: pointer;
 }
-.dropdown-content a:hover{
+
+.dropdown-content a:hover {
   color: #eee764;
 }
 
 .dropdown-content::before {
   position: absolute;
-  font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f0d8";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f0d8";
   top: -18px;
   left: 30px;
   right: 0;
@@ -228,6 +286,7 @@ td.party-logo>img{
   width: 100%;
   height: 10px;
 }
+
 /* mobile nav */
 .sidenav {
   height: 100%;
@@ -240,81 +299,105 @@ td.party-logo>img{
   transition: 0.5s;
   padding-top: 60px;
   overflow-x: hidden;
-  }
-  .sidenav a {
-    text-decoration: none;
-    font-size: 18px;
-    color: white;
-    display: block;
-    transition: 0.3s;
-    box-sizing: border-box;
-    padding-left: 5px;
-    padding: 12px 15px 12px 15px;
-  }
-  .sidenav a:hover {
-    color: #eee764;
-  }
-  .sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-    color: white;
-  }
-  .mobile-nav {
-    font-size:35px;
-    cursor:pointer;
-    display: none;
-  }
-  .mobile-profile {
-    padding: 12px 15px 12px 15px;
-  }
-  .mobile-profile h4 {
-    color: white;
-    font-size: 18px
-  }
-  #profile-img {
-    width: 50px;
+}
+
+.sidenav a {
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+  box-sizing: border-box;
+  padding-left: 5px;
+  padding: 12px 15px 12px 15px;
+  font-family: 'Bree Serif', serif;
+}
+
+.sidenav a:hover {
+  color: #eee764;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  color: white;
+}
+
+.mobile-nav {
+  font-size: 35px;
+  cursor: pointer;
+  display: none;
+}
+
+.mobile-profile {
+  padding: 12px 15px 12px 15px;
+}
+
+.mobile-profile h4 {
+  color: white;
+  font-size: 18px
+}
+
+#profile-img {
+  width: 50px;
   border-radius: 50%;
   margin-left: 10px;
-  }
-  a.active {
-    background: #13423a;
+}
+
+a.active {
+  background: #13423a;
+}
+
+@media (max-width:700px) {
+  .nav-profile {
+    display: none;
   }
 
-  @media (max-width:700px) {
-    .nav-profile {
-      display: none;
-    }
-    .sidebar {
-      display: none;
-    }
-    .mobile-nav {
-      display: block;
+  .sidebar {
+    display: none;
+  }
+
+  .mobile-nav {
+    display: block;
     margin-left: 30px;
-    color: #09574b;
+    color: #f7f6f1;
     width: 30%;
-    }
-    .logo img {
-      width: 41px;
-      height: 43px;
-      padding-top: 10px;
-     }
-     .logo {
-      font-size: 27px;
-      width: 70%;
-      padding: 0;
-     }
-     input.search-input {
-       margin-bottom: 20px;
-       margin-left: 12px;
-
-     }
-     nav {
-      justify-content: space-around;
-    }
-    .election-details {
-      width: 93%;
-    }
+    margin-right: 7px;
   }
+
+  .logo img {
+    width: 41px;
+    height: 43px;
+    padding-top: 10px;
+    position: absolute;
+  }
+
+  .logo {
+    font-size: 27px;
+    width: 70%;
+    padding: 0;
+  }
+
+  .logo h1 a {
+    padding-left: 35px;
+    font-size: 36px;
+  }
+
+  input.search-input {
+    margin-bottom: 20px;
+    margin-left: 12px;
+
+  }
+
+  nav {
+    justify-content: space-around;
+  }
+
+  .election-details {
+    width: 93%;
+    overflow: scroll;
+  }
+}
