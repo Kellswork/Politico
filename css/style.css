@@ -303,4 +303,7 @@ footer {
    .link {
      width: 50%;
    }
+   .overlay {
+     background: rgba(0, 0, 0, 0.6);
+   }
 }
