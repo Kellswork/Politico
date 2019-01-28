@@ -26,6 +26,7 @@ input, span, p{
   display: flex;
   justify-content: center;
   align-items: center;
+  display: none;
 }
 
 .overlay {
@@ -42,6 +43,13 @@ input, span, p{
   height: 120px;
   cursor: pointer;
 }
+.signup-container {
+  min-height: 83vh;
+  background-image: linear-gradient(to right top, #09574b, #155d52, #1e6458, #266a5f, #2e7166);
+display: flex;
+justify-content: center;
+align-items: center;
+}
 .signup-box {
   width: 100%;
   display: flex;
@@ -49,8 +57,6 @@ input, span, p{
   justify-content: center;
   align-items: center;
   padding-bottom: 30px;
-  background-image: linear-gradient(to right top, #09574b, #155d52, #1e6458, #266a5f, #2e7166);
-
 }
 .signup-form {
   width: 600px;
@@ -130,6 +136,7 @@ left: 0;
   padding-bottom: 30px;
   padding-top: 30px;
   color: #f4eeee;
+  font-size: 35px;
 }
 .signup-box p{
   color: #f4eeee;
@@ -155,5 +162,15 @@ color: #a8eb12;
 @media (max-width: 700px) {
   .signup-form {
     width: 100%;
+  }
+}
+@media (width: 1024px) {
+  .signup-container {
+    min-height: 90vh;
+  }
+}
+@media (width: 768px) {
+  .signup-container {
+    min-height: 88vh;
   }
 }
