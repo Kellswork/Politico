@@ -24,6 +24,9 @@ nav {
   background:#358679;
   align-items: center;
   border-bottom: 1px solid #09574b;
+  position: sticky;
+  top: 0;
+  z-index: 5;
 }
 .nav-profile {
   width: 30%;
@@ -198,6 +201,7 @@ footer {
   width: 600px;
   margin: 0 auto;
   padding-bottom: 50px;
+  color: #09574b;
 }
 
 .input-group input {
@@ -252,7 +256,7 @@ footer {
   padding-left: 4px;
 }
 .candidate-form button {
-  width: 100%;
+  width: 50%;
   box-sizing: border-box;
   padding: 8px;
   border-radius:  6px;
@@ -260,6 +264,8 @@ footer {
   border: 1px solid #09574b;
   color: white;
   height: 40px;
+  font-size: 16px;
+  margin-left: 25%;
 }
 .candidate-form button:hover{
   background: #fff;
