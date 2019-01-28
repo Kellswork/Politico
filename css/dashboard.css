@@ -404,3 +404,17 @@ a.active {
     overflow: scroll;
   }
 }
+@media (width: 1024px) {
+  footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+}
+@media (max-width: 768px){
+  footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+}
