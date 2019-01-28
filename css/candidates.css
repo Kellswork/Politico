@@ -302,7 +302,6 @@ footer {
 
 .sidenav .closebtn {
   position: absolute;
-  top: 0;
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
@@ -406,7 +405,7 @@ nav {
     width: 100%;
   }
 }
-@media (max-width: 768px){
+@media (width: 768px){
   footer {
     position: absolute;
     bottom: 0;
