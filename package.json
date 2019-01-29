@@ -1,0 +1,23 @@
+{
+  "name": "politico",
+  "version": "1.0.0",
+  "description": "Politico is an online voting platform that lets users vote for candidates running for different political offices.",
+  "main": "app.js",
+  "scripts": {
+    "test": "Mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kellswork/Politico.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express"
+  ],
+  "author": "Kelechi Ogbonna",
+  "license": "ISC", 
+  "bugs": {
+    "url": "https://github.com/Kellswork/Politico/issues"
+  },
+  "homepage": "https://github.com/Kellswork/Politico#readme"
+}
