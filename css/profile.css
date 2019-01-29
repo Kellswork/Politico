@@ -18,11 +18,11 @@ p, span {
 }
 .account-img {
     text-align: center;
-    background-image: linear-gradient(to bottom, #37393b, #5b6264, #838e8d, #b1bcb5, #e7ebde);
+   /* background-image: linear-gradient(to bottom, #37393b, #5b6264, #838e8d, #b1bcb5, #e7ebde); */
     padding: 2%;
     width: 75%;
     margin: 0 auto;
-    height: 200px;
+    height: 250px;
     margin-top: 20px;
     box-shadow: 0px 2px 1px 1px #afbab3,
     0px -4px 1px #d7ddd2;
@@ -43,6 +43,13 @@ p, span {
 
 .account-data-value {
     float: right;
+}
+.account-img img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  padding:5px;
+  border:1px solid #37393b;
 }
 .votes {
   width: 78%;

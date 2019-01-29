@@ -24,6 +24,9 @@ nav {
   background:#358679;
   align-items: center;
   border-bottom: 1px solid #09574b;
+  position: sticky;
+  top: 0;
+  z-index: 5;
 }
 .nav-profile {
   width: 30%;
@@ -125,6 +128,16 @@ nav .nav-profile img {
   margin: 0 auto;
   padding-top: 20px;
 }
+.vote::before {
+  font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f164";
+}
+.icon::before {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
  button.login-link{
   width: 140px;
   height: 30px;
@@ -188,6 +201,7 @@ footer {
   width: 600px;
   margin: 0 auto;
   padding-bottom: 50px;
+  color: #09574b;
 }
 
 .input-group input {
@@ -242,7 +256,7 @@ footer {
   padding-left: 4px;
 }
 .candidate-form button {
-  width: 100%;
+  width: 50%;
   box-sizing: border-box;
   padding: 8px;
   border-radius:  6px;
@@ -250,6 +264,8 @@ footer {
   border: 1px solid #09574b;
   color: white;
   height: 40px;
+  font-size: 16px;
+  margin-left: 25%;
 }
 .candidate-form button:hover{
   background: #fff;
@@ -286,7 +302,6 @@ footer {
 
 .sidenav .closebtn {
   position: absolute;
-  top: 0;
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
@@ -334,8 +349,15 @@ input::placeholder {
 a.active {
   background: #13423a;
 }
-
+@media (max-width : 500px) {
+  .card {
+    width: 85%;
+  }
+}
 @media (max-width:700px) {
+  .desktop-view {
+    display: none;
+  }
   .nav-profile {
     display: none;
   }
@@ -350,7 +372,7 @@ a.active {
   font-size: 25px;
 }
 .card {
-  width: 90%;
+  width: 43%;
 }
 .logo img {
   width: 41px;
@@ -382,4 +404,23 @@ input.search-input {
 nav {
   justify-content: space-around;
 }
+}
+@media (max-width : 500px) {
+  .card {
+    width: 85%;
+  }
+}
+@media (width: 1024px) {
+  footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+}
+@media (width: 768px){
+  footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
 }
