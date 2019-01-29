@@ -17,7 +17,7 @@ Politico is an online voting platform that lets users vote for candidates runnin
 
 ## INSTALLATION
 - Install Node js
-- Clone the repository
+- Clone the repository `https://github.com/Kellswork/Politico.git`
 - Navigate to the location of the folder
 - Run `npm install` to install dependencies
 - Run `npm start` to get the app started on your local machine
