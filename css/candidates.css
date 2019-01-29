@@ -349,8 +349,15 @@ input::placeholder {
 a.active {
   background: #13423a;
 }
-
+@media (max-width : 500px) {
+  .card {
+    width: 85%;
+  }
+}
 @media (max-width:700px) {
+  .desktop-view {
+    display: none;
+  }
   .nav-profile {
     display: none;
   }
@@ -365,7 +372,7 @@ a.active {
   font-size: 25px;
 }
 .card {
-  width: 90%;
+  width: 43%;
 }
 .logo img {
   width: 41px;
@@ -397,6 +404,11 @@ input.search-input {
 nav {
   justify-content: space-around;
 }
+}
+@media (max-width : 500px) {
+  .card {
+    width: 85%;
+  }
 }
 @media (width: 1024px) {
   footer {

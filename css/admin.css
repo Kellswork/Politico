@@ -13,6 +13,7 @@ font-family: 'News Cycle', sans-serif;
 :root {
   --color: linear-gradient(to right top, #09574b, #155d52, #1e6458, #266a5f, #2e7166);
 }
+
 h2,
 h4,
 td,
@@ -157,6 +158,7 @@ input::placeholder {
 .election-container {
   width: 100%;
   margin: 0 auto;
+  background: #f4eeee;
 }
 
 .election-details {
@@ -164,7 +166,6 @@ input::placeholder {
   margin: 0 auto;
   background: white;
   text-align: left;
-  overflow: scroll;
 }
 
 .election-office {
@@ -184,7 +185,7 @@ input::placeholder {
 
 .election-office td,
 .election-office th {
-  padding: 15px;
+  padding: 8px;
   border-bottom: 1px solid #09574b;
   text-transform: capitalize;
 }
@@ -228,6 +229,7 @@ td a {
   width: 40px;
   height: 35px;
   margin-bottom: 30px;
+  background: white;
 }
 
 .pagination a .fas {
@@ -547,6 +549,41 @@ a.active {
   background: #13423a;
 }
 
+.mobile-view {
+  margin-top: 30px;
+  display: none;
+background: #f4eeee;
+}
+
+.party-card {
+  box-shadow: 0px 2px 6px 1px #1a61550f,
+              1px 0px 2px 1px #1a61550a;
+    width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 3%;
+  margin-bottom: 20px;
+  color: #09574b;
+  background: #fff;
+}
+.mobile-view .party-logo img,
+.mobile-view .candidate-img img {
+  width: 80px;
+  height: 80px;
+}
+
+.party-action a {
+  padding-right: 5px;
+}
+@media (max-width : 450px) {
+  .desktop-view {
+    display: none;
+  }
+
+  .mobile-view {
+    display: block;
+  }
+}
 @media (max-width:700px) {
   .nav-profile {
     display: none;
@@ -593,6 +630,7 @@ a.active {
 
   .election-details {
     width: 93%;
+    margin-top: 20px;
   }
 
   .create-party-button {
@@ -605,26 +643,47 @@ a.active {
   }
 
   .box-one h2 {
-    width: 70%;
+    width: 90%;
+    font-size: 18px;
     margin-left: 5%;
-    font-size: 20px;
   }
 
   .modal-content {
     width: 90%;
+    margin: 20% auto;
   }
+
 }
+
+
 @media (width: 1024px) {
   footer {
     position: absolute;
     bottom: 0;
     width: 100%;
   }
+
+  .container {
+    min-height: 92vh;
+  }
+
+  .box-one h2 {
+    font-size: 20px;
+  }
 }
-@media (width: 768px){
+
+@media (width: 768px) {
   footer {
     position: absolute;
     bottom: 0;
     width: 100%;
+  }
+
+  .container {
+    min-height: 88vh;
+  }
+
+  .box-one h2 {
+    font-size: 20px;
   }
 }
