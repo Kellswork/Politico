@@ -15,9 +15,12 @@
     "express"
   ],
   "author": "Kelechi Ogbonna",
-  "license": "ISC", 
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/Kellswork/Politico/issues"
   },
-  "homepage": "https://github.com/Kellswork/Politico#readme"
+  "homepage": "https://github.com/Kellswork/Politico#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }
