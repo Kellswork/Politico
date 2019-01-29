@@ -224,7 +224,8 @@ footer {
     margin-right: 7px;
    }
    .link {
-     width: 50%;
+    width: 60%;
+    margin-right: 6px;
    }
    .overlay {
      background: rgba(0, 0, 0, 0.6);
