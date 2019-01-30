@@ -110,4 +110,11 @@ p, span {
   .votes {
     width: 100%;
   }
+  .account-container {
+    width: 85%;
+    margin: 0 auto;
+  }
+  .container {
+    background:  #f4eeee;
+  }
 }
