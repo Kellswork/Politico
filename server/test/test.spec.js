@@ -17,8 +17,9 @@ describe('Offices', () => {
         .expect(201)
         .end((err, res) => {
           expect(res.status).to.equal(201);
-          expect(res.body.data).to.have.property('type');
           expect(res.body.status).to.equal(201);
+          expect(res.body.data).to.have.property('id');
+          expect(res.body.data).to.have.property('type');
           expect(res.body.data).to.have.property('name');
 
           done();
