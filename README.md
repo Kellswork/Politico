@@ -15,17 +15,19 @@ Politico is an online voting platform that lets users vote for candidates runnin
 - User can reset password
 - A politican can create a petition against a concluded political office election
 
-## INSTALLATION
+## Getting Started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+### Installing
 - Install Node js
 - Clone the repository `https://github.com/Kellswork/Politico.git`
 - Navigate to the location of the folder
 - Run `npm install` to install dependencies
 - Run `npm start` to get the app started on your local machine
 
-## TESTING 
+## Running the tests 
 ### Server Side
 To run tests for the server side
-
 - Navigate to the location of the folder in your terminal
 - Run `npm run test` to run app tests
 - Run `npm run coverage` to run test coverage with [istanbul]() on the app
