@@ -25,20 +25,35 @@ describe('Offices', () => {
           done();
         });
     });
+    it('should return a 400', (done) => {
+      const newOffice = {
+        name: 'deputy chairman',
+      };
+      api.post('/api/v1/offices')
+        .set('Content-Type', 'application/json')
+        .send(newOffice)
+        .expect(400)
+        .end((err, res) => {
+          expect(res.status).to.equal(400);
+          expect(res.body).to.have.property('error');
+          done();
+        });
+    });
   });
-
-  it('should return a 400', (done) => {
-    const newOffice = {
-      name: 'deputy chairman',
-    };
-    api.post('/api/v1/offices')
-      .set('Content-Type', 'application/json')
-      .send(newOffice)
-      .expect(400)
-      .end((err, res) => {
-        expect(res.status).to.equal(400);
-        expect(res.body).to.have.property('error');
-        done();
-      });
+  describe('GET /offices', () => {
+    it('should return all political offices', (done) => {
+      api.get('/api/v1/offices')
+        .set('Content-Type', 'application/json')
+        .send()
+        .expect(200)
+        .end((err, res) => {
+          expect(res.status).to.equal(200);
+          expect(res.body).to.have.property('status');
+          expect(res.body).to.have.property('data');
+          expect(res.body.data).to.be.a('array');
+          expect(res.body.status).to.equal(200);
+          done();
+        });
+    });
   });
 });

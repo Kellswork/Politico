@@ -12,7 +12,7 @@ const createOffice = (req, res) => {
     });
   }
   const newOffice = {
-    id: offices.length + 1,
+    id: offices[offices.length - 1].id + 1,
     type,
     name,
   };
@@ -24,4 +24,19 @@ const createOffice = (req, res) => {
   });
 };
 
-export default createOffice;
+const getAllOffices = (req, res) => {
+  if (offices.length <= 0) {
+    return res.status(404).json({
+      status: 404,
+      error: 'No political office has been created yet',
+    });
+  }
+  return res.status(200).json({
+    status: 200,
+    data: offices,
+  });
+};
+
+export {
+  createOffice, getAllOffices,
+};
