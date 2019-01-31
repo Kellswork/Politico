@@ -37,6 +37,7 @@
     "@babel/register": "^7.0.0",
     "babel-plugin-istanbul": "^5.1.0",
     "chai": "^4.2.0",
+    "coveralls": "^3.0.2",
     "eslint": "^5.12.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
