@@ -1,8 +1,9 @@
 import express from 'express';
-import createParty from '../controllers/Party';
+import { createParty, getAllParties } from '../controllers/Party';
 
 const router = express.Router();
 
 router.post('/', createParty);
+router.get('/', getAllParties);
 
 export default router;

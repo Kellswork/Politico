@@ -127,4 +127,20 @@ describe('Parties', () => {
         });
     });
   });
+  describe('GET /parties', () => {
+    it('should return all political parties', (done) => {
+      api.get('/api/v1/parties')
+        .set('Content-Type', 'application/json')
+        .send()
+        .expect(200)
+        .end((err, res) => {
+          expect(res.status).to.equal(200);
+          expect(res.body).to.have.property('status');
+          expect(res.body).to.have.property('data');
+          expect(res.body.status).to.equal(200);
+          expect(res.body.data).to.be.a('array');
+          done();
+        });
+    });
+  });
 });

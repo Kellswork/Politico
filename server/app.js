@@ -13,7 +13,7 @@ app.use('/api/v1/offices', office);
 app.use('/api/v1/parties', party);
 
 
-app.use((req, res, next) => {
+app.use((_req, res, next) => {
   res.status(404).json({
     status: 404,
     error: 'Page Not Found',
