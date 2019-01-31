@@ -173,4 +173,54 @@ describe('Parties', () => {
         });
     });
   });
+  describe('PATCH /parties/:id/name', () => {
+    it('should return the edited name of a specific political party', (done) => {
+      const party = {
+        name: 'cafe royal',
+      };
+      api.patch('/api/v1/parties/3/name')
+        .set('Content-Type', 'application/json')
+        .send(party)
+        .expect(200)
+        .end((err, res) => {
+          expect(res.status).to.equal(200);
+          expect(res.body).to.have.property('status');
+          expect(res.body).to.have.property('data');
+          expect(res.body.status).to.equal(200);
+          expect(res.body.data).to.have.property('id');
+          expect(res.body.data).to.have.property('name');
+          done();
+        });
+    });
+    it('should return a 400 if user did not input party name', (done) => {
+      const party = {
+        name: '',
+      };
+      api.patch('/api/v1/parties/3/name')
+        .set('Content-Type', 'application/json')
+        .send(party)
+        .expect(400)
+        .end((err, res) => {
+          expect(res.status).to.equal(400);
+          expect(res.body).to.have.property('status');
+          expect(res.body).to.have.property('error');
+          done();
+        });
+    });
+    it('should return a 404 if party id was not found', (done) => {
+      const party = {
+        name: 'abundance people',
+      };
+      api.patch('/api/v1/parties/30/name')
+        .set('Content-Type', 'application/json')
+        .send(party)
+        .expect(404)
+        .end((err, res) => {
+          expect(res.status).to.equal(404);
+          expect(res.body).to.have.property('status');
+          expect(res.body).to.have.property('error');
+          done();
+        });
+    });
+  });
 });
