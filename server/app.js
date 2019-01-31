@@ -3,13 +3,14 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import office from './routes/offices';
 import party from './routes/parties';
+import home from './routes/home';
 
 
 const app = express();
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
+app.use('/', home);
 app.use('/api/v1/offices', office);
 app.use('/api/v1/parties', party);
 
