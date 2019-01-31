@@ -17,6 +17,8 @@ describe('Offices', () => {
         .expect(201)
         .end((err, res) => {
           expect(res.status).to.equal(201);
+          expect(res.body).to.have.property('status');
+          expect(res.body).to.have.property('data');
           expect(res.body.status).to.equal(201);
           expect(res.body.data).to.have.property('id');
           expect(res.body.data).to.have.property('type');
@@ -52,6 +54,36 @@ describe('Offices', () => {
           expect(res.body).to.have.property('data');
           expect(res.body.data).to.be.a('array');
           expect(res.body.status).to.equal(200);
+          done();
+        });
+    });
+  });
+  describe('GET /offices/:id', () => {
+    it('should fetch the political office with the given id', (done) => {
+      api.get('/api/v1/offices/1')
+        .set('Content-Type', 'application/json')
+        .expect(200)
+        .end((err, res) => {
+          expect(res.status).to.equal(200);
+          expect(res.body).to.have.property('status');
+          expect(res.body).to.have.property('data');
+          expect(res.body.status).to.equal(200);
+          expect(res.body.data).to.have.property('id');
+          expect(res.body.data).to.have.property('type');
+          expect(res.body.data).to.have.property('name');
+          done();
+        });
+    });
+    it('should return a 404 if the political office was not found', (done) => {
+      api.get('/api/v1/offices/16')
+        .set('Content-Type', 'application/json')
+        .expect(404)
+        .end((err, res) => {
+          expect(res.status).to.equal(404);
+          expect(res.body).to.have.property('status');
+          expect(res.body).to.have.property('error');
+          expect(res.body.status).to.equal(404);
+          expect(res.body.error).to.equal('This political office does not exist');
           done();
         });
     });

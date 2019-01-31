@@ -37,6 +37,23 @@ const getAllOffices = (req, res) => {
   });
 };
 
+const getOnePoliticalOffice = (req, res) => {
+  const { id } = req.params;
+  const oneOffice = offices.find(office => office.id === parseInt(id, 10));
+  if (!oneOffice) {
+    return res.status(404).json({
+      status: 404,
+      error: 'This political office does not exist',
+    });
+  }
+  return res.status(200).json({
+    status: 200,
+    data: oneOffice,
+  });
+};
+
 export {
-  createOffice, getAllOffices,
+  createOffice,
+  getAllOffices,
+  getOnePoliticalOffice,
 };
