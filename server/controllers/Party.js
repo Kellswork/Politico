@@ -36,7 +36,23 @@ const getAllParties = (req, res) => {
   });
 };
 
+const getAParty = (req, res) => {
+  const { id } = req.params;
+  const oneParty = parties.find(party => party.id === parseInt(id, 10));
+  if (!oneParty) {
+    return res.status(404).json({
+      status: 404,
+      error: 'This political party does not exist',
+    });
+  }
+  return res.status(200).json({
+    status: 200,
+    data: oneParty,
+  });
+};
+
 export {
   createParty,
   getAllParties,
+  getAParty,
 };

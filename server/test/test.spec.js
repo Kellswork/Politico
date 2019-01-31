@@ -143,4 +143,34 @@ describe('Parties', () => {
         });
     });
   });
+  describe('GET /parties/:id', () => {
+    it('should return the political party with the given id', (done) => {
+      api.get('/api/v1/parties/2')
+        .set('Content-Type', 'application/json')
+        .expect(200)
+        .end((err, res) => {
+          expect(res.status).to.equal(200);
+          expect(res.body).to.have.property('status');
+          expect(res.body).to.have.property('data');
+          expect(res.body.status).to.equal(200);
+          expect(res.body.data).to.have.property('id');
+          expect(res.body.data).to.have.property('name');
+          expect(res.body.data).to.have.property('logoUrl');
+          done();
+        });
+    });
+    it('should return a 404 if the political party was not found', (done) => {
+      api.get('/api/v1/parties/16')
+        .set('Content-Type', 'application/json')
+        .expect(404)
+        .end((err, res) => {
+          expect(res.status).to.equal(404);
+          expect(res.body).to.have.property('status');
+          expect(res.body).to.have.property('error');
+          expect(res.body.status).to.equal(404);
+          expect(res.body.error).to.equal('This political party does not exist');
+          done();
+        });
+    });
+  });
 });
