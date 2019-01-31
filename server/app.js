@@ -24,7 +24,7 @@ app.use((_req, res, next) => {
 });
 
 
-const port = process.env.port || 8080;
+const port = process.env.PORT || 8080;
 
 const server = app.listen(port, () => console.log(`Politico started on Port: ${port}`));
 
