@@ -40,6 +40,12 @@ const getAllOffices = (req, res) => {
 const getOnePoliticalOffice = (req, res) => {
   const { id } = req.params;
   const oneOffice = offices.find(office => office.id === parseInt(id, 10));
+  if (isNaN(id)) {
+    return res.status(400).json({
+      status: 400,
+      error: 'id is not a number',
+    });
+  }
   if (!oneOffice) {
     return res.status(404).json({
       status: 404,
