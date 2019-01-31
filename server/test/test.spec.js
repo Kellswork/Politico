@@ -74,6 +74,19 @@ describe('Offices', () => {
           done();
         });
     });
+    it('should return 400 if the id is not a number', (done) => {
+      api.get('/api/v1/offices/y2k')
+        .set('Content-Type', 'application/json')
+        .expect(400)
+        .end((err, res) => {
+          expect(res.status).to.equal(400);
+          expect(res.body).to.have.property('status');
+          expect(res.body).to.have.property('error');
+          expect(res.body.error).to.equal('id is not a number');
+          expect(res.body.status).to.equal(400);
+          done();
+        });
+    });
     it('should return a 404 if the political office was not found', (done) => {
       api.get('/api/v1/offices/16')
         .set('Content-Type', 'application/json')
@@ -159,6 +172,19 @@ describe('Parties', () => {
           done();
         });
     });
+    it('should return 400 if the id is not a number', (done) => {
+      api.get('/api/v1/parties/2k')
+        .set('Content-Type', 'application/json')
+        .expect(400)
+        .end((err, res) => {
+          expect(res.status).to.equal(400);
+          expect(res.body).to.have.property('status');
+          expect(res.body).to.have.property('error');
+          expect(res.body.error).to.equal('id is not a number');
+          expect(res.body.status).to.equal(400);
+          done();
+        });
+    });
     it('should return a 404 if the political party was not found', (done) => {
       api.get('/api/v1/parties/16')
         .set('Content-Type', 'application/json')
@@ -207,6 +233,19 @@ describe('Parties', () => {
           done();
         });
     });
+    it('should return 400 if the id is not a number', (done) => {
+      api.get('/api/v1/offices/2k')
+        .set('Content-Type', 'application/json')
+        .expect(400)
+        .end((err, res) => {
+          expect(res.status).to.equal(400);
+          expect(res.body).to.have.property('status');
+          expect(res.body).to.have.property('error');
+          expect(res.body.error).to.equal('id is not a number');
+          expect(res.body.status).to.equal(400);
+          done();
+        });
+    });
     it('should return a 404 if party id was not found', (done) => {
       const party = {
         name: 'abundance people',
@@ -237,6 +276,19 @@ describe('Parties', () => {
           done();
         });
     });
+    it('should return 400 if the id is not a number', (done) => {
+      api.get('/api/v1/parties/y2k')
+        .set('Content-Type', 'application/json')
+        .expect(400)
+        .end((err, res) => {
+          expect(res.status).to.equal(400);
+          expect(res.body).to.have.property('status');
+          expect(res.body).to.have.property('error');
+          expect(res.body.error).to.equal('id is not a number');
+          expect(res.body.status).to.equal(400);
+          done();
+        });
+    });
     it('should return a  success message if party was successfuly deleted', (done) => {
       api.delete('/api/v1/parties/2')
         .set('Content-Type', 'application/json')
@@ -247,6 +299,22 @@ describe('Parties', () => {
           expect(res.body).to.have.property('data');
           expect(res.body.data).to.have.property('message');
           expect(res.body.data.message).to.equal('Political party has been deleted successfully');
+          done();
+        });
+    });
+  });
+});
+describe('home', () => {
+  describe('page not found', () => {
+    it('should return a 404 if page cannot be found', (done) => {
+      api.get('/api/v1/office')
+        .expect(404)
+        .end((err, res) => {
+          expect(res.status).to.equal(404);
+          expect(res.body).to.have.property('status');
+          expect(res.body).to.have.property('error');
+          expect(res.body.status).to.have.equal(404);
+          expect(res.body.error).to.equal('Page Not Found');
           done();
         });
     });

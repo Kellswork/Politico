@@ -45,7 +45,7 @@ const getAParty = (req, res) => {
       error: 'id is not a number',
     });
   }
-  if (oneParty.length < 1) {
+  if (!oneParty) {
     return res.status(404).json({
       status: 404,
       error: 'Could not find political party',
