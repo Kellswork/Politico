@@ -89,3 +89,42 @@ describe('Offices', () => {
     });
   });
 });
+
+describe('Parties', () => {
+  describe(' POST /parties', () => {
+    it('should return the name of the newly created party', (done) => {
+      const party = {
+        name: 'action democratic party',
+      };
+      api.post('/api/v1/parties')
+        .set('Content-Type', 'application/json')
+        .send(party)
+        .expect(201)
+        .end((err, res) => {
+          expect(res.status).to.equal(201);
+          expect(res.body).to.have.property('status');
+          expect(res.body).to.have.property('data');
+          expect(res.body.status).to.equal(201);
+          expect(res.body.data).to.have.property('id');
+          expect(res.body.data).to.have.property('name');
+          done();
+        });
+    });
+    it('should return a 400 if no name was sent', (done) => {
+      const party = {
+        name: '',
+      };
+      api.post('/api/v1/parties')
+        .set('Content-Type', 'application/json')
+        .send(party)
+        .expect(400)
+        .end((err, res) => {
+          expect(res.status).to.equal(400);
+          expect(res.body).to.have.property('status');
+          expect(res.body).to.have.property('error');
+          expect(res.body.status).to.equal(400);
+          done();
+        });
+    });
+  });
+});
