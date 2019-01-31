@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/Kellswork/Politico.svg?branch=develop)](https://travis-ci.org/Kellswork/Politico)
+[![Coverage Status](https://coveralls.io/repos/github/Kellswork/Politico/badge.svg?branch=develop)](https://coveralls.io/github/Kellswork/Politico?branch=develop)
 
 # Politico
 
