@@ -168,7 +168,7 @@ describe('Parties', () => {
           expect(res.body).to.have.property('status');
           expect(res.body).to.have.property('error');
           expect(res.body.status).to.equal(404);
-          expect(res.body.error).to.equal('This political party does not exist');
+          expect(res.body.error).to.equal('Could not find political party');
           done();
         });
     });
@@ -219,6 +219,34 @@ describe('Parties', () => {
           expect(res.status).to.equal(404);
           expect(res.body).to.have.property('status');
           expect(res.body).to.have.property('error');
+          expect(res.body.error).to.equal('Could not find political party');
+          done();
+        });
+    });
+  });
+  describe('DELETE /parties/:id', () => {
+    it('should return a 404 if party id was not found', (done) => {
+      api.delete('/api/v1/parties/30')
+        .set('Content-Type', 'application/json')
+        .expect(404)
+        .end((err, res) => {
+          expect(res.status).to.equal(404);
+          expect(res.body).to.have.property('status');
+          expect(res.body).to.have.property('error');
+          expect(res.body.error).to.equal('Could not find political party');
+          done();
+        });
+    });
+    it('should return a  success message if party was successfuly deleted', (done) => {
+      api.delete('/api/v1/parties/2')
+        .set('Content-Type', 'application/json')
+        .expect(200)
+        .end((err, res) => {
+          expect(res.status).to.equal(200);
+          expect(res.body).to.have.property('status');
+          expect(res.body).to.have.property('data');
+          expect(res.body.data).to.have.property('message');
+          expect(res.body.data.message).to.equal('Political party has been deleted successfully');
           done();
         });
     });

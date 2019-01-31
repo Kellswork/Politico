@@ -42,7 +42,7 @@ const getAParty = (req, res) => {
   if (!oneParty) {
     return res.status(404).json({
       status: 404,
-      error: 'This political party does not exist',
+      error: 'Could not find political party',
     });
   }
   return res.status(200).json({
@@ -58,7 +58,7 @@ const editAParty = (req, res) => {
   if (!oneParty) {
     return res.status(404).json({
       status: 404,
-      error: 'This political party does not exist',
+      error: 'Could not find political party',
     });
   }
   if (error) {
@@ -67,7 +67,6 @@ const editAParty = (req, res) => {
       error: error.details[0].message,
     });
   }
-
   oneParty = {
     id,
     name: req.body.name,
@@ -79,10 +78,28 @@ const editAParty = (req, res) => {
   });
 };
 
+const deleteAParty = (req, res) => {
+  const { id } = req.params;
+  const oneParty = parties.find(party => party.id === parseInt(id, 10));
+  if (!oneParty) {
+    return res.status(404).json({
+      status: 404,
+      error: 'Could not find political party',
+    });
+  }
+  parties.splice(parties.indexOf(oneParty), 1);
+  res.status(200).json({
+    status: 200,
+    data: {
+      message: 'Political party has been deleted successfully',
+    },
+  });
+};
 
 export {
   createParty,
   getAllParties,
   getAParty,
   editAParty,
+  deleteAParty,
 };
