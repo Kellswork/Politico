@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Kellswork/SendIT.svg?branch=develop)](https://travis-ci.org/Kellswork/SendIT)
+[![Build Status](https://travis-ci.org/Kellswork/Politico.svg?branch=develop)](https://travis-ci.org/Kellswork/Politico)
 
 # Politico
 
