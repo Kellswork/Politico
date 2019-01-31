@@ -1,6 +1,7 @@
 # Politico
 
 Politico is an online voting platform that lets users vote for candidates running for different political offices. Politico enables citizens give their mandate to politicians running for different government offices.
+- [gh-pages](https://kellswork.github.io/Politico/)
 
 ### Required Features
 
@@ -51,7 +52,7 @@ The backend was implemented using:
 
 ## Authors
 
-- Kelechi Ogbonna - [Politico]()
+- Kelechi Ogbonna - [Politico](https://kellswork.github.io/Politico/)
 
 ## License
 MIT License
