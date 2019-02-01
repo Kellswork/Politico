@@ -5,7 +5,6 @@ import {
 import validateParty from '../middleware/validateParty';
 import validateId from '../middleware/validateId';
 
-
 const router = express.Router();
 
 router.post('/', validateParty, createParty);

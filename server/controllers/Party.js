@@ -15,19 +15,18 @@ const createParty = (req, res) => {
   });
 };
 
-const getAllParties = (req, res) => {
+const getAllParties = ((req, res) => {
   if (parties.length <= 0) {
     return res.status(404).json({
       status: 404,
       error: 'No political party has been created',
     });
   }
-  return res.status(200).json({
+  res.status(200).json({
     status: 200,
     data: parties,
   });
-};
-
+});
 const getAParty = (req, res) => {
   const { id } = req.params;
   const oneParty = parties.find(party => party.id === parseInt(id, 10));
