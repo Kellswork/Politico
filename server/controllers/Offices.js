@@ -15,18 +15,10 @@ const createOffice = (req, res) => {
   });
 };
 
-const getAllOffices = (req, res) => {
-  if (offices.length <= 0) {
-    return res.status(404).json({
-      status: 404,
-      error: 'No political office has been created yet',
-    });
-  }
-  return res.status(200).json({
-    status: 200,
-    data: offices,
-  });
-};
+const getAllOffices = (req, res) => res.status(200).json({
+  status: 200,
+  data: offices,
+});
 
 const getOnePoliticalOffice = (req, res) => {
   const { id } = req.params;
