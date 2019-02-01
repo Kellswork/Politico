@@ -31,12 +31,6 @@ const getAllParties = (req, res) => {
 const getAParty = (req, res) => {
   const { id } = req.params;
   const oneParty = parties.find(party => party.id === parseInt(id, 10));
-  if (isNaN(id)) {
-    return res.status(400).json({
-      status: 400,
-      error: 'id is not a number',
-    });
-  }
   if (!oneParty) {
     return res.status(404).json({
       status: 404,
@@ -53,12 +47,6 @@ const getAParty = (req, res) => {
 const editAParty = (req, res) => {
   const { id } = req.params;
   let oneParty = parties.find(party => party.id === parseInt(id, 10));
-  if (isNaN(id)) {
-    return res.status(400).json({
-      status: 400,
-      error: 'id is not a number',
-    });
-  }
   if (!oneParty) {
     return res.status(404).json({
       status: 404,
@@ -79,12 +67,6 @@ const editAParty = (req, res) => {
 const deleteAParty = (req, res) => {
   const { id } = req.params;
   const oneParty = parties.find(party => party.id === parseInt(id, 10));
-  if (isNaN(id)) {
-    return res.status(400).json({
-      status: 400,
-      error: 'id is not a number',
-    });
-  }
   if (!oneParty) {
     return res.status(404).json({
       status: 404,
