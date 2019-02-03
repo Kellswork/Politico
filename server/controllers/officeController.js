@@ -1,5 +1,8 @@
 import offices from '../models/offices';
 
+// const { validationResult } = require('express-validator/check');
+
+
 const createOffice = (req, res) => {
   const { type, name } = req.body;
   const newOffice = {
@@ -16,12 +19,6 @@ const createOffice = (req, res) => {
 };
 
 const getAllOffices = ((req, res) => {
-  if (offices.length <= 0) {
-    return res.status(404).json({
-      status: 404,
-      error: 'No political office has been created yet',
-    });
-  }
   res.status(200).json({
     status: 200,
     data: offices,
