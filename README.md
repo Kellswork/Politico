@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/Kellswork/Politico.svg?branch=develop)](https://travis-ci.org/Kellswork/Politico)
-[![Coverage Status](https://coveralls.io/repos/github/Kellswork/Politico/badge.svg?branch=develop)](https://coveralls.io/github/Kellswork/Politico?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/github/Kellswork/Politico/badge.svg)](https://coveralls.io/github/Kellswork/Politico)
 [![Maintainability](https://api.codeclimate.com/v1/badges/031f2868875844e96699/maintainability)](https://codeclimate.com/github/Kellswork/Politico/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/031f2868875844e96699/test_coverage)](https://codeclimate.com/github/Kellswork/Politico/test_coverage)
 # Politico
