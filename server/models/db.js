@@ -11,9 +11,6 @@ if (process.env.NODE_ENV === 'test') {
   }, console.log(process.env.LOCALDB_URL));
 }
 
-// pool.connect().then(() => console.log('connected to db'))
-//   .catch(err => console.log(err.stack));
-
 const db = {
   query: (text, params) => pool.query(text, params),
 };
