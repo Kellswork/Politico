@@ -21,8 +21,9 @@ const tableQuery = async () => {
       lastNAme VARCHAR(50) NOT NULL,
       otherName VARCHAR(50),
       email VARCHAR(50) UNIQUE NOT NULL,
+      password TEXT NOT NULL,
       phoneNumber VARCHAR(15) NOT NULL,
-      passportUrl VARCHAR(250) NOT NULL,
+      passportUrl TEXT,
       isAdmin BOOLEAN DEFAULT FALSE,
       registeredOn DATE DEFAULT CURRENT_TIMESTAMP);`);
 
