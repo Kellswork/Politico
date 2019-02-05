@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import dotenv from 'dotenv';
 import db from '../models/db';
 import generateToken from '../middleware/generateToken';
-import { userSignup, userDetails, fullName } from '../models/query';
+import { userSignup, userDetails, fullName } from '../models/userQuery';
 import { multerUploads, dataUri } from '../middleware/multer';
 import { uploader, cloudinaryConfig } from '../config/cloudinaryConfig';
 
@@ -39,7 +39,41 @@ class User {
         },
       });
     } catch (err) {
-      console.log(err.message);
+      return res.status(500).json({
+        status: 500,
+        error: err.message,
+      });
+    }
+  }
+
+  static async userLogin(req, res) {
+    try {
+      const { email, password } = req.body;
+      const userEmail = await db.query(userDetails, [email]);
+      const userPassword = await bcrypt.compare(password, userEmail.rows[0].password);
+      if ((!userEmail.rows[0]) || (userPassword === false)) {
+        return res.status(400).json({
+          status: 400,
+          error: 'invalid email or password',
+        });
+      }
+      const rows = await db.query(userDetails, [email]);
+      const name = await db.query(fullName, [email]);
+      const token = generateToken(rows, name, email);
+      const {
+        firstname, lastname, othername, phonenumber, passporturl, isadmin, registeredon,
+      } = rows.rows[0];
+      return res.header('x-auth-token', token).status(200).json({
+        status: 200,
+        data: {
+          token,
+          user: {
+            firstname, lastname, othername, phonenumber, passporturl, isadmin, registeredon,
+          },
+
+        },
+      });
+    } catch (err) {
       return res.status(500).json({
         status: 500,
         error: err.message,

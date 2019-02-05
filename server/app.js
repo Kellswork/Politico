@@ -10,14 +10,14 @@ import { uploader, cloudinaryConfig } from './config/cloudinaryConfig';
 
 
 const app = express();
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('*', cloudinaryConfig);
 app.use('/', home);
+app.use('/api/v1/auth', auth);
 app.use('/api/v1/offices', office);
 app.use('/api/v1/parties', party);
-app.use('/api/v1/auth', auth);
+
 
 app.use((_req, res, next) => {
   res.status(404).json({
