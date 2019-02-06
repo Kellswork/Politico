@@ -1,14 +1,12 @@
 import express from 'express';
-import { createOffice, getAllOffices, getOnePoliticalOffice } from '../controllers/officeController';
 import validateId from '../middleware/validateId';
-import validaton from '../middleware/officeValidation';
-import notFound from '../middleware/notFound';
-import offices from '../models/offices';
+import validateOffice from '../middleware/validateOffice';
+import Office from '../controllers/officeController';
+import auth from '../middleware/authentication';
+import admin from '../middleware/authorization';
 
 const router = express.Router();
 
-router.post('/', validaton, createOffice);
-router.get('/', notFound(offices), getAllOffices);
-router.get('/:id', validateId, getOnePoliticalOffice);
+router.post('/', auth, admin, validateOffice, Office.createOffice);
 
 export default router;

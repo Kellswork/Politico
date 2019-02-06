@@ -53,7 +53,6 @@ const validateSignup = [
   check('email').custom(value => db.query('select * from users where email = $1', [value]).then((user) => {
     if (user.rowCount >= 1) throw new Error('email has already been registered');
   })),
-  // eslint-disable-next-line func-names
   (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
