@@ -6,7 +6,5 @@ import Office from '../controllers/officeController';
 const router = express.Router();
 
 router.post('/', validateOffice, Office.createOffice);
-// router.get('/', notFound(offices), getAllOffices);
-// router.get('/:id', validateId, getOnePoliticalOffice);
 
 export default router;

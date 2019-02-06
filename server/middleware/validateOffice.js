@@ -15,8 +15,8 @@ const validateOffice = [
     .isIn(['federal', 'state', 'local government', 'legislative'])
     .withMessage('only federal, state, local government, legislative are allowed')
     .trim(),
-  // eslint-disable-next-line func-names
-  function (req, res, next) {
+
+  (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({
