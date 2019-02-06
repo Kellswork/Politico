@@ -1,47 +1,22 @@
-import offices from '../models/offices';
+import createOffice from '../models/officeQuery';
+import db from '../models/db';
 
-// const { validationResult } = require('express-validator/check');
-
-
-const createOffice = (req, res) => {
-  const { type, name } = req.body;
-  const newOffice = {
-    id: offices[offices.length - 1].id + 1,
-    type,
-    name,
-  };
-  offices.push(newOffice);
-
-  res.status(201).json({
-    status: 201,
-    data: newOffice,
-  });
-};
-
-const getAllOffices = ((req, res) => {
-  res.status(200).json({
-    status: 200,
-    data: offices,
-  });
-});
-
-const getOnePoliticalOffice = (req, res) => {
-  const { id } = req.params;
-  const oneOffice = offices.find(office => office.id === parseInt(id, 10));
-  if (!oneOffice) {
-    return res.status(404).json({
-      status: 404,
-      error: 'This political office does not exist',
-    });
+class Office {
+  static async createOffice(req, res) {
+    try {
+      const { type, name } = req.body;
+      const values = [type, name];
+      const { rows } = await db.query(createOffice, values);
+      res.status(201).json({
+        status: 201,
+        data: rows[0],
+      });
+    } catch (err) {
+      return res.status(500).json({
+        status: 500,
+        error: err.message,
+      });
+    }
   }
-  return res.status(200).json({
-    status: 200,
-    data: oneOffice,
-  });
-};
-
-export {
-  createOffice,
-  getAllOffices,
-  getOnePoliticalOffice,
-};
+}
+export default Office;
