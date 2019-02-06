@@ -9,6 +9,6 @@ import admin from '../middleware/authorization';
 const router = new Router();
 const multerUploads = multer({ storage }).single('logoUrl');
 router.post('/', auth, admin, multerUploads, validateParty, Party.createParty);
-
+router.get('/', auth, Party.getAllParties);
 
 export default router;
