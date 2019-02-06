@@ -5,7 +5,7 @@ const {
   validationResult,
 } = require('express-validator/check');
 
-const validateUser = [
+const validateSignup = [
   check('firstName')
     .matches(/[a-zA-Z]+/).withMessage('firstname must contain only alphabets')
     .isLength({ min: 3 })
@@ -66,4 +66,21 @@ const validateUser = [
   },
 ];
 
-export default validateUser;
+const validateLogin = [
+  check('email').isEmail().withMessage('please input a valid email address')
+    .trim(),
+  check('password').isLength({ min: 3 }).withMessage('please input a valid password')
+    .trim(),
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        status: 400,
+        error: errors.array().map(i => i.msg),
+      });
+    }
+    next();
+  },
+];
+
+export { validateSignup, validateLogin };
