@@ -33,7 +33,6 @@ const validateSignup = [
     .matches(/^\S{3,}$/)
     .withMessage('othername cannot contain whitespaces')
     .trim(),
-  check('passportUrl').exists().withMessage('please upload image'),
   check('password').isLength({ min: 3 })
     .withMessage('password must have atleast 5 characters')
     .isLength({ max: 15 })

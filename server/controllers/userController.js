@@ -13,7 +13,6 @@ class User {
       const {
         firstName, lastName, otherName, email, phoneNumber,
       } = req.body;
-      console.log(req.body);
       const salt = await bcrypt.genSalt(10);
       const password = await bcrypt.hash(req.body.password, salt);
       let passportUrl;
