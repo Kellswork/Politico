@@ -1,4 +1,4 @@
-import createOffice, { getOffice } from '../models/officeQuery';
+import createOffice, { getOffice, office } from '../models/officeQuery';
 import db from '../models/db';
 
 class Office {
@@ -36,6 +36,29 @@ class Office {
       return res.status(500).json({
         status: 500,
         error: err.message,
+      });
+    }
+  }
+
+  static async getASpecificOffice(req, res) {
+    try {
+      const { id } = req.params;
+      const { rows } = await db.query(office, [id]);
+      if (!rows[0]) {
+        return res.status(404).json({
+          success: false,
+          error: 'office not found',
+        });
+      }
+
+      return res.status(200).json({
+        success: true,
+        parcel: rows[0],
+      });
+    } catch (err) {
+      return res.status(500).json({
+        status: 500,
+        error: err.stack,
       });
     }
   }
