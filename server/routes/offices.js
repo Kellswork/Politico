@@ -8,5 +8,7 @@ import admin from '../middleware/authorization';
 const router = express.Router();
 
 router.post('/', auth, admin, validateOffice, Office.createOffice);
+router.get('/', auth, Office.getAllOffices);
+
 
 export default router;

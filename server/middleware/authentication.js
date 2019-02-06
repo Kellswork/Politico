@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const auth = (req, res, next) => {
-  const token = req.header('x-auth-token');
+  const token = req.header('x-auth-token') || req.body.token;
   if (!token) {
     return res.status(401).json({
       status: 401,
@@ -12,7 +12,7 @@ const auth = (req, res, next) => {
     });
   }
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+    const decoded = jwt.verify(token, process.env.JWT_PRIVATE_KEY);
     req.userData = decoded;
     next();
   } catch (error) {
