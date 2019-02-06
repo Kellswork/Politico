@@ -1,7 +1,7 @@
 import { dataUri } from '../middleware/multer';
 import { uploader } from '../config/cloudinaryConfig';
 import db from '../models/db';
-import createParty from '../models/partyQuery';
+import { createParty, getParty } from '../models/partyQuery';
 
 class Party {
   static async createParty(req, res) {
@@ -22,6 +22,28 @@ class Party {
       res.status(201).json({
         status: 201,
         data: rows[0],
+      });
+    } catch (err) {
+      return res.status(500).json({
+        status: 500,
+        error: err.message,
+      });
+    }
+  }
+
+
+  static async getAllParties(req, res) {
+    try {
+      const result = await db.query(getParty);
+      if (result.rowCount < 1) {
+        return res.status(404).json({
+          status: 400,
+          error: 'no party has been created',
+        });
+      }
+      return res.status(200).json({
+        status: 200,
+        data: result.rows,
       });
     } catch (err) {
       return res.status(500).json({
