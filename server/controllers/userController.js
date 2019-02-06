@@ -3,8 +3,8 @@ import dotenv from 'dotenv';
 import db from '../models/db';
 import generateToken from '../middleware/generateToken';
 import { userSignup, userDetails, fullName } from '../models/userQuery';
-import { multerUploads, dataUri } from '../middleware/multer';
-import { uploader, cloudinaryConfig } from '../config/cloudinaryConfig';
+import { dataUri } from '../middleware/multer';
+import { uploader } from '../config/cloudinaryConfig';
 
 dotenv.config();
 class User {
@@ -13,6 +13,7 @@ class User {
       const {
         firstName, lastName, otherName, email, phoneNumber,
       } = req.body;
+      console.log(req.body);
       const salt = await bcrypt.genSalt(10);
       const password = await bcrypt.hash(req.body.password, salt);
       let passportUrl;

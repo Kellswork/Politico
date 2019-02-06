@@ -1,19 +1,14 @@
-import express from 'express';
-import {
-  createParty, getAllParties, getAParty, editAParty, deleteAParty,
-} from '../controllers/partyController';
+import Router from 'express-promise-router';
+import multer from 'multer';
 import validateParty from '../middleware/validateParty';
-import validateId from '../middleware/validateId';
-import notFound from '../middleware/notFound';
-import parties from '../models/parties';
+import Party from '../controllers/partyController';
+import { storage } from '../middleware/multer';
+import auth from '../middleware/authentication';
+import admin from '../middleware/authorization';
 
-const router = express.Router();
-
-router.post('/', validateParty, createParty);
-router.get('/', notFound(parties), getAllParties);
-router.get('/:id', validateId, getAParty);
-router.patch('/:id/name', validateId, validateParty, editAParty);
-router.delete('/:id', validateId, deleteAParty);
+const router = new Router();
+const multerUploads = multer({ storage }).single('logoUrl');
+router.post('/', auth, admin, multerUploads, validateParty, Party.createParty);
 
 
 export default router;

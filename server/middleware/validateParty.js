@@ -1,23 +1,29 @@
-import Joi from 'joi';
+import db from '../models/db';
 
-const validateParty = (req, res, next) => {
-  const schema = {
-    name: Joi.string().trim().min(3).required(),
-  };
-  const options = {
-    language: {
-      key: '{{key}} ',
-    },
-    abortEarly: false,
-  };
-  const { error } = Joi.validate(req.body, schema, options);
-  if (error) {
-    return res.status(400).json({
-      status: 400,
-      error: error.details[0].message,
-    });
-  }
-  next();
-};
+const {
+  check,
+  validationResult,
+} = require('express-validator/check');
+
+const validateParty = [
+  check('name').matches(/[a-zA-Z]+/).withMessage('name must contain only alphabets')
+    .custom(value => db.query('select * from parties where name = $1', [value]).then((party) => {
+      if (party.rowCount >= 1) throw new Error('name already exists');
+    }))
+    .trim(),
+  check('hqAddress').exists().withMessage('Please input an address')
+    .trim(),
+  check('logoUrl').exists().withMessage('please upload image'),
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        status: 400,
+        error: errors.array().map(i => i.msg),
+      });
+    }
+    next();
+  },
+];
 
 export default validateParty;
