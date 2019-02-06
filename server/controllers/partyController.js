@@ -2,7 +2,7 @@ import { dataUri } from '../middleware/multer';
 import { uploader } from '../config/cloudinaryConfig';
 import db from '../models/db';
 import {
-  createParty, getParty, party, updatePartyName,
+  createParty, getParty, party, updatePartyName, deleteParty,
 } from '../models/partyQuery';
 
 class Party {
@@ -101,6 +101,29 @@ class Party {
       return res.status(500).json({
         success: false,
         error: err.message,
+      });
+    }
+  }
+
+  static async deleteParty(req, res) {
+    try {
+      const { id } = req.params;
+      let { rows } = await db.query(party, [id]);
+      if (!rows[0]) {
+        return res.status(404).json({
+          status: 404,
+          error: 'party not found',
+        });
+      }
+      rows = await db.query(deleteParty, [id]);
+
+      res.status(200).json({
+        message: 'political party has been deleted successfully',
+      });
+    } catch (error) {
+      return res.status(500).json({
+        status: 500,
+        error: error.message,
       });
     }
   }
