@@ -58,7 +58,7 @@ class Office {
     } catch (err) {
       return res.status(500).json({
         status: 500,
-        error: err.stack,
+        error: err.message,
       });
     }
   }
