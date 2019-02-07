@@ -96,7 +96,20 @@ class Candidate {
           error: 'id is not a number',
         });
       }
-      const result = await db.query('SELECT officeId candidateId COUNT(candidateId) AS result FROM votes WHERE officeId = $1 GROUP BY candidateId, officeId', [officeId]);
+      const checkOffice = await db.query('select * from offices where id = $1', [officeId]);
+      if (checkOffice.rowCount < 1) {
+        return res.status(404).json({
+          status: 404,
+          error: 'office not found',
+        });
+      }
+      const result = await db.query('SELECT officeId, candidateId, COUNT(candidateId) AS result FROM votes WHERE officeId=$1 GROUP BY candidateId, officeId', [officeId]);
+      if (result.rowCount < 1) {
+        return res.status(404).json({
+          status: 404,
+          error: 'no result for this office yet',
+        });
+      }
       res.status(201).json({
         status: 200,
         data: result.rows,
@@ -109,6 +122,5 @@ class Candidate {
     }
   }
 }
-
 
 export default Candidate;
