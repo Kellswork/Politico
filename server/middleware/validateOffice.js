@@ -28,4 +28,23 @@ const validateOffice = [
   },
 ];
 
-export default validateOffice;
+const validateCandidate = [
+  check('officeId').isNumeric()
+    .withMessage('officeId should be a number')
+    .trim(),
+  check('partyId').isNumeric()
+    .withMessage('partyId must contain only numbers')
+    .trim(),
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        status: 400,
+        error: errors.array().map(i => i.msg),
+      });
+    }
+    next();
+  },
+];
+
+export { validateOffice, validateCandidate };

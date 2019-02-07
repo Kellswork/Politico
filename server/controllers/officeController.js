@@ -46,14 +46,14 @@ class Office {
       const { rows } = await db.query(office, [id]);
       if (!rows[0]) {
         return res.status(404).json({
-          success: false,
+          status: 404,
           error: 'office not found',
         });
       }
 
       return res.status(200).json({
-        success: true,
-        parcel: rows[0],
+        status: 200,
+        office: rows[0],
       });
     } catch (err) {
       return res.status(500).json({
