@@ -75,9 +75,30 @@ class Candidate {
       }
 
       const result = await db.query('INSERT into votes(createdBy, officeId, candidateId) VALUES($1,$2,$3) RETURNING *', [voter, office, candidate]);
-      console.log(result);
       res.status(201).json({
         status: 201,
+        data: result.rows,
+      });
+    } catch (err) {
+      return res.status(500).json({
+        status: 500,
+        error: err.message,
+      });
+    }
+  }
+
+  static async electionResult(req, res) {
+    try {
+      const { officeId } = req.params;
+      if (isNaN(officeId)) {
+        return res.status(400).json({
+          status: 400,
+          error: 'id is not a number',
+        });
+      }
+      const result = await db.query('SELECT officeId candidateId COUNT(candidateId) AS result FROM votes WHERE officeId = $1 GROUP BY candidateId, officeId', [officeId]);
+      res.status(201).json({
+        status: 200,
         data: result.rows,
       });
     } catch (err) {
