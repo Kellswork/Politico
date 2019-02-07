@@ -38,7 +38,7 @@ class Candidate {
       console.log(result);
       res.status(201).json({
         status: 201,
-        data: result.rows[0],
+        data: result.rows,
       });
     } catch (err) {
       return res.status(500).json({
@@ -78,7 +78,7 @@ class Candidate {
       console.log(result);
       res.status(201).json({
         status: 201,
-        data: result.rows[0],
+        data: result.rows,
       });
     } catch (err) {
       return res.status(500).json({
