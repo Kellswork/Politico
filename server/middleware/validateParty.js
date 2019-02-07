@@ -13,7 +13,7 @@ const validateParty = [
     .trim(),
   check('hqAddress').exists().withMessage('Please input an address')
     .trim(),
-  check('logoUrl').exists().withMessage('please upload image'),
+  check('logoUrl').optional().withMessage('please upload image'),
   (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
