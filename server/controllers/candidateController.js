@@ -63,10 +63,10 @@ class Candidate {
       if (checkCandidate.rowCount < 1) {
         return res.status(404).json({
           status: 404,
-          error: 'office not found',
+          error: 'candidate not found',
         });
       }
-      const checkVote = await db.query('select * fom votes where office=$1 and createdBy= $2', [office, voter]);
+      const checkVote = await db.query('select * from votes where officeId =$1 and createdBy= $2', [office, voter]);
       if (checkVote.rowCount >= 1) {
         return res.status(406).json({
           status: 406,

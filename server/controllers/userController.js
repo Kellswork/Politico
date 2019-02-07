@@ -28,7 +28,7 @@ class User {
       const result = await db.query(userSignup, values);
       const name = await db.query(fullName, [email]);
       const token = generateToken(result, name, email);
-      return res.header('x-auth-token', token).status(200).json({
+      return res.header('x-auth-token', token).status(201).json({
         status: 201,
         data: {
           token,
@@ -36,6 +36,7 @@ class User {
             firstName: result.rows[0].firstname,
             lastName: result.rows[0].lastname,
             otherName: result.rows[0].othername,
+            email,
             phoneNumber: result.rows[0].phonenumber,
             passportUrl: result.rows[0].passporturl,
             isAdmin: result.rows[0].isadmin,
@@ -55,6 +56,12 @@ class User {
     try {
       const { email, password } = req.body;
       const userEmail = await db.query(userDetails, [email]);
+      if (!userEmail.rows.length) {
+        return res.status(400).json({
+          status: 400,
+          error: 'invalid email or password',
+        });
+      }
       const userPassword = await bcrypt.compare(password, userEmail.rows[0].password);
       if ((!userEmail.rows[0]) || (userPassword === false)) {
         return res.status(400).json({
@@ -62,6 +69,7 @@ class User {
           error: 'invalid email or password',
         });
       }
+
       const rows = userEmail;
       const name = await db.query(fullName, [email]);
       const token = generateToken(rows, name, email);
@@ -76,6 +84,7 @@ class User {
             firstName: firstname,
             lastName: lastname,
             otherName: othername,
+            email,
             phoneNumber: phonenumber,
             passportUrl: passporturl,
             isAdmin: isadmin,

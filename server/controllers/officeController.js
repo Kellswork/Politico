@@ -1,4 +1,4 @@
-import createOffice, { getOffice, office } from '../models/officeQuery';
+import { createOffice, getOffice, office } from '../models/officeQuery';
 import db from '../models/db';
 
 class Office {
@@ -25,7 +25,7 @@ class Office {
       if (result.rowCount < 1) {
         return res.status(404).json({
           status: 400,
-          error: 'no office has been created',
+          error: 'no office has been created yet',
         });
       }
       return res.status(200).json({
