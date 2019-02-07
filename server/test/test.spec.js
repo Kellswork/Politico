@@ -60,7 +60,6 @@ describe('tests for party controller', () => {
       api.get('/api/v1/parties')
         .set('x-auth-token', token)
         .end((err, res) => {
-          console.log(res.body);
           expect(res.status).to.equal(200);
           expect(res.body).to.have.property('status');
           expect(res.body.status).to.equal(200);
@@ -74,11 +73,70 @@ describe('tests for party controller', () => {
       api.get('/api/v1/parties/1')
         .set('x-auth-token', token)
         .end((err, res) => {
-          console.log(res.body);
           expect(res.status).to.equal(200);
           expect(res.body).to.have.property('status');
-          expect(res.body.status).to.equal(200);
           expect(res.body).to.have.property('data');
+          expect(res.body.status).to.equal(200);
+          expect(res.body.data).to.have.property('id');
+          expect(res.body.data).to.have.property('name');
+          done();
+        });
+    });
+    it('should return 400 if the id is not a number', (done) => {
+      api.get('/api/v1/parties/2k')
+        .set('x-auth-token', token)
+        .expect(400)
+        .end((err, res) => {
+          expect(res.status).to.equal(400);
+          expect(res.body).to.have.property('status');
+          expect(res.body).to.have.property('error');
+          expect(res.body.error).to.equal('id is not a number');
+          expect(res.body.status).to.equal(400);
+          done();
+        });
+    });
+  });
+});
+describe('tests for offices controller', () => {
+  describe(' Get /offices', () => {
+    it('should get all offices', (done) => {
+      api.get('/api/v1/offices')
+        .set('x-auth-token', token)
+        .end((err, res) => {
+          expect(res.status).to.equal(200);
+          expect(res.body).to.have.property('status');
+          expect(res.body).to.have.property('data');
+          expect(res.body.data).to.be.a('array');
+          expect(res.body.status).to.equal(200);
+          done();
+        });
+    });
+  });
+  describe(' Get /offices/:id', () => {
+    it('should get one office', (done) => {
+      api.get('/api/v1/offices/1')
+        .set('x-auth-token', token)
+        .end((err, res) => {
+          expect(res.status).to.equal(200);
+          expect(res.body).to.have.property('status');
+          expect(res.body).to.have.property('office');
+          expect(res.body.status).to.equal(200);
+          expect(res.body.office).to.have.property('id');
+          expect(res.body.office).to.have.property('type');
+          expect(res.body.office).to.have.property('name');
+          done();
+        });
+    });
+    it('should return a 404 if the political office was not found', (done) => {
+      api.get('/api/v1/offices/16')
+        .set('x-auth-token', token)
+        .expect(404)
+        .end((err, res) => {
+          expect(res.status).to.equal(404);
+          expect(res.body).to.have.property('status');
+          expect(res.body).to.have.property('error');
+          expect(res.body.status).to.equal(404);
+          expect(res.body.error).to.equal('office not found');
           done();
         });
     });
