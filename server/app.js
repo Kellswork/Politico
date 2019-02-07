@@ -6,7 +6,8 @@ import party from './routes/parties';
 import home from './routes/home';
 import logger from './config/winston';
 import auth from './routes/auth';
-import { uploader, cloudinaryConfig } from './config/cloudinaryConfig';
+import vote from './routes/votes';
+import { cloudinaryConfig } from './config/cloudinaryConfig';
 
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(bodyParser.json());
 app.use('*', cloudinaryConfig);
 app.use('/', home);
 app.use('/api/v1/auth', auth);
+app.use('/api/v1/votes', vote);
 app.use('/api/v1/offices', office);
 app.use('/api/v1/parties', party);
 
