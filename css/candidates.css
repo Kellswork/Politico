@@ -234,6 +234,7 @@ footer {
 .form-container {
   display: flex;
   background: #ffffff;
+  min-height: 85vh;
 }
 
 .sidebar {
@@ -536,12 +537,18 @@ a.active {
     bottom: 0;
     width: 100%;
   }
+  .form-container{
+    min-height: 91vh;
+  }
 }
 
 @media (width: 768px) {
   footer {
     bottom: 0;
     width: 100%;
+  }
+  .form-container{
+    min-height: 80vh;
   }
 
   .candidate-form {
