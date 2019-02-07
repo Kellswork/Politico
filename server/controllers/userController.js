@@ -56,6 +56,12 @@ class User {
     try {
       const { email, password } = req.body;
       const userEmail = await db.query(userDetails, [email]);
+      if (!userEmail.rows.length) {
+        return res.status(400).json({
+          status: 400,
+          error: 'invalid email or password',
+        });
+      }
       const userPassword = await bcrypt.compare(password, userEmail.rows[0].password);
       if ((!userEmail.rows[0]) || (userPassword === false)) {
         return res.status(400).json({
@@ -63,6 +69,7 @@ class User {
           error: 'invalid email or password',
         });
       }
+
       const rows = userEmail;
       const name = await db.query(fullName, [email]);
       const token = generateToken(rows, name, email);
