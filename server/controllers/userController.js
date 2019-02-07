@@ -28,7 +28,7 @@ class User {
       const result = await db.query(userSignup, values);
       const name = await db.query(fullName, [email]);
       const token = generateToken(result, name, email);
-      return res.header('x-auth-token', token).status(200).json({
+      return res.header('x-auth-token', token).status(201).json({
         status: 201,
         data: {
           token,
@@ -36,6 +36,7 @@ class User {
             firstName: result.rows[0].firstname,
             lastName: result.rows[0].lastname,
             otherName: result.rows[0].othername,
+            email,
             phoneNumber: result.rows[0].phonenumber,
             passportUrl: result.rows[0].passporturl,
             isAdmin: result.rows[0].isadmin,
@@ -76,6 +77,7 @@ class User {
             firstName: firstname,
             lastName: lastname,
             otherName: othername,
+            email,
             phoneNumber: phonenumber,
             passportUrl: passporturl,
             isAdmin: isadmin,

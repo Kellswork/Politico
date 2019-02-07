@@ -4,3 +4,4 @@ dist
 coveralls
 .env
 combined.log
+coverage
