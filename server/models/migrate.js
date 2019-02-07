@@ -47,9 +47,12 @@ const tableQuery = async () => {
       candidateId INT NOT NULL REFERENCES candidates(id) ON DELETE CASCADE,
       PRIMARY KEY (officeId, createdBy));`);
 
+    const admin = await db.query('INSERT into users(firstName, lastName, otherName, email, password, phoneNumber, isAdmin) VALUES(\'admin\',\' admin\', \'admin\', \'admin@politico.com\', \'admin\', \'07036328870\', \'true\');');
+    const insertParty = await db.query('INSERT INTO parties(name, hqAddress, logoUrl) VALUES(\'alligience alliance\',\'aliko dangote street abuja\', \'http://res.cloudinary.com/dghlhphlh/image/upload/v1549455253/dr5ioks01azmjwhd5avw.jpg\' ) ;');
+
     logger.info(dropPartyTable, dropUserTable, dropOfficeTable,
       dropCandidateTable, dropvoteTable, partyTable, userTable,
-      officeTable, candidateTable, voteTable);
+      officeTable, candidateTable, voteTable, admin, insertParty);
   } catch (err) {
     logger.error(err.stack);
     return err.stack;
