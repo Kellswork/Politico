@@ -40,7 +40,7 @@ class Party {
       if (result.rowCount < 1) {
         return res.status(404).json({
           status: 400,
-          error: 'no party has been created',
+          error: 'no party created yet',
         });
       }
       return res.status(200).json({
