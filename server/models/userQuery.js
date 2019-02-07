@@ -1,5 +1,5 @@
 const userSignup = `INSERT INTO users(firstName, lastName, otherName, email, password, phoneNumber, passportUrl)
-VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING id, firstName, lastName, otherName, email, phoneNumber, passportUrl, isAdmin`;
+VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING id, firstName, lastName, otherName, email, phoneNumber, passportUrl, isAdmin, registeredOn`;
 
 const userDetails = 'SELECT * FROM users WHERE email = $1';
 

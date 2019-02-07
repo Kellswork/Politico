@@ -25,17 +25,22 @@ class User {
       }
 
       const values = [firstName, lastName, otherName, email, password, phoneNumber, passportUrl];
-      const {
-        rows,
-      } = await db.query(userSignup, values);
-      const user = await db.query(userDetails, [email]);
+      const result = await db.query(userSignup, values);
       const name = await db.query(fullName, [email]);
-      const token = generateToken(user, name, email);
+      const token = generateToken(result, name, email);
       return res.header('x-auth-token', token).status(200).json({
         status: 201,
         data: {
           token,
-          user: rows[0],
+          user: {
+            firstName: result.rows[0].firstname,
+            lastName: result.rows[0].lastname,
+            otherName: result.rows[0].othername,
+            phoneNumber: result.rows[0].phonenumber,
+            passportUrl: result.rows[0].passporturl,
+            isAdmin: result.rows[0].isadmin,
+            registeredOn: result.rows[0].registeredon,
+          },
         },
       });
     } catch (err) {
@@ -57,7 +62,7 @@ class User {
           error: 'invalid email or password',
         });
       }
-      const rows = await db.query(userDetails, [email]);
+      const rows = userEmail;
       const name = await db.query(fullName, [email]);
       const token = generateToken(rows, name, email);
       const {
@@ -68,7 +73,13 @@ class User {
         data: {
           token,
           user: {
-            firstname, lastname, othername, phonenumber, passporturl, isadmin, registeredon,
+            firstName: firstname,
+            lastName: lastname,
+            otherName: othername,
+            phoneNumber: phonenumber,
+            passportUrl: passporturl,
+            isAdmin: isadmin,
+            registeredOn: registeredon,
           },
 
         },

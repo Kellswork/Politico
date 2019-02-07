@@ -27,7 +27,7 @@ const validateParty = [
 ];
 
 const validatePartyName = [
-  check('name').matches(/[a-zA-Z]+/).withMessage('name must contain only alphabets')
+  check('name').matches(/^[a-zA-Z]+$/i).withMessage('name must contain only alphabets')
     .custom(value => db.query('select * from parties where name = $1', [value]).then((party) => {
       if (party.rowCount >= 1) throw new Error('name already exists');
     }))
