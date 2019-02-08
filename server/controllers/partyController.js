@@ -9,7 +9,6 @@ class Party {
   static async createParty(req, res) {
     try {
       const { name, hqAddress } = req.body;
-      console.log(JSON.stringify(req.body));
       let logoUrl;
       if (req.file) {
         const file = dataUri(req).content;
@@ -18,7 +17,12 @@ class Party {
           logoUrl = fileUpload.url;
         }
       }
-
+      if (logoUrl === undefined) {
+        res.status(400).json({
+          status: 400,
+          error: 'please upload image',
+        });
+      }
       const values = [name, hqAddress, logoUrl];
       const { rows } = await db.query(createParty, values);
       res.status(201).json({

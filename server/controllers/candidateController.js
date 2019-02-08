@@ -27,18 +27,23 @@ class Candidate {
           error: 'party not found',
         });
       }
-      const candidateExists = await db.query('select * from candidates where userId = $1', [userId]);
+      const candidateExists = await db.query('select * from candidates where userId = $1 and partyId=$2', [userId, partyId]);
       if (candidateExists.rowCount >= 1) {
         return res.status(406).json({
           status: 406,
-          error: 'you cannot regiter a user twice',
+          error: 'canditate has already been registered',
         });
       }
       const result = await db.query('INSERT into candidates(officeId, partyId, userId) VALUES($1,$2,$3) RETURNING *', [officeId, partyId, userId]);
       console.log(result);
+      console.log(result.rows);
       res.status(201).json({
         status: 201,
-        data: result.rows,
+        data: {
+          id: result.rows[0].id,
+          office: result.rows[0].officeid,
+          user: result.rows[0].userid,
+        },
       });
     } catch (err) {
       return res.status(500).json({
@@ -77,7 +82,11 @@ class Candidate {
       const result = await db.query('INSERT into votes(createdBy, officeId, candidateId) VALUES($1,$2,$3) RETURNING *', [voter, office, candidate]);
       res.status(201).json({
         status: 201,
-        data: result.rows,
+        data: {
+          office: result.rows[0].officeid,
+          candidate: result.rows[0].candidateid,
+          voter: result.rows[0].createdby,
+        },
       });
     } catch (err) {
       return res.status(500).json({
