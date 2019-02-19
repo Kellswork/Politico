@@ -50,7 +50,7 @@ nav {
 
 .logo {
   display: flex;
-  width: 70%;
+  width: 40%;
   font-size: 32px;
   box-sizing: border-box;
   padding-left: 2%;
@@ -70,7 +70,12 @@ nav {
   padding-top: 6px;
   position: absolute;
 }
-
+.search {
+  width: 30%;
+}
+i.fas.fa-search {
+  color: #fff;
+}
 /* style for election container */
 .container {
   display: flex;
@@ -129,13 +134,13 @@ nav {
 nav .nav-profile img {
   width: 50px;
   border-radius: 50%;
-  padding-right: 7px;
   position: relative;
 }
 
 .nav-profile h4 {
-  padding-top: 20px;
+  padding-top: 18px;
   color: #f7f6f1;
+  padding-left: 10px;
 }
 
 input.search-input {
@@ -144,10 +149,10 @@ input.search-input {
   border: 1px solid transparent;
   border-bottom: 1px solid white;
   padding-left: 5px;
-  padding-right: 15px;
+  padding-right: 20px;
   color: white;
   width: 100px;
-  transition: all 500ms ease-in-out;
+  transition: all 400ms ease-in-out;
 }
 
 input.search-input:focus {
@@ -351,7 +356,7 @@ td.result img {
   border-radius: 50px;
 }
 #profile-img {
-  width: 50px;
+  width: 43px;
   border-radius: 50%;
   margin-left: 10px;
 }
@@ -406,7 +411,9 @@ a.active {
   .nav-profile {
     display: none;
   }
-
+  .search {
+    display: none;
+  }
   .sidebar {
     display: none;
   }
