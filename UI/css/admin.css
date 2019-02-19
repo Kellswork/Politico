@@ -195,9 +195,8 @@ input::placeholder {
 }
 
 td.party-logo>img {
-  width: 80px;
+  width: 70px;
 }
-
 td a {
   padding-left: 3px;
 }
@@ -571,7 +570,10 @@ background: #f4eeee;
   width: 80px;
   height: 80px;
 }
-
+td.result img {
+  width: 60px;
+  border-radius: 50px;
+}
 .party-action a {
   padding-right: 5px;
 }
@@ -629,7 +631,7 @@ background: #f4eeee;
   }
 
   .election-details {
-    width: 93%;
+    width: 85%;
     margin-top: 20px;
   }
 

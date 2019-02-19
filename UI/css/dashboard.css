@@ -76,6 +76,7 @@ nav {
   display: flex;
   background: #ffffff;
   min-height: 82vh;
+  background: #f4eeee;
 }
 
 .sidebar {
@@ -161,6 +162,7 @@ input::placeholder {
   width: 100%;
   margin: 0 auto;
   background: #f4eeee;
+  padding-bottom: 50px;
 }
 
 .election-container h2 {
@@ -250,7 +252,7 @@ footer {
 }
 
 td.party-logo>img {
-  width: 80px;
+  width: 70px;
 }
 
 .dropdown-content {
@@ -344,7 +346,10 @@ td.party-logo>img {
   color: white;
   font-size: 18px
 }
-
+td.result img {
+  width: 60px;
+  border-radius: 50px;
+}
 #profile-img {
   width: 50px;
   border-radius: 50%;
@@ -373,7 +378,7 @@ a.active {
 .party-card {
   box-shadow: 0px 2px 6px 1px #1a61550f,
               1px 0px 2px 1px #1a61550a;
-  width: 80%;
+  width: 83%;
   margin: 0 auto;
   text-align: center;
   padding: 3%;
@@ -443,7 +448,7 @@ a.active {
   }
 
   .election-details {
-    width: 93%;
+    width: 85%;
   }
 }
 @media (width: 1024px) {
