@@ -1,4 +1,7 @@
 import db from '../models/db';
+import {
+  users, offices, parties, candidates, newCndidate,
+} from '../models/candidate';
 
 class Candidate {
   static async registerCandidate(req, res) {
@@ -6,38 +9,38 @@ class Candidate {
       const { userId } = req.params;
       const { officeId, partyId } = req.body;
 
-      const checkUser = await db.query('select * from users where id = $1', [userId]);
+      const checkUser = await db.query(users, [userId]);
       if (checkUser.rowCount < 1) {
         return res.status(404).json({
           status: 404,
           error: 'user not found',
         });
       }
-      const checkOffice = await db.query('select * from offices where id = $1', [officeId]);
+      const checkOffice = await db.query(offices, [officeId]);
       if (checkOffice.rowCount < 1) {
         return res.status(404).json({
           status: 404,
           error: 'office not found',
         });
       }
-      const checkParty = await db.query('select * from parties where id = $1', [partyId]);
+      const checkParty = await db.query(parties, [partyId]);
       if (checkParty.rowCount < 1) {
         return res.status(404).json({
           status: 404,
           error: 'party not found',
         });
       }
-      const candidateExists = await db.query('select * from candidates where userId = $1 and partyId=$2', [userId, partyId]);
+      const candidateExists = await db.query(candidates, [userId, partyId]);
       if (candidateExists.rowCount >= 1) {
-        return res.status(406).json({
-          status: 406,
+        return res.status(409).json({
+          status: 409,
           error: 'canditate has already been registered',
         });
       }
-      const result = await db.query('INSERT into candidates(officeId, partyId, userId) VALUES($1,$2,$3) RETURNING *', [officeId, partyId, userId]);
+      const result = await db.query(newCndidate, [officeId, partyId, userId]);
       console.log(result);
       console.log(result.rows);
-      res.status(201).json({
+      return res.status(201).json({
         status: 201,
         data: {
           id: result.rows[0].id,
@@ -57,14 +60,14 @@ class Candidate {
     try {
       const { office, candidate } = req.body;
       const voter = req.userData.id;
-      const checkOffice = await db.query('select * from offices where id = $1', [office]);
+      const checkOffice = await db.query(offices, [office]);
       if (checkOffice.rowCount < 1) {
         return res.status(404).json({
           status: 404,
           error: 'office not found',
         });
       }
-      const checkCandidate = await db.query('select * from candidates where id = $1', [candidate]);
+      const checkCandidate = await db.query(candidates, [candidate]);
       if (checkCandidate.rowCount < 1) {
         return res.status(404).json({
           status: 404,
@@ -105,7 +108,7 @@ class Candidate {
           error: 'id is not a number',
         });
       }
-      const checkOffice = await db.query('select * from offices where id = $1', [officeId]);
+      const checkOffice = await db.query(offices, [officeId]);
       if (checkOffice.rowCount < 1) {
         return res.status(404).json({
           status: 404,
