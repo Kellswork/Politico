@@ -1,10 +1,11 @@
 import bcrypt from 'bcrypt';
 import dotenv from 'dotenv';
+import cloudinary from 'cloudinary';
 import db from '../models/db';
 import generateToken from '../middleware/generateToken';
 import { userSignup, userDetails, fullName } from '../models/userQuery';
 import { dataUri } from '../middleware/multer';
-import { uploader } from '../config/cloudinaryConfig';
+import { v2 } from '../config/cloudinaryConfig';
 
 dotenv.config();
 class User {
@@ -18,7 +19,7 @@ class User {
       let passportUrl = 'https://res.cloudinary.com/dghlhphlh/image/upload/v1550583941/passportUrl/pictureAvatar.png';
       if (req.file) {
         const file = dataUri(req).content;
-        const fileUpload = await uploader.upload(file);
+        const fileUpload = await v2.uploader.upload(file, { folder: 'passportUrl/' });
         if (fileUpload) {
           passportUrl = fileUpload.url;
         }
@@ -39,7 +40,7 @@ class User {
             phoneNumber: result.rows[0].phonenumber,
             passportUrl: result.rows[0].passporturl,
             isAdmin: result.rows[0].isadmin,
-            createdAt: result.rows[0].createdAt,
+            createdAt: result.rows[0].createdat,
           },
         },
       });

@@ -24,7 +24,7 @@ const tableQuery = async () => {
       phoneNumber VARCHAR(15) NOT NULL,
       passportUrl TEXT DEFAULT 'https://res.cloudinary.com/dghlhphlh/image/upload/v1550583941/passportUrl/pictureAvatar.png',
       isAdmin BOOLEAN DEFAULT FALSE,
-      creataedAt DATE DEFAULT CURRENT_TIMESTAMP);`);
+      createdAt DATE DEFAULT CURRENT_TIMESTAMP);`);
 
     const officeTable = await db.query(`CREATE TABLE IF NOT EXISTS offices(
       id SERIAL UNIQUE PRIMARY KEY,

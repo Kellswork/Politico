@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css?family=Bree+Serif|News+Cycle');
+/* font-family: 'Bree Serif', serif;
+font-family: 'Scada', sans-serif;
+font-family: 'News Cycle', sans-serif;
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+}
+h1,h2,h3, footer {
+  font-family: 'Bree Serif', serif;
+}
+p {
+  font-family: 'News Cycle', sans-serif;
+}
+body {
+  background:#f4eeee;
+}
+/* style for the navigation */
+nav {
+  display: flex;
+  font-family: 'Bree Serif', serif;
+  width: 100%;
+  height: 60px;
+  background:#f4eeee;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+.logo {
+  display: flex;
+  width: 70%;
+  font-size: 32px;
+  box-sizing: border-box;
+  padding-left: 2%;
+  color: #09574b;
+  position: relative;
+}
+.logo h1 a {
+  text-decoration: none;
+  color: #09574b;
+  cursor: pointer;
+  padding-left: 44px;
+}
+.logo img {
+  width: 52px;
+  height: 58px;
+  padding-top: 6px;
+  position: absolute;
+}
+.link {
+  width: 30%;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+nav li {
+  margin-left: 10%;
+  border: 1px solid #09574b;
+  border-radius: 16px;
+  width: 80px;
+  text-align: center;
+  color: #f4eeee;
+  cursor: pointer;
+}
+nav li a {
+color: #09574b;
+transition: 0.3s;
+padding: 5px 0px 5px 0px;
+display: block;
+text-decoration: none;
+}
+nav li:hover {
+background: #f4eeee;
+}
+nav li a:hover {
+color: #1dc9b1;;
+}
+.icon::before {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+.login-nav::before {
+  font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f2f6";
+}
+.signup-nav::before {
+  font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f234";
+}
+header h2 {
+  font-size: 26px;
+}
+/* style for the intro section */
+.intro {
+  background: url(../images/vote.jpg);
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 90vh;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Bree Serif', serif;
+}
+.overlay {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  z-index: -5;
+}
+
+.intro header {
+  color: white;
+  text-align: center;
+}
+.intro h1 {
+  font-size: 35px;
+}
+/* section two */
+.why {
+margin-bottom: 8%;
+width: 100%;
+color: #184135;
+background: #f4eeee;
+margin-top: 4%;
+}
+.why header {
+  text-align: center;
+  font-size: 28px;
+  color: #184135;
+}
+.why header h1 {
+  text-decoration: underline;
+  text-decoration-style: solid ;
+  text-decoration-color: #184135;
+  padding-bottom: 20px;
+}
+.box-container {
+  display: flex;
+  width: 90%;
+  flex-flow: wrap;
+  text-align: center;
+  margin: 0 auto;
+}
+.box {
+  width: 45%;
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 25px;
+  line-height: 1.5;
+}
+.box p {
+  color: #184135e6;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.fas, .far {
+  font-size: 50px;
+  margin-bottom: 15px;
+}
+.box h3 {
+  padding-bottom: 15px;
+}
+/* section three politicians */
+
+.login-link {
+  margin-top: 10px;
+}
+footer {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:#f4eeee;
+  background: #184135;
+}
+ #spinner:not([hidden]) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+#spinner::after {
+  content: "";
+  width: 60px;
+  height: 60px;
+  border: 2px solid #f3f3f3;
+  border-top: 3px solid #20665a;
+  border-radius: 100%;
+  will-change: transform;
+  animation: spin 1s infinite linear
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (max-width: 700px) {
+  header h2 {
+    font-size: 17px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+   }
+   .intro h1 {
+     margin-top: 20px;
+     font-size: 27px;
+   }
+   header h1 {
+     font-size: 29px;
+   }
+   .box {
+     width: 100%;
+   }
+   .logo img {
+    width: 41px;
+    height: 43px;
+    padding-top: 10px;
+    position: absolute;
+   }
+   .logo {
+    font-size: 27px;
+    width: 50%;
+   }
+   .logo h1 a {
+     padding-left: 35px;
+    font-size: 36px;
+    margin-right: 7px;
+   }
+   .link {
+    width: 60%;
+    margin-right: 6px;
+   }
+   .overlay {
+     background: rgba(0, 0, 0, 0.6);
+   }
+}

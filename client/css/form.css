@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css?family=Bree+Serif|News+Cycle');
+/* font-family: 'Bree Serif', serif;
+font-family: 'News Cycle', sans-serif;
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Bree Serif', serif;
+}
+
+input,
+span,
+p {
+  font-family: 'Bree Serif', serif;
+
+
+}
+
+.fixed-img {
+  background: url(../images/vote.jpg);
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  z-index: -10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.overlay {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  z-index: -5;
+}
+
+.logo-img img {
+  width: 120px;
+  height: 120px;
+  cursor: pointer;
+}
+
+.signup-container {
+  min-height: 83vh;
+  background-image: linear-gradient(to right top, #09574b, #155d52, #1e6458, #266a5f, #2e7166);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 30px;
+}
+
+.signup-form {
+  width: 600px;
+  margin-bottom: 10px;
+}
+
+.input-group {
+  width: 90%;
+  margin: 0 auto;
+  padding: 0px 0px 10px 0px;
+}
+
+.input-group input {
+  margin-top: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 54px;
+  border: 2px solid #eee764;
+  ;
+  border-radius: 6px;
+  outline: none;
+  font-size: 15px;
+  color: #09574b;
+  padding: 5px 20px 5px 25px;
+  background: #f4eeee;
+}
+
+.signup-form .btn {
+  transition: background, 300ms;
+  width: 90%;
+  height: 54px;
+  box-sizing: border-box;
+  text-align: center;
+  margin-left: 5%;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  outline: none;
+  border: 1px solid #eee764;
+  color: #f4eeee;
+  font-size: 16px;
+  cursor: pointer;
+  font-family: 'Bree Serif', serif;
+  background-image: linear-gradient(to right top, #09574b, #007d58, #23a356, #62c844, #a8eb12);
+}
+
+.signup-form .btn:hover {
+  color: #09574b;
+  background: #f4eeee;
+}
+
+.signup-form .btn:active {
+  top: 0px;
+  outline: none;
+}
+
+.signup-form .input-group {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.signup-form .input-group span {
+  position: absolute;
+  top: 25px;
+  left: 30px;
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 14px;
+  transition: 500ms;
+  pointer-events: none;
+  text-transform: uppercase;
+}
+
+.input-group input:focus~span,
+.input-group input:valid~span {
+  top: 3px;
+  left: 20px;
+  font-size: 13px;
+  background: #eee764;
+  color: #09574b;
+  padding: 2px 5px;
+  border-radius: 5px;
+}
+
+.signup-form h2 {
+  text-align: center;
+  text-transform: uppercase;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  color: #f4eeee;
+  font-size: 35px;
+}
+
+.signup-box p {
+  color: #f4eeee;
+  font-weight: bold;
+}
+
+.signup-box p a {
+  font-size: 15px;
+  text-decoration: none;
+  text-transform: capitalize;
+  color: #eee764;
+}
+
+.signup-box p a:hover {
+  color: #a8eb12;
+}
+
+.forgotpassword {
+  padding-bottom: 10px;
+  transition: 500ms;
+}
+
+.forgotpassword :hover {
+  color: #a8eb12;
+}
+
+#err {
+  padding: 2%;
+  display: block;
+
+  background: #ffffff70;
+  display: none;
+  width: 86%;
+  margin: auto;
+  border-radius: 5px;
+}
+
+#err li {
+  font-size: 16px;
+}
+
+div#err p {
+  color: rgba(255, 0, 0, 0.87);
+}
+
+@media (max-width: 700px) {
+  .signup-form {
+    width: 100%;
+  }
+}
+
+@media (width: 1024px) {
+  .signup-container {
+    min-height: 90vh;
+  }
+}
+
+@media (width: 768px) {
+  .signup-container {
+    min-height: 88vh;
+  }
+}
