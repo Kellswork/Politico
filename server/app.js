@@ -1,6 +1,7 @@
 import '@babel/polyfill';
 import express from 'express';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 import office from './routes/offices';
 import party from './routes/parties';
 import home from './routes/home';
@@ -13,6 +14,8 @@ import { cloudinaryConfig } from './config/cloudinaryConfig';
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(express.static('client'));
+app.use(cors());
 app.use('*', cloudinaryConfig);
 app.use('/', home);
 app.use('/api/v1/auth', auth);

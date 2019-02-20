@@ -25,15 +25,13 @@ const validateSignup = [
     .withMessage('lastname cannot contain whitespaces')
     .trim(),
 
-  check('otherName').optional()
-    .matches(/^[a-zA-Z]+$/i).withMessage('othername must contain only alphabets')
-    .isLength({ min: 3 })
-    .withMessage('othername must have atleast 5 characters')
-    .isLength({ max: 50 })
-    .withMessage('othername cannot have more than 50 characters')
-    .matches(/^\S{3,}$/)
-    .withMessage('othername cannot contain whitespaces')
-    .trim(),
+  // check('otherName').optional()
+  //   .matches(/^[a-zA-Z]+$/i).withMessage('othername must contain only alphabets')
+  //   .isLength({ max: 50 })
+  //   .withMessage('othername cannot have more than 50 characters')
+  //   .matches(/^\S{3,}$/)
+  //   .withMessage('othername cannot contain whitespaces')
+  //   .trim(),
   check('password').isLength({ min: 3 })
     .withMessage('password must have atleast 5 characters')
     .isLength({ max: 50 })
