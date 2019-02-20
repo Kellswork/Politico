@@ -1,6 +1,5 @@
 import bcrypt from 'bcrypt';
 import dotenv from 'dotenv';
-import cloudinary from 'cloudinary';
 import db from '../models/db';
 import generateToken from '../middleware/generateToken';
 import { userSignup, userDetails, fullName } from '../models/userQuery';
@@ -33,6 +32,7 @@ class User {
         data: {
           token,
           user: {
+            id: result.rows[0].id,
             firstName: result.rows[0].firstname,
             lastName: result.rows[0].lastname,
             otherName: result.rows[0].othername,
@@ -75,13 +75,14 @@ class User {
       const name = await db.query(fullName, [email]);
       const token = generateToken(rows, name, email);
       const {
-        firstname, lastname, othername, phonenumber, passporturl, isadmin, createdat,
+        firstname, lastname, othername, phonenumber, passporturl, isadmin, createdat, id,
       } = rows.rows[0];
       return res.header('x-auth-token', token).status(200).json({
         status: 200,
         data: {
           token,
           user: {
+            id,
             firstName: firstname,
             lastName: lastname,
             otherName: othername,
