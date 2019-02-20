@@ -1,3 +1,4 @@
+import bcrypt from 'bcrypt';
 import db from './db';
 
 const tableQuery = async () => {
@@ -46,7 +47,8 @@ const tableQuery = async () => {
       candidateId INT NOT NULL REFERENCES candidates(id) ON DELETE CASCADE,
       PRIMARY KEY (officeId, createdBy));`);
 
-    const admin = await db.query('INSERT into users(firstName, lastName, otherName, email, password, phoneNumber, isAdmin) VALUES(\'admin\',\' admin\', \'admin\', \'admin@politico.com\', \'admin\', \'07036328870\', \'true\');');
+    const values = ['admin', 'admin', 'admin', 'admin@politico.com', bcrypt.hashSync('admin', 10), '07036328870', 'true'];
+    const admin = await db.query('INSERT into users(firstName, lastName, otherName, email, password, phoneNumber, isAdmin) VALUES($1,$2,$3,$4,$5,$6,$7)', values);
     const insertParty = await db.query('INSERT INTO parties(name, hqAddress, logoUrl) VALUES(\'alligience alliance\',\'aliko dangote street abuja\', \'http://res.cloudinary.com/dghlhphlh/image/upload/v1549455253/dr5ioks01azmjwhd5avw.jpg\' ) ;');
 
     const insertOffice = await db.query('INSERT INTO offices(type, name) VALUES(\'federal\',\'president\') ;');
