@@ -15,7 +15,7 @@ class User {
       } = req.body;
       const salt = await bcrypt.genSalt(10);
       const password = await bcrypt.hash(req.body.password, salt);
-      let passportUrl;
+      let passportUrl = 'https://res.cloudinary.com/dghlhphlh/image/upload/v1550583941/passportUrl/pictureAvatar.png';
       if (req.file) {
         const file = dataUri(req).content;
         const fileUpload = await uploader.upload(file);
@@ -23,7 +23,6 @@ class User {
           passportUrl = fileUpload.url;
         }
       }
-
       const values = [firstName, lastName, otherName, email, password, phoneNumber, passportUrl];
       const result = await db.query(userSignup, values);
       const name = await db.query(fullName, [email]);
@@ -40,11 +39,12 @@ class User {
             phoneNumber: result.rows[0].phonenumber,
             passportUrl: result.rows[0].passporturl,
             isAdmin: result.rows[0].isadmin,
-            registeredOn: result.rows[0].registeredon,
+            createdAt: result.rows[0].createdAt,
           },
         },
       });
     } catch (err) {
+      console.log(err.message);
       return res.status(500).json({
         status: 500,
         error: err.message,
@@ -74,7 +74,7 @@ class User {
       const name = await db.query(fullName, [email]);
       const token = generateToken(rows, name, email);
       const {
-        firstname, lastname, othername, phonenumber, passporturl, isadmin, registeredon,
+        firstname, lastname, othername, phonenumber, passporturl, isadmin, createdat,
       } = rows.rows[0];
       return res.header('x-auth-token', token).status(200).json({
         status: 200,
@@ -88,7 +88,7 @@ class User {
             phoneNumber: phonenumber,
             passportUrl: passporturl,
             isAdmin: isadmin,
-            registeredOn: registeredon,
+            createdAt: createdat,
           },
 
         },

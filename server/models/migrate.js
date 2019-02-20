@@ -1,5 +1,4 @@
 import db from './db';
-import logger from '../config/winston';
 
 const tableQuery = async () => {
   try {
@@ -16,19 +15,19 @@ const tableQuery = async () => {
       logoUrl VARCHAR(250) NOT NULL);`);
 
     const userTable = await db.query(`CREATE TABLE IF NOT EXISTS users(
-      id SERIAL PRIMARY KEY,
+      id SERIAL UNIQUE PRIMARY KEY,
       firstName VARCHAR(50) NOT NULL,
       lastNAme VARCHAR(50) NOT NULL,
       otherName VARCHAR(50),
       email VARCHAR(50) UNIQUE NOT NULL,
       password TEXT NOT NULL,
       phoneNumber VARCHAR(15) NOT NULL,
-      passportUrl TEXT,
+      passportUrl TEXT DEFAULT 'https://res.cloudinary.com/dghlhphlh/image/upload/v1550583941/passportUrl/pictureAvatar.png',
       isAdmin BOOLEAN DEFAULT FALSE,
-      registeredOn DATE DEFAULT CURRENT_TIMESTAMP);`);
+      creataedAt DATE DEFAULT CURRENT_TIMESTAMP);`);
 
     const officeTable = await db.query(`CREATE TABLE IF NOT EXISTS offices(
-      id SERIAL PRIMARY KEY,
+      id SERIAL UNIQUE PRIMARY KEY,
       type VARCHAR(50) NOT NULL,
       name VARCHAR(50) UNIQUE NOT NULL);`);
 
@@ -40,7 +39,7 @@ const tableQuery = async () => {
       PRIMARY KEY (userId, officeId));`);
 
     const voteTable = await db.query(`CREATE TABLE IF NOT EXISTS votes(
-      id SERIAL NOT NULL,
+      id SERIAL UNIQUE NOT NULL,
       createdOn DATE DEFAULT CURRENT_TIMESTAMP,
       createdBy INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
       officeId INT NOT NULL REFERENCES offices(id) ON DELETE CASCADE,
@@ -52,11 +51,11 @@ const tableQuery = async () => {
 
     const insertOffice = await db.query('INSERT INTO offices(type, name) VALUES(\'federal\',\'president\') ;');
 
-    logger.info(dropPartyTable, dropUserTable, dropOfficeTable,
+    console.log(dropPartyTable, dropUserTable, dropOfficeTable,
       dropCandidateTable, dropvoteTable, partyTable, userTable,
       officeTable, candidateTable, voteTable, admin, insertParty, insertOffice);
   } catch (err) {
-    logger.error(err.stack);
+    console.log(err.stack);
     return err.stack;
   }
 };
