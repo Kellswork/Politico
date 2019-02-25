@@ -1,5 +1,4 @@
-
-function login() {
+async function login() {
   const div = document.getElementById('err');
   const spinner = document.getElementById('spinner');
   const email = document.querySelector('#email').value;
@@ -10,6 +9,10 @@ function login() {
     email,
     password,
   };
+
+  // const json = await fetchCall('/auth/login', 'POST', data);
+  // console.log(json);
+
   const options = {
     method: 'POST',
     mode: 'cors',

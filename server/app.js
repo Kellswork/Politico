@@ -2,10 +2,11 @@ import '@babel/polyfill';
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import morgan from 'morgan';
 import office from './routes/offices';
 import party from './routes/parties';
 import home from './routes/home';
-import logger from './config/winston';
+// import logger from './config/winston';
 import auth from './routes/auth';
 import vote from './routes/votes';
 import { cloudinaryConfig } from './config/cloudinaryConfig';
@@ -16,6 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static('client'));
 app.use(cors());
+app.use(morgan('tiny'));
 app.use('*', cloudinaryConfig);
 app.use('/', home);
 app.use('/api/v1/auth', auth);
@@ -34,6 +36,6 @@ app.use((_req, res, next) => {
 
 const port = process.env.PORT || 8080;
 
-const server = app.listen(port, () => logger.info(`Politico started on Port: ${port}`));
+const server = app.listen(port, () => console.log(`Politico started on Port: ${port}`));
 
 export default server;
