@@ -69,8 +69,11 @@ p {
 .signup-form {
   width: 600px;
   margin-bottom: 10px;
+  text-align: center;
 }
-
+#serverInfo {
+  font-size: 23px;
+}
 .input-group {
   width: 90%;
   margin: 0 auto;
@@ -98,7 +101,6 @@ p {
   height: 54px;
   box-sizing: border-box;
   text-align: center;
-  margin-left: 5%;
   margin-top: 30px;
   margin-bottom: 20px;
   border-radius: 6px;
@@ -186,12 +188,22 @@ p {
 #err {
   padding: 2%;
   display: block;
-
+  text-align: left;
   background: #ffffff70;
   display: none;
   width: 86%;
   margin: auto;
   border-radius: 5px;
+}
+#success {
+  padding: 2%;
+  display: block;
+  text-align: left;
+  display: none;
+  width: 86%;
+  margin: auto;
+  border-radius: 5px;
+  color: #fff;
 }
 
 #err li {
