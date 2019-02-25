@@ -1,4 +1,4 @@
-const fetchCall = async (url, method = 'GET', data = '', isFormData = false) => {
+const fetchApi = async (url, method = 'GET', data = '', isFormData = false) => {
   const options = {
     method,
     mode: 'cors',
@@ -19,3 +19,4 @@ const fetchCall = async (url, method = 'GET', data = '', isFormData = false) => 
   const json = await response.json();
   return json;
 };
+fetchApi();
