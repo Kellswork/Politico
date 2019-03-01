@@ -85,7 +85,7 @@ const getParty = async () => {
     name.textContent = info.name;
     hqAddress.textContent = info.hqaddress;
     logoUrl.innerHTML = `<img src="${info.logourl}" alt="party logo">`;
-    action.innerHTML = `<span><i data-id="${info.id}" id="edit" class="far fa-edit"></i></span></i><span id="delete"><i class="far fa-trash-alt"></i></span>`;
+    action.innerHTML = `<span><i data-id="${info.id}" id="edit" class="far fa-edit"></i></span></i><span><i data-id="${info.id}" id="delete" class="far fa-trash-alt"></i></span>`;
     tr.appendChild(logoUrl);
     tr.appendChild(name);
     tr.appendChild(hqAddress);
@@ -127,12 +127,12 @@ window.onload = getParty();
 const patchParty = () => {
   const office = document.querySelector('.election-office');
   const electionDetails = document.querySelector('.election-details');
-  const editPartyModal = document.createElement('div');
-  editPartyModal.classList.add('editPartyModal');
+  const deletePartyModal = document.createElement('div');
+  deletePartyModal.classList.add('deletePartyModal');
 
   const editModal = document.createElement('div');
   editModal.classList.add('edit-modal');
-  editPartyModal.appendChild(editModal);
+  deletePartyModal.appendChild(editModal);
 
   const h2 = document.createElement('h2');
   h2.textContent = 'Enter New Party Name';
@@ -164,7 +164,7 @@ const patchParty = () => {
   cancelButton.classList.add('btn-cancel');
   cancelButton.textContent = 'Cancel';
   cancelButton.addEventListener('click', () => {
-    editPartyModal.classList.toggle('show-modal');
+    deletePartyModal.classList.toggle('show-modal');
   });
 
   modalButtons.appendChild(cancelButton);
@@ -179,10 +179,16 @@ const patchParty = () => {
   document.addEventListener('click', (e) => {
     if (e.target && e.target.id === 'edit') {
       editModal.id = e.target.dataset.id;
-      editPartyModal.classList.toggle('show-modal');
+      deletePartyModal.classList.toggle('show-modal');
     }
   });
-  electionDetails.insertBefore(editPartyModal, office);
+  window.addEventListener('click', (event) => {
+    if (event.target === deletePartyModal) {
+      deletePartyModal.classList.toggle('show-modal');
+    }
+  });
+
+  electionDetails.insertBefore(deletePartyModal, office);
   confirmButton.addEventListener('click', async () => {
     console.log(input.value);
     const url = `http://localhost:8080/api/v1/parties/${editModal.id}/name`;
@@ -190,9 +196,6 @@ const patchParty = () => {
     const data = { name: input.value };
     const options = {
       method: 'PATCH',
-      mode: 'cors',
-      cache: 'no-cache',
-      referrer: 'no-referrer',
       headers: {
         'Content-Type': 'application/json',
         'x-auth-token': token,
@@ -219,10 +222,98 @@ const patchParty = () => {
       }
     } else {
       errMsg.style.display = 'none';
-      successMsg.style.display = 'block';
       successMsg.innerHTML = `<p> ${json.message} </p>`;
+      modalButtons.style.visibility = 'hidden';
       setTimeout(() => location.reload(), 1500);
     }
   });
 };
 window.onload = patchParty();
+
+const deleteParty = () => {
+  const office = document.querySelector('.election-office');
+  const electionDetails = document.querySelector('.election-details');
+  const deletePartyModal = document.createElement('div');
+  deletePartyModal.classList.add('deletePartyModal');
+
+  const editModal = document.createElement('div');
+  editModal.classList.add('edit-modal');
+  deletePartyModal.appendChild(editModal);
+
+  const h3 = document.createElement('h3');
+  h3.textContent = 'Are You sure You want to delete this party?';
+  editModal.appendChild(h3);
+
+  const errMsg = document.createElement('div');
+  errMsg.setAttribute('id', 'err');
+  editModal.appendChild(errMsg);
+
+  const modalButtons = document.createElement('div');
+  modalButtons.classList.add('modal-actions');
+  editModal.appendChild(modalButtons);
+
+  const cancelButton = document.createElement('button');
+  cancelButton.type = 'button';
+  cancelButton.classList.add('btn-cancel');
+  cancelButton.textContent = 'Cancel';
+  cancelButton.addEventListener('click', () => {
+    deletePartyModal.classList.toggle('show-modal');
+  });
+  modalButtons.appendChild(cancelButton);
+
+  const deleteButton = document.createElement('button');
+  deleteButton.type = 'button';
+  deleteButton.classList.add('btn-confirm');
+  deleteButton.textContent = 'Delete';
+  modalButtons.appendChild(deleteButton);
+
+  document.addEventListener('click', (e) => {
+    if (e.target && e.target.id === 'delete') {
+      editModal.id = e.target.dataset.id;
+      deletePartyModal.classList.toggle('show-modal');
+    }
+  });
+  window.addEventListener('click', (event) => {
+    if (event.target === deletePartyModal) {
+      deletePartyModal.classList.toggle('show-modal');
+    }
+  });
+
+  electionDetails.insertBefore(deletePartyModal, office);
+  deleteButton.addEventListener('click', async () => {
+    const url = `http://localhost:8080/api/v1/parties/${editModal.id}`;
+    const token = window.localStorage.getItem('token');
+    const options = {
+      method: 'DELETE',
+      headers: {
+        'x-auth-token': token,
+      },
+    };
+    const response = await fetch(url, options);
+    const json = await response.json();
+    console.log(json);
+    if (json.status === 401) {
+      window.localStorage.removeItem('token');
+      window.location.href = '../login.html';
+    }
+    if (json.status === 400) {
+      if (Array.isArray(json.error)) {
+        json.error.forEach((element) => {
+          const content = `<p>${element}</p>`;
+          errMsg.style.display = 'block';
+          errMsg.innerHTML += content;
+        });
+      } else {
+        errMsg.style.display = 'block';
+        errMsg.innerHTML = `<p> ${json.error} </p>`;
+      }
+    } else {
+      modalButtons.style.visibility = 'hidden';
+      errMsg.style.display = 'none';
+      setTimeout(() => { h3.textContent = json.message; }, 1000);
+
+      setTimeout(() => location.reload(), 1500);
+    }
+  });
+};
+window.onload = deleteParty();

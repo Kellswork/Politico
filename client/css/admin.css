@@ -311,7 +311,7 @@ td span:active {
   margin: 0;
 }
 
-.editPartyModal, .party-modal {
+.editPartyModal, .deletePartyModal, .party-modal {
   background: rgba(0, 0, 0, 0.8);
   position: fixed;
   top: 0;
@@ -666,6 +666,7 @@ animation: spin 1s infinite linear
 
 }
 .edit-modal {
+  padding-top: 1px;
   width: 400px;
   border-radius: 4px;
   position: relative;
@@ -698,7 +699,8 @@ animation: spin 1s infinite linear
   position: relative;
   top: 1px;
 }
-.edit-modal h2 {
+.edit-modal h2, .edit-modal h3 {
+  color: #09574b;
   text-align: center;
   margin-bottom: 20px;
   margin-top: 20px;
@@ -797,7 +799,7 @@ to {
     margin-left: 5%;
   }
 
-  .modal-content {
+  .edit-modal, .modal-content {
     width: 90%;
     margin: 20% auto;
   }
