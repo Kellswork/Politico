@@ -10,7 +10,7 @@ async function login() {
     password,
   };
 
-  // const json = await fetchCall('/auth/login', 'POST', data);
+  // const json = await fetchApi('/auth/login', 'POST', data);
   // console.log(json);
 
   const options = {

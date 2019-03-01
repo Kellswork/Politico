@@ -1,5 +1,6 @@
 const modal = document.querySelector('.party-modal');
 const trigger = document.querySelector('.create-party-button');
+
 const closeButton = document.querySelector('.close');
 
 const toggleModal = () => {
@@ -12,9 +13,11 @@ const windowOnClick = (event) => {
   }
 };
 
+
 trigger.addEventListener('click', toggleModal);
 closeButton.addEventListener('click', toggleModal);
 window.addEventListener('click', windowOnClick);
+
 
 function openNotification() {
   const displayNotification = document.querySelector('.dropdown-content');
