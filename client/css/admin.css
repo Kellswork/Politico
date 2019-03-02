@@ -202,6 +202,11 @@ input::placeholder {
 .election-office td span {
   color: #a8eb12;
 }
+.election-office td a {
+  color: #09574b;
+  font-family: 'News Cycle', sans-serif;
+
+}
 
 td:nth-child(1)>img {
   width: 70px;
@@ -383,7 +388,19 @@ edit-modal h2, .modal-content h2 {
   margin-left: 10px;
   margin-bottom: 20px;
 }
-
+#logoUrl {
+  display: none;
+}
+#imagePreview {
+  border-radius: 4px;
+  width: 100px;
+  height: 100px;
+  outline: none;
+  padding: 0;
+}
+.imagePreview {
+  text-align: center;
+}
 .modal-content button {
   width: 50%;
   height: 50px;
@@ -716,6 +733,9 @@ animation: spin 1s infinite linear
   justify-content: center;
   align-items: center
 }
+button::-moz-focus-inner {
+  border: 0;
+}
 @keyframes spin {
 from {
   transform: rotate(0deg);
@@ -799,11 +819,17 @@ to {
     margin-left: 5%;
   }
 
-  .edit-modal, .modal-content {
+  .modal-content {
     width: 90%;
-    margin: 20% auto;
+    margin: 25% auto;
   }
-
+  .edit-modal{
+    width: 90%;
+    margin: 33% auto;
+  }
+.search {
+  display: none;
+}
 }
 
 

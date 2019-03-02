@@ -17,9 +17,9 @@
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <div class="mobile-profile">
       <div class="profile-img-nav">
-        <img onclick="profile.html" id="profile-img" src="../images/avatar2.png" alt="">
+        <img onclick="profile.html" id="profile-img" class='profileImg' src="../images/avatar2.png" alt="">
       </div>
-      <h4>user's name</h4>
+      <h4 class="firstName"></h4>
     </div>
     <div>
     </div>
@@ -31,7 +31,7 @@
     <a href="nomination-form.html">Nomination Form</a>
     <a href="profile.html">Profile</a>
     <a href="result.html">Election Results</a>
-    <a href="../login.html">Logout</a>
+    <a class='logout' href="../login.html">Logout</a>
   </div>
   <nav>
     <div class="logo">
@@ -43,14 +43,14 @@
     </div>
     <div class="nav-profile">
       <div>
-        <img javascript:void(0);" onclick="openNotification()" id="profile-img" src="../images/avatar2.png" alt="">
+        <img javascript:void(0);" onclick="openNotification()" id="profile-img" class='profileImg' src="../images/avatar2.png" alt="profile image">
         <div id="dropdown-content" class="dropdown-content">
           <a href="dashboard.html">Dashboard</a>
           <a href="profile.html">Profile</a>
-          <a href="../login.html">Logout</a>
+          <a class='logout' href="../login.html">Logout</a>
         </div>
       </div>
-      <h4>user's name</h4>
+      <h4 class="firstName"></h4>
     </div>
     <div>
       <span class="mobile-nav" onclick="openNav()">&#9776;</span>
@@ -71,47 +71,7 @@
       <h2>election</h2>
       <div class="election-details">
         <table class="election-office">
-          <tbody>
-            <tr>
-              <th>Office</th>
-              <th>Type</th>
-              <th></th>
-            </tr>
-            <tr>
-              <td>President</td>
-              <td>federal</td>
-              <td><a href="candidates.html">View Candidates</a></td>
-            </tr>
-            <tr>
-              <td>Vice President</td>
-              <td>federal</td>
-              <td><a href="candidates.html">View Candidates</a></td>
-            </tr>
-            <tr>
-              <td>Imo state Governor</td>
-              <td>State</td>
-              <td><a href="candidates.html">View Candidates</a></td>
-            </tr>
-            <tr>
-              <td>Vice President</td>
-              <td>federal</td>
-              <td><a href="candidates.html">View Candidates</a></td>
-            </tr>
-            <tr>
-              <td>Vice President</td>
-              <td>federal</td>
-              <td><a href="candidates.html">View Candidates</a></td>
-            </tr>
-            <tr>
-              <td>Vice President</td>
-              <td>federal</td>
-              <td><a href="candidates.html">View Candidates</a></td>
-            </tr>
-            <tr>
-              <td>Vice President</td>
-              <td>federal</td>
-              <td><a href="candidates.html">View Candidates</a></td>
-            </tr>
+          <tbody id="partyTable">
           </tbody>
         </table>
         <div class="pagination">
@@ -122,8 +82,11 @@
     </section>
   </div>
   <footer> copyright &copy; Politico 2019. All Rights Resevered </footer>
+  <div hidden id="spinner"></div>
+  <script src="../js/userData.js"></script>
   <script src="../js/script.js"></script>
   <script src="../js/logout.js"></script>
+  <script src="../js/office.js"></script>
 </body>
 
 </html>

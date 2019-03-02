@@ -1,6 +1,16 @@
 const spinner = document.getElementById('spinner');
 const div = document.getElementById('err');
 const success = document.getElementById('success');
+const imagePreview = document.getElementById('imagePreview');
+imagePreview.addEventListener('click', (e) => {
+  e.preventDefault();
+  document.getElementById('logoUrl').click();
+});
+document.getElementById('logoUrl').addEventListener('change', (event) => {
+  const url = URL.createObjectURL(event.target.files[0]);
+  imagePreview.src = url;
+  URL.revokeObjectURL(url);
+});
 
 const createParty = async () => {
   const token = window.localStorage.getItem('token');
@@ -42,7 +52,7 @@ const createParty = async () => {
   } else {
     div.style.display = 'none';
     success.style.display = 'block';
-    success.innerHTML = '<p> Party has been created successfully</p>';
+    success.innerHTML = '<p>Political Party has been created successfully</p>';
     name.value = '';
     hqAddress.value = '';
     logoUrl.value = '';

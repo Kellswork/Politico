@@ -74,6 +74,15 @@ p {
 #serverInfo {
   font-size: 23px;
 }
+#passportUrl {
+  display: none;
+}
+#imagePreview {
+  border-radius: 4px;
+  width: 160px;
+  height: 170px;
+  outline: none;
+}
 .input-group {
   width: 90%;
   margin: 0 auto;
@@ -114,12 +123,14 @@ p {
 }
 
 .signup-form .btn:hover {
-  color: #09574b;
-  background: #f4eeee;
+  color: #a8eb12;
+  background-image: linear-gradient(to left bottom, #09574b, #007d58, #23a356, #62c844, #a8eb12);
+
 }
 
 .signup-form .btn:active {
-  top: 0px;
+  position: relative;
+  top: 1px;
   outline: none;
 }
 
@@ -212,6 +223,10 @@ p {
 
 div#err p {
   color: rgba(255, 0, 0, 0.87);
+}
+
+button::-moz-focus-inner {
+  border: 0;
 }
 
 @media (max-width: 700px) {

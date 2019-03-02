@@ -483,6 +483,9 @@ to {
   transform: rotate(360deg);
 }
 }
+button::-moz-focus-inner {
+  border: 0;
+}
 @media (max-width : 500px) {
   .card {
     width: 85%;

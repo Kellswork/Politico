@@ -67,13 +67,15 @@ class Candidate {
           error: 'office not found',
         });
       }
-      const checkCandidate = await db.query(candidates, [candidate]);
+      console.log('oooo');
+      const checkCandidate = await db.query(candidates, [candidate, office]);
       if (checkCandidate.rowCount < 1) {
         return res.status(404).json({
           status: 404,
           error: 'candidate not found',
         });
       }
+      console.log('oppp');
       const checkVote = await db.query('select * from votes where officeId =$1 and createdBy= $2', [office, voter]);
       if (checkVote.rowCount >= 1) {
         return res.status(406).json({
@@ -81,6 +83,7 @@ class Candidate {
           error: ' You cannot vote for the same office twice',
         });
       }
+      console.log('ookkkoo');
 
       const result = await db.query('INSERT into votes(createdBy, officeId, candidateId) VALUES($1,$2,$3) RETURNING *', [voter, office, candidate]);
       res.status(201).json({
