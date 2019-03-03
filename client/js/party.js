@@ -83,6 +83,10 @@ const getParty = async () => {
   const json = await response.json();
   if (json.status === 401) {
     window.localStorage.removeItem('token');
+    window.localStorage.removeItem('userid');
+    window.localStorage.removeItem('admin');
+    window.localStorage.removeItem('profileimg');
+    window.localStorage.removeItem('firstname');
     window.location.href = '../login.html';
   }
   json.data.forEach((info) => {

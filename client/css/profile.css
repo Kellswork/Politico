@@ -43,6 +43,7 @@ p, span {
 
 .account-data-value {
     float: right;
+    padding-right: 5px;
 }
 .account-img img {
   width: 200px;
@@ -71,6 +72,13 @@ p, span {
   background:white;
   text-align: left;
 
+}
+#profileName {
+  text-transform: uppercase;
+  font-family: 'Bree Serif', serif;
+}
+#name {
+  text-transform: capitalize;
 }
 /* pagination */
 .pagination {

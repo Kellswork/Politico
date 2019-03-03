@@ -39,7 +39,7 @@ const signUp = () => {
       window.localStorage.setItem('token', json.data.token);
       window.localStorage.setItem('userid', json.data.user.id);
       window.localStorage.setItem('firstname', json.data.user.firstName);
-      window.localStorage.setItem('profileImg', json.data.user.passportUrl);
+      window.localStorage.setItem('profileimg', json.data.user.passportUrl);
       window.localStorage.setItem('admin', json.data.user.isAdmin);
       window.location.replace('user/dashboard.html');
     }

@@ -6,8 +6,8 @@ import morgan from 'morgan';
 import office from './routes/offices';
 import party from './routes/parties';
 import home from './routes/home';
-// import logger from './config/winston';
 import auth from './routes/auth';
+import user from './routes/users';
 import vote from './routes/votes';
 import { cloudinaryConfig } from './config/cloudinaryConfig';
 
@@ -21,6 +21,7 @@ app.use(cors());
 app.use('*', cloudinaryConfig);
 app.use('/', home);
 app.use('/api/v1/auth', auth);
+app.use('/api/v1/users', user);
 app.use('/api/v1/votes', vote);
 app.use('/api/v1/offices', office);
 app.use('/api/v1/parties', party);
