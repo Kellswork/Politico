@@ -63,7 +63,6 @@ const createOffice = async () => {
       'x-auth-token': token,
     },
   };
-  console.log(data);
   spinner.removeAttribute('hidden');
   const response = await fetch(url, options);
   const json = await response.json();

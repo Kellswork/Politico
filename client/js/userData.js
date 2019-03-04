@@ -7,7 +7,5 @@ function showName() {
   firstName[1].innerHTML = firstname;
   profileImage[0].src = tokenImg;
   profileImage[1].src = tokenImg;
-  console.log(profileImage);
-  console.log(tokenImg);
 }
 showName();

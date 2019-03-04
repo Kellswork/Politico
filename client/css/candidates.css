@@ -364,12 +364,18 @@ footer {
   height: 40px;
   font-size: 16px;
   margin-left: 25%;
+  cursor: pointer;
+  transition: background, 300ms;
 }
 
 .candidate-form button:hover {
-  background: #fff;
+  background: #1c9482;
+  border: #1c9482;
 }
-
+.candidate-form button:active {
+  position: relative;
+  top: 1px;
+}
 /* mobile nav */
 .sidenav {
   height: 100%;
@@ -451,6 +457,38 @@ input::placeholder {
 
 a.active {
   background: #13423a;
+}
+#err {
+  padding: 2%;
+  display: block;
+  text-align: left;
+  background: #ffffff70;
+  display: none;
+  width: 86%;
+  margin: auto;
+  border-radius: 5px;
+}
+
+#success {
+  padding: 2%;
+  display: block;
+  text-align: left;
+  display: none;
+  width: 86%;
+  margin: auto;
+  border-radius: 5px;
+  color: #09574b;
+  font-size: 18px;
+  font-weight: 900;
+  background: #ffffff70;
+}
+
+#err li {
+  font-size: 16px;
+}
+
+div#err p {
+  color: rgba(255, 0, 0, 0.87);
 }
 #spinner:not([hidden]) {
   position: fixed;
@@ -561,6 +599,9 @@ button::-moz-focus-inner {
   .candidate-form {
     width: 82%;
     margin: 0 auto;
+  }
+  .search {
+    display: none;
   }
 }
 

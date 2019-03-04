@@ -13,7 +13,9 @@ const tableQuery = async () => {
       id SERIAL PRIMARY KEY,
       name VARCHAR(50) UNIQUE NOT NULL,
       hqAddress VARCHAR(250) NOT NULL,
-      logoUrl VARCHAR(250) NOT NULL);`);
+      logoUrl VARCHAR(250) NOT NULL),
+      createdAt DATE DEFAULT CURRENT_TIMESTAMP,
+      modifiedAt DATE);`);
 
     const userTable = await db.query(`CREATE TABLE IF NOT EXISTS users(
       id SERIAL UNIQUE PRIMARY KEY,
@@ -25,12 +27,22 @@ const tableQuery = async () => {
       phoneNumber VARCHAR(15) NOT NULL,
       passportUrl TEXT DEFAULT 'https://res.cloudinary.com/dghlhphlh/image/upload/v1550583941/passportUrl/pictureAvatar.png',
       isAdmin BOOLEAN DEFAULT FALSE,
-      createdAt DATE DEFAULT CURRENT_TIMESTAMP);`);
+      createdAt DATE DEFAULT CURRENT_TIMESTAMP,
+      modifiedAt DATE);`);
 
     const officeTable = await db.query(`CREATE TABLE IF NOT EXISTS offices(
       id SERIAL UNIQUE PRIMARY KEY,
       type VARCHAR(50) NOT NULL,
       name VARCHAR(50) UNIQUE NOT NULL);`);
+
+    const NomineeTable = await db.query(`CREATE TABLE IF NOT EXISTS nominee(
+        id SERIAL,
+        officeId INT NOT NULL REFERENCES offices(id) ON DELETE CASCADE,
+        partyId INT NOT NULL REFERENCES parties(id) ON DELETE CASCADE,
+        userId INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+        manifesto TEXT NOT NULL,
+        status TEXT DEFAULT 'pending',
+        PRIMARY KEY (userId, officeId));`);
 
     const candidateTable = await db.query(`CREATE TABLE IF NOT EXISTS candidates(
       id SERIAL UNIQUE NOT NULL,
@@ -55,7 +67,7 @@ const tableQuery = async () => {
 
     console.log(dropPartyTable, dropUserTable, dropOfficeTable,
       dropCandidateTable, dropvoteTable, partyTable, userTable,
-      officeTable, candidateTable, voteTable, admin, insertParty, insertOffice);
+      officeTable, NomineeTable, candidateTable, voteTable, admin, insertParty, insertOffice);
   } catch (err) {
     console.log(err.stack);
     return err.stack;

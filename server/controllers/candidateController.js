@@ -1,6 +1,6 @@
 import db from '../models/db';
 import {
-  users, offices, parties, candidates, newCndidate,
+  users, offices, parties, candidates, newCandidate, addNominee, nominee,
 } from '../models/candidate';
 
 class Candidate {
@@ -30,14 +30,14 @@ class Candidate {
           error: 'party not found',
         });
       }
-      const candidateExists = await db.query(candidates, [userId, partyId]);
+      const candidateExists = await db.query(candidates, [userId]);
       if (candidateExists.rowCount >= 1) {
         return res.status(409).json({
           status: 409,
           error: 'canditate has already been registered',
         });
       }
-      const result = await db.query(newCndidate, [officeId, partyId, userId]);
+      const result = await db.query(newCandidate, [officeId, partyId, userId]);
       console.log(result);
       console.log(result.rows);
       return res.status(201).json({
@@ -67,7 +67,6 @@ class Candidate {
           error: 'office not found',
         });
       }
-      console.log('oooo');
       const checkCandidate = await db.query(candidates, [candidate, office]);
       if (checkCandidate.rowCount < 1) {
         return res.status(404).json({
@@ -75,7 +74,6 @@ class Candidate {
           error: 'candidate not found',
         });
       }
-      console.log('oppp');
       const checkVote = await db.query('select * from votes where officeId =$1 and createdBy= $2', [office, voter]);
       if (checkVote.rowCount >= 1) {
         return res.status(406).json({
@@ -83,7 +81,6 @@ class Candidate {
           error: ' You cannot vote for the same office twice',
         });
       }
-      console.log('ookkkoo');
 
       const result = await db.query('INSERT into votes(createdBy, officeId, candidateId) VALUES($1,$2,$3) RETURNING *', [voter, office, candidate]);
       res.status(201).json({
@@ -135,6 +132,42 @@ class Candidate {
         error: err.message,
       });
     }
+  }
+
+  static async addNominee(req, res) {
+    const { officeId, partyId, manifesto } = req.body;
+    const userId = req.userData.id;
+    const checkOffice = await db.query(offices, [officeId]);
+    if (checkOffice.rowCount < 1) {
+      return res.status(404).json({
+        status: 404,
+        error: 'office not found',
+      });
+    }
+    const checkParty = await db.query(parties, [partyId]);
+    if (checkParty.rowCount < 1) {
+      return res.status(404).json({
+        status: 404,
+        error: 'party not found',
+      });
+    }
+    const userExists = await db.query(nominee, [userId]);
+    if (userExists.rowCount >= 1) {
+      return res.status(409).json({
+        status: 409,
+        error: 'You have already applied for a political office',
+      });
+    }
+    const { rows } = await db.query(addNominee, [officeId, partyId, userId, manifesto]);
+    res.status(201).json({
+      status: 201,
+      data: {
+        office: rows[0].officeid,
+        party: rows[0].partyid,
+        user: rows[0].userid,
+        manifesto: rows[0].manifesto,
+      },
+    });
   }
 }
 

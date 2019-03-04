@@ -6,5 +6,4 @@ logout.addEventListener('click', () => {
   window.localStorage.removeItem('admin');
   window.localStorage.removeItem('profileimg');
   window.localStorage.removeItem('firstname');
-  window.localStorage.removeItem('token');
 });

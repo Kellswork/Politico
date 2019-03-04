@@ -3,14 +3,9 @@ const getParty = async () => {
   const partyTable = document.getElementById('partyTable');
   const url = 'http://localhost:8080/api/v1/parties';
   const token = window.localStorage.getItem('token');
-  const firstname = window.localStorage.getItem('firstame');
-  console.log(firstname);
-  const myHeaders = new Headers({
-    'x-auth-token': token,
-  });
   const options = {
     method: 'GET',
-    headers: myHeaders,
+    headers: { 'x-auth-token': token },
   };
   spinner.removeAttribute('hidden');
   const response = await fetch(url, options);
