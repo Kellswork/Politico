@@ -9,7 +9,7 @@
     crossorigin="anonymous">
   <link rel="icon" type="image/png" href="../images/logo.png">
   <link rel="stylesheet" href="../css/admin.css">
-  <title>Admin | Office</title>
+  <title>Politico | Admin</title>
 </head>
 
 <body>
@@ -29,11 +29,11 @@
     </div>
     <a href="dashboard.html">Dashboard</a>
     <a href="party.html">Political Parties</a>
-    <a class="active" href="office.html">Political Offices</a>
+    <a href="office.html">Political Offices</a>
     <a href="request.html">Election Requests</a>
-    <a href="candidates.html">Candidates</a>
+    <a class="active" href="candidates.html">Candidates</a>
     <a href="result.html">Election Results</a>
-    <a class='logout' href="../login.html">Logout</a>
+    <a href="../login.html">Logout</a>
   </div>
   <nav>
     <div class="logo">
@@ -48,7 +48,7 @@
         <img javascript:void(0);" onclick="openNotification()" id="profile-img" class="profileImg" src="../images/pictureAvatar.png" alt="">
         <div id="dropdown-content" class="dropdown-content">
           <a href="dashboard.html">Dashboard</a>
-          <a class='logout' href="../login.html">Logout</a>
+          <a href="../login.html">Logout</a>
         </div>
       </div>
 
@@ -63,55 +63,48 @@
       <ul>
         <li><a href="dashboard.html"> Dashboard</a></li>
         <li><a href="party.html"> Political Parties</a></li>
-        <li class="active"><a href="office.html">Political Offices</a></li>
+        <li><a href="office.html">Political Offices</a></li>
         <li><a href="request.html">Election Requests</a></li>
-        <li><a href="candidates.html">Candidates</a></li>
+        <li class="active"><a href="candidates.html">Candidates</a></li>
         <li><a href="result.html">Election Results</a></li>
-        <li class='logout'><a href="../login.html">Logout</a></li>
+        <li><a href="../login.html">Logout</a></li>
       </ul>
     </aside>
     <section class="election-container">
       <section class="box-one">
-        <h2>Government Offices</h2>
+        <h2>Election Candidates</h2>
         <div class="create-party">
-          <button class="create-party-button">Add New Office</button>
-        </div>
-        <div class="party-modal">
-          <div class="modal-content">
-            <span class="close">&times;</span>
-            <form action="#" class="party-form" id='partyForm'>
-              <h2>Create Government Office</h2>
-              <div id="err"></div>
-              <div id="success"></div>
-              <div class="inputgroup">
-                <label for="name">Office Name</label>
-                <input id="name" type="text" placeholder=" Enter party name">
-              </div>
-              <div class="inputgroup">
-                <label for="type">Type</label>
-                <select id="type">
-                  <option value="">--Please choose an option--</option>
-                  <option value="federal">Federal</option>
-                  <option value="legislative">Legislative</option>
-                  <option value="state">State</option>
-                  <option value="local-government">Local Government</option>
-                </select>
-              </div>
-              <button id="modal-btn">Create Office</button>
-            </form>
-          </div>
+          <button class="create-party-button">Add Candidate</button>
         </div>
       </section>
       <div class="election-details">
-        <table class="election-office">
-          <tbody id="partyTable">
+        <table class="election-office desktop-view">
+          <tbody id="request">
             <tr>
+              <th>Image</th>
+              <th>Candidate</th>
+              <th>Party</th>
               <th>Office</th>
-              <th>Type</th>
-              <th>Action</th>
+              <th>Manifesto</th>
             </tr>
+            <tr>
+              <td class="result"><img src="../images/avatar2.png"></td>
+              <td>John Smith</td>
+              <td>National Interest Party(NIP)</td>
+              <td>President</td>
+              <td>view manifesto</td>
           </tbody>
         </table>
+        <div id="mobileView" class="mobile-view">
+            <div class="party-card">
+              <div class="candidate-img">
+                  <img src="../images/avatar2.png" alt="">
+              </div>
+                <h3>Jon Smith</h3>
+                <p>National Interest Party(NIP)</p>
+                <p>President</p>
+            </div>
+          </div>
         <div class="pagination">
           <a href="#"><i class="fas fa-angle-double-right"></i></a>
           <a href="#"><i class="fas fa-angle-double-left"></i></a>
@@ -120,10 +113,8 @@
     </section>
   </div>
   <footer> copyright &copy; Politico 2019. All Rights Resevered </footer>
-  <div hidden id="spinner"></div>
   <script src="../js/script.js"></script>
-  <script src="../js/office.js"></script>
-  <script src="../js/userData.js"></script>
+  <script src="../js/candidates.js"></script>
 </body>
 
 </html>

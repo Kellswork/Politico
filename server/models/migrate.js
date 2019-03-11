@@ -35,20 +35,15 @@ const tableQuery = async () => {
       type VARCHAR(50) NOT NULL,
       name VARCHAR(50) UNIQUE NOT NULL);`);
 
-    const NomineeTable = await db.query(`CREATE TABLE IF NOT EXISTS nominee(
-        id SERIAL,
-        officeId INT NOT NULL REFERENCES offices(id) ON DELETE CASCADE,
-        partyId INT NOT NULL REFERENCES parties(id) ON DELETE CASCADE,
-        userId INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-        manifesto TEXT NOT NULL,
-        status TEXT DEFAULT 'pending',
-        PRIMARY KEY (userId, officeId));`);
-
     const candidateTable = await db.query(`CREATE TABLE IF NOT EXISTS candidates(
-      id SERIAL UNIQUE NOT NULL,
+      id SERIAL,
       officeId INT NOT NULL REFERENCES offices(id) ON DELETE CASCADE,
       partyId INT NOT NULL REFERENCES parties(id) ON DELETE CASCADE,
       userId INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+      manifesto TEXT NOT NULL,
+      status TEXT DEFAULT 'pending',
+      createdAt DATE DEFAULT CURRENT_TIMESTAMP,
+      modifiedAt DATE,
       PRIMARY KEY (userId, officeId));`);
 
     const voteTable = await db.query(`CREATE TABLE IF NOT EXISTS votes(
@@ -67,7 +62,7 @@ const tableQuery = async () => {
 
     console.log(dropPartyTable, dropUserTable, dropOfficeTable,
       dropCandidateTable, dropvoteTable, partyTable, userTable,
-      officeTable, NomineeTable, candidateTable, voteTable, admin, insertParty, insertOffice);
+      officeTable, candidateTable, voteTable, admin, insertParty, insertOffice);
   } catch (err) {
     console.log(err.stack);
     return err.stack;

@@ -1,4 +1,5 @@
 import db from '../models/db';
+import { candidates } from '../models/candidate';
 
 const {
   check,
@@ -28,13 +29,19 @@ const validateOffice = [
   },
 ];
 
-const validateCandidate = [
-  check('officeId').isNumeric()
-    .withMessage('officeId should be a number')
+const validateRegisterCandidate = [
+  check('id').isNumeric()
+    .withMessage('id is not a number')
+    .trim()
+    .custom(value => db.query(candidates, [value]).then((candidate) => {
+      if (candidate.rowCount < 1) throw new Error('candidate does not exist');
+    }))
     .trim(),
-  check('partyId').isNumeric()
-    .withMessage('partyId must contain only numbers')
+  check('status').exists().withMessage('status is required')
+    .isIn(['accepted', 'rejected'])
+    .withMessage('only accepted or rejected is allowed')
     .trim(),
+
   (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -47,4 +54,4 @@ const validateCandidate = [
   },
 ];
 
-export { validateOffice, validateCandidate };
+export { validateOffice, validateRegisterCandidate };

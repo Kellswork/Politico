@@ -32,7 +32,7 @@ const getOffice = async () => {
     const office = document.createElement('td');
     name.textContent = info.name;
     office.textContent = info.type;
-    viewCandidate.innerHTML = '<a href="candidates.html">View Candidate';
+    viewCandidate.innerHTML = '<a href="../user/candidates.html">View Candidate';
     tr.appendChild(office);
     tr.appendChild(name);
     tr.appendChild(viewCandidate);
