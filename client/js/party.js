@@ -9,7 +9,6 @@ imagePreview.addEventListener('click', (e) => {
 document.getElementById('logoUrl').addEventListener('change', (event) => {
   const url = URL.createObjectURL(event.target.files[0]);
   imagePreview.src = url;
-  URL.revokeObjectURL(url);
 });
 
 const createParty = async () => {

@@ -6,7 +6,6 @@ imagePreview.addEventListener('click', (e) => {
 document.getElementById('passportUrl').addEventListener('change', (event) => {
   const url = URL.createObjectURL(event.target.files[0]);
   imagePreview.src = url;
-  URL.revokeObjectURL(url);
 });
 const signUp = () => {
   const div = document.getElementById('err');
