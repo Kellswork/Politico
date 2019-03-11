@@ -1,11 +1,11 @@
-const fetchApi = async (url, method = 'GET', data = '', isFormData = false) => {
+const fetchApi = async (url, method = 'GET', data = '', isFormData = false, headers = '') => {
   const options = {
     method,
     mode: 'cors',
     cache: 'no-cache',
     referrer: 'no-referrer',
   };
-
+  options.headers = headers;
   if (isFormData) {
     options.body = data;
   } else if (data) {
@@ -19,4 +19,3 @@ const fetchApi = async (url, method = 'GET', data = '', isFormData = false) => {
   const json = await response.json();
   return json;
 };
-fetchApi();

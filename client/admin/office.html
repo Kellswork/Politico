@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+    crossorigin="anonymous">
+  <link rel="icon" type="image/png" href="../images/logo.png">
+  <link rel="stylesheet" href="../css/admin.css">
+  <title>Admin | Office</title>
+</head>
+
+<body>
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="mobile-profile">
+      <div class="profile-img-nav">
+        <img onclick="profile.html" class="profileImg"  id="profile-img" src="../images/pictureAvatar.png" alt="">
+      </div>
+      <h4>Admin</h4>
+    </div>
+    <div>
+
+    </div>
+    <div>
+      <input type="text" class="search-input" placeholder="search...">
+    </div>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="party.html">Political Parties</a>
+    <a class="active" href="office.html">Political Offices</a>
+    <a href="request.html">Election Requests</a>
+    <a href="candidates.html">Candidates</a>
+    <a href="result.html">Election Results</a>
+    <a class='logout' href="../login.html">Logout</a>
+  </div>
+  <nav>
+    <div class="logo">
+      <img src="../images/logo.png" alt="Politico logo">
+      <h1><a href="../index.html">olitico</a></h1>
+    </div>
+    <div class="search">
+      <input type="text" class="search-input" placeholder="search..."><i class="fas fa-search"></i>
+    </div>
+    <div class="nav-profile">
+      <div>
+        <img javascript:void(0);" onclick="openNotification()" id="profile-img" class="profileImg" src="../images/pictureAvatar.png" alt="">
+        <div id="dropdown-content" class="dropdown-content">
+          <a href="dashboard.html">Dashboard</a>
+          <a class='logout' href="../login.html">Logout</a>
+        </div>
+      </div>
+
+      <h4>Admin</h4>
+    </div>
+    <div>
+      <span class="mobile-nav" onclick="openNav()">&#9776;</span>
+    </div>
+  </nav>
+  <div class="container">
+    <aside class="sidebar">
+      <ul>
+        <li><a href="dashboard.html"> Dashboard</a></li>
+        <li><a href="party.html"> Political Parties</a></li>
+        <li class="active"><a href="office.html">Political Offices</a></li>
+        <li><a href="request.html">Election Requests</a></li>
+        <li><a href="candidates.html">Candidates</a></li>
+        <li><a href="result.html">Election Results</a></li>
+        <li class='logout'><a href="../login.html">Logout</a></li>
+      </ul>
+    </aside>
+    <section class="election-container">
+      <section class="box-one">
+        <h2>Government Offices</h2>
+        <div class="create-party">
+          <button class="create-party-button">Add New Office</button>
+        </div>
+        <div class="party-modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <form action="#" class="party-form" id='partyForm'>
+              <h2>Create Government Office</h2>
+              <div id="err"></div>
+              <div id="success"></div>
+              <div class="inputgroup">
+                <label for="name">Office Name</label>
+                <input id="name" type="text" placeholder=" Enter party name">
+              </div>
+              <div class="inputgroup">
+                <label for="type">Type</label>
+                <select id="type">
+                  <option value="">--Please choose an option--</option>
+                  <option value="federal">Federal</option>
+                  <option value="legislative">Legislative</option>
+                  <option value="state">State</option>
+                  <option value="local-government">Local Government</option>
+                </select>
+              </div>
+              <button id="modal-btn">Create Office</button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <div class="election-details">
+        <table class="election-office">
+          <tbody id="partyTable">
+            <tr>
+              <th>Office</th>
+              <th>Type</th>
+              <th>Action</th>
+            </tr>
+          </tbody>
+        </table>
+        <div class="pagination">
+          <a href="#"><i class="fas fa-angle-double-right"></i></a>
+          <a href="#"><i class="fas fa-angle-double-left"></i></a>
+        </div>
+      </div>
+    </section>
+  </div>
+  <footer> copyright &copy; Politico 2019. All Rights Resevered </footer>
+  <div hidden id="spinner"></div>
+  <script src="../js/script.js"></script>
+  <script src="../js/office.js"></script>
+  <script src="../js/userData.js"></script>
+</body>
+
+</html>

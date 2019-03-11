@@ -1,52 +1,61 @@
 import db from '../models/db';
 import {
-  users, offices, parties, candidates, newCndidate,
+  offices, parties, candidates, newCandidate, updateStatus, getCandidates, getNominees,
 } from '../models/candidate';
 
 class Candidate {
+  static async addNominee(req, res) {
+    const { officeId, partyId, manifesto } = req.body;
+    const userId = req.userData.id;
+    const checkOffice = await db.query(offices, [officeId]);
+    if (checkOffice.rowCount < 1) {
+      return res.status(404).json({
+        status: 404,
+        error: 'office not found',
+      });
+    }
+    const checkParty = await db.query(parties, [partyId]);
+    if (checkParty.rowCount < 1) {
+      return res.status(404).json({
+        status: 404,
+        error: 'party not found',
+      });
+    }
+    const userExists = await db.query(candidates, [userId]);
+    if (userExists.rowCount >= 1) {
+      return res.status(409).json({
+        status: 409,
+        error: 'You have already applied for a political office',
+      });
+    }
+    const { rows } = await db.query(newCandidate, [officeId, partyId, userId, manifesto]);
+    res.status(201).json({
+      status: 201,
+      data: {
+        office: rows[0].officeid,
+        party: rows[0].partyid,
+        user: rows[0].userid,
+        manifesto: rows[0].manifesto,
+      },
+    });
+  }
+
   static async registerCandidate(req, res) {
     try {
-      const { userId } = req.params;
-      const { officeId, partyId } = req.body;
+      const { id } = req.params;
+      const { status } = req.body;
+      let { rows } = await db.query(candidates, [id]);
 
-      const checkUser = await db.query(users, [userId]);
-      if (checkUser.rowCount < 1) {
-        return res.status(404).json({
-          status: 404,
-          error: 'user not found',
-        });
-      }
-      const checkOffice = await db.query(offices, [officeId]);
-      if (checkOffice.rowCount < 1) {
-        return res.status(404).json({
-          status: 404,
-          error: 'office not found',
-        });
-      }
-      const checkParty = await db.query(parties, [partyId]);
-      if (checkParty.rowCount < 1) {
-        return res.status(404).json({
-          status: 404,
-          error: 'party not found',
-        });
-      }
-      const candidateExists = await db.query(candidates, [userId, partyId]);
-      if (candidateExists.rowCount >= 1) {
+      if (rows[0].status !== 'pending') {
         return res.status(409).json({
           status: 409,
-          error: 'canditate has already been registered',
+          error: 'status has already been updated',
         });
       }
-      const result = await db.query(newCndidate, [officeId, partyId, userId]);
-      console.log(result);
-      console.log(result.rows);
-      return res.status(201).json({
-        status: 201,
-        data: {
-          id: result.rows[0].id,
-          office: result.rows[0].officeid,
-          user: result.rows[0].userid,
-        },
+      rows = await db.query(updateStatus, [status, id]);
+      return res.status(200).json({
+        status: 200,
+        message: 'status has been updated',
       });
     } catch (err) {
       return res.status(500).json({
@@ -67,7 +76,7 @@ class Candidate {
           error: 'office not found',
         });
       }
-      const checkCandidate = await db.query(candidates, [candidate]);
+      const checkCandidate = await db.query(candidates, [candidate, office]);
       if (checkCandidate.rowCount < 1) {
         return res.status(404).json({
           status: 404,
@@ -78,7 +87,7 @@ class Candidate {
       if (checkVote.rowCount >= 1) {
         return res.status(406).json({
           status: 406,
-          error: ' You cannot vote for the same office twice',
+          error: 'You cannot vote for the same office twice',
         });
       }
 
@@ -105,7 +114,7 @@ class Candidate {
       if (isNaN(officeId)) {
         return res.status(400).json({
           status: 400,
-          error: 'id is not a number',
+          error: 'office id is not a number',
         });
       }
       const checkOffice = await db.query(offices, [officeId]);
@@ -123,6 +132,48 @@ class Candidate {
         });
       }
       res.status(201).json({
+        status: 200,
+        data: result.rows,
+      });
+    } catch (err) {
+      return res.status(500).json({
+        status: 500,
+        error: err.message,
+      });
+    }
+  }
+
+  static async getAllNominees(req, res) {
+    try {
+      const result = await db.query(getNominees);
+      if (result.rowCount < 1) {
+        return res.status(404).json({
+          status: 404,
+          error: 'no user has registered as for a political office',
+        });
+      }
+      return res.status(200).json({
+        status: 200,
+        data: result.rows,
+      });
+    } catch (err) {
+      return res.status(500).json({
+        status: 500,
+        error: err.message,
+      });
+    }
+  }
+
+  static async getAllCandidates(req, res) {
+    try {
+      const result = await db.query(getCandidates);
+      if (result.rowCount < 1) {
+        return res.status(404).json({
+          status: 400,
+          error: 'No data found',
+        });
+      }
+      return res.status(200).json({
         status: 200,
         data: result.rows,
       });

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../js/admin.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+    crossorigin="anonymous">
+  <link rel="icon" type="image/png" href="../images/logo.png">
+  <link rel="stylesheet" href="../css/admin.css">
+  <title>Admin | Parties</title>
+</head>
+
+<body>
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="mobile-profile">
+      <div class="profile-img-nav">
+        <img onclick="profile.html" id="profile-img" class="profileImg" src="../images/pictureAvatar.png" alt="">
+      </div>
+      <h4>Admin</h4>
+    </div>
+    <div>
+    </div>
+    <div>
+      <input type="text" class="search-input" placeholder="search...">
+    </div>
+    <a href="dashboard.html">Dashboard</a>
+    <a class="active" href="party.html">Political Parties</a>
+    <a href="office.html">Political Offices</a>
+    <a href="request.html">Election Requests</a>
+    <a href="candidates.html">Candidates</a>
+    <a href="result.html">Election Results</a>
+    <a class='logout' href="../login.html">Logout</a>
+  </div>
+  <nav>
+    <div class="logo">
+      <img src="../images/logo.png" alt="Politico logo">
+      <h1><a href="../index.html">olitico</a></h1>
+    </div>
+    <div class="search">
+      <input type="text" class="search-input" placeholder="search..."><i class="fas fa-search"></i>
+    </div>
+    <div class="nav-profile">
+      <div>
+        <img javascript:void(0);" onclick="openNotification()" id="profile-img" class="profileImg" src="../images/pictureAvatar.png" alt="">
+        <div id="dropdown-content" class="dropdown-content">
+          <a href="dashboard.html">Dashboard</a>
+          <a href="../login.html">Logout</a>
+        </div>
+      </div>
+
+      <h4>Admin</h4>
+    </div>
+    <div>
+      <span class="mobile-nav" onclick="openNav()">&#9776;</span>
+    </div>
+  </nav>
+  <div class="container">
+    <aside class="sidebar">
+      <ul>
+        <li><a href="dashboard.html"> Dashboard</a></li>
+        <li class="active"><a href="party.html"> Political Parties</a></li>
+        <li><a href="office.html">Political Offices</a></li>
+        <li><a href="request.html">Election Requests</a></li>
+        <li><a href="candidates.html">Candidates</a></li>
+        <li><a href="result.html">Election Results</a></li>
+        <li class='logout'><a href="../login.html">Logout</a></li>
+      </ul>
+    </aside>
+    <section class="election-container">
+      <section class="box-one">
+        <h2>Political Parties</h2>
+        <div class="create-party">
+          <button class="create-party-button">Add a New Party</button>
+        </div>
+        <div class="party-modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Create Political Party</h2>
+            <div id="err"></div>
+            <div id="success"></div>
+            <form class="party-form" id='partyForm' name='partyForm' enctype="multipart/form-data" method="post">
+              <div class="inputgroup imagePreview">
+                  <label for="name">Uplaod Party Logo</label>
+                  <input id='imagePreview' type="image" src="../images/imgPlaceholder.jpg"/>
+                  <input type="file" accept="image/*" id="logoUrl" name="logoUrl" />
+                </div>
+              <div class="inputgroup">
+                <label for="name">Party Name</label>
+                <input type="text" name="name" id="name" placeholder=" Enter party name">
+              </div>
+              <div class="inputgroup">
+                <label for="hqAddress">HQ address</label>
+                <input type="text" name="hqAddress" id="hqAddress" placeholder="Enter Head Quaters Address">
+              </div>
+              <button type="submit" id="modal-btn">Create Party</button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <div class="election-details">
+        <table class="election-office desktop-view" >
+          <tbody id='partyTable'>
+            <tr>
+              <th>Logo</th>
+              <th>Name</th>
+              <th>HQ Address</th>
+              <th>Action</th>
+            </tr>
+            <tr>
+              <td><img src="../images/logos/Niplogo.jpg" alt="party logo"> </td>
+              <td>National Interest Party(NIP)</td>
+              <td>Suite 101, NCWS Building, Area 11, Garki, FCT, Abuja</td>
+              <td><span><i id='edit' class="far fa-edit"></i></span></i><span id="delete"><i class="far fa-trash-alt"></i></span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="mobile-view" id="mobileView">
+          <div class="party-card">
+            <div class="party-logo">
+              <img src="../images/logos/ANRP.jpg" alt="">
+            </div>
+            <h3>National Interest Party(NIP)</h3>
+            <p>Suite 101, NCWS Building, Area 11, Garki, FCT, Abuja</p>
+            <div class="party-action">
+              <span id='edit'><i class="far fa-edit"></i></span></i><span id="delete"><i class="far fa-trash-alt"></i></span>
+            </div>
+          </div>
+        </div>
+        <div class="pagination">
+          <a href="#"><i class="fas fa-angle-double-right"></i></a>
+          <a href="#"><i class="fas fa-angle-double-left"></i></a>
+        </div>
+      </div>
+    </section>
+  </div>
+  <footer> copyright &copy; Politico 2019. All Rights Resevered </footer>
+  <div hidden id="spinner"></div>
+  <script src="../js/party.js"></script>
+  <script src="../js/script.js"></script>
+  <script src="../js/logout.js"></script>
+</body>
+</html>

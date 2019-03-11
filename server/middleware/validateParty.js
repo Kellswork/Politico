@@ -11,8 +11,12 @@ const validateParty = [
       if (party.rowCount >= 1) throw new Error('name already exists');
     }))
     .trim(),
-  check('hqAddress').exists().withMessage('Please input an address')
-    .trim(),
+  check('hqAddress')
+    .trim()
+    .isLength({
+      min: 5,
+    })
+    .withMessage('please input a valid address'),
   check('logoUrl').optional().withMessage('please upload image'),
   (req, res, next) => {
     const errors = validationResult(req);
@@ -32,8 +36,12 @@ const validatePartyName = [
       if (party.rowCount >= 1) throw new Error('name already exists');
     }))
     .trim()
-    .isLength({ min: 5 })
-    .isLength({ max: 50 }),
+    .isLength({
+      min: 5,
+    })
+    .isLength({
+      max: 50,
+    }),
   (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -47,4 +55,7 @@ const validatePartyName = [
 ];
 
 
-export { validateParty, validatePartyName };
+export {
+  validateParty,
+  validatePartyName,
+};

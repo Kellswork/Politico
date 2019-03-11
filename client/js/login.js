@@ -10,7 +10,7 @@ async function login() {
     password,
   };
 
-  // const json = await fetchCall('/auth/login', 'POST', data);
+  // const json = await fetchApi('/auth/login', 'POST', data);
   // console.log(json);
 
   const options = {
@@ -44,18 +44,17 @@ async function login() {
     if (json.status === 200) {
       div.style.display = 'none';
       window.localStorage.setItem('token', json.data.token);
+      window.localStorage.setItem('firstname', json.data.user.firstName);
+      window.localStorage.setItem('profileimg', json.data.user.passportUrl);
       window.localStorage.setItem('userid', json.data.user.id);
       window.localStorage.setItem('admin', json.data.user.isAdmin);
-      if (json.data.user.isAdmin === true) {
-        window.location.replace('admin/dashboard.html');
-      } else {
-        window.location.replace('user/dashboard.html');
-      }
+      const isAdmin = (json.data.user.isAdmin) ? location.replace('admin/dashboard.html') : location.href = 'user/dashboard.html';
+      return isAdmin;
     }
   };
+
   request();
 }
-
 const loginbtn = document.querySelector('.btn');
 loginbtn.addEventListener('click', (event) => {
   event.preventDefault();

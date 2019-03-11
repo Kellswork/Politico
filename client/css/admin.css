@@ -70,13 +70,16 @@ nav {
   padding-top: 6px;
   position: absolute;
 }
+
 .search {
   width: 30%;
 }
+
 i.fas.fa-search {
   color: #fff;
   font-size: 16px;
 }
+
 /* style for election container */
 .container {
   display: flex;
@@ -196,15 +199,75 @@ input::placeholder {
   text-transform: capitalize;
 }
 
-.election-office td a {
+.election-office td span {
   color: #a8eb12;
 }
+.election-office td a {
+  color: #09574b;
+  font-family: 'News Cycle', sans-serif;
 
-td.party-logo>img {
+}
+td button, .request-action button {
+  width: 80px;
+  text-align: center;
+  color: white;
+  transition: background, 300ms;
+  outline: none;
+  border-radius: 5px;
+  height: 27px;
+  font-size: 13px;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+.request-action button {
+  margin-top: 10px;
+}
+.view-manifesto {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.view-manifesto:hover {
+color: #0e8170;
+}
+.view-manifesto:active {
+  position: relative;
+  top: 1px;
+}
+#request {
+  text-align: center;
+}
+td button:active {
+  position: relative;
+  top: 1px;
+}
+ #accept {
+  margin-right: 5px;
+  background: #155d52;
+  border: 1px solid currentColor;
+}
+#accept:hover {
+  background: #218879;
+}
+#reject {
+  margin-left: 5px;
+  background: crimson;
+  border: 1px solid currentColor;
+}
+#reject:hover {
+  background: rgb(216, 47, 81);
+}
+td:nth-child(1)>img {
   width: 70px;
 }
-td a {
+
+td span {
   padding-left: 3px;
+  cursor: pointer;
+}
+td span:active {
+  position: relative;
+  top: 1px;
 }
 
 .election-office td a:hover {
@@ -302,7 +365,7 @@ td a {
   margin: 0;
 }
 
-.party-modal {
+.editPartyModal, .deletePartyModal, .party-modal {
   background: rgba(0, 0, 0, 0.8);
   position: fixed;
   top: 0;
@@ -314,12 +377,52 @@ td a {
   transform: scale(1.1);
   transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
 }
-
+.manifesto-modal {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+.manifesto-content {
+  border-radius: 4px;
+  width: 450px;
+  height: 400px;
+  position: relative;
+  margin: 9% auto;
+  box-sizing: border-box;
+  background: linear-gradient(#fff, #999);
+  background: linear-gradient(#fff, #999);
+  background: -moz-linear-gradient(#fff, #999);
+  background: -webkit-linear-gradient(#fff, #999);
+  background: -o-linear-gradient(#fff, #999);
+}
+.manifesto-details {
+  height: 400px;
+  overflow: auto;
+}
+.manifesto-details h2 {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  text-align: center;
+  background: linear-gradient(#fff, #999);
+}
+.manifesto-details p {
+  margin-top: 10px;
+  padding-left: 10px;
+  text-align: left;
+}
 .modal-content {
   border-radius: 4px;
   width: 600px;
   position: relative;
-  margin: 8% auto;
+  margin: 10% auto;
   box-sizing: border-box;
   background: linear-gradient(#fff, #999);
   background: linear-gradient(#fff, #999);
@@ -349,7 +452,7 @@ td a {
   font-size: 16px;
 }
 
-.party-form h2 {
+edit-modal h2, .modal-content h2 {
   text-align: center;
   padding-top: 20px;
   margin-left: 25%;
@@ -374,7 +477,19 @@ td a {
   margin-left: 10px;
   margin-bottom: 20px;
 }
-
+#logoUrl {
+  display: none;
+}
+#imagePreview {
+  border-radius: 4px;
+  width: 100px;
+  height: 100px;
+  outline: none;
+  padding: 0;
+}
+.imagePreview {
+  text-align: center;
+}
 .modal-content button {
   width: 50%;
   height: 50px;
@@ -409,6 +524,7 @@ td a {
   border-radius: 12px;
   box-shadow: 1px 1px 3px #000;
   cursor: pointer;
+  z-index: 1;
 }
 
 .close:hover {
@@ -557,13 +673,13 @@ a.active {
 .mobile-view {
   margin-top: 30px;
   display: none;
-background: #f4eeee;
+  background: #f4eeee;
 }
 
 .party-card {
   box-shadow: 0px 2px 6px 1px #1a61550f,
-              1px 0px 2px 1px #1a61550a;
-    width: 80%;
+    1px 0px 2px 1px #1a61550a;
+  width: 80%;
   margin: 0 auto;
   text-align: center;
   padding: 3%;
@@ -571,19 +687,155 @@ background: #f4eeee;
   color: #09574b;
   background: #fff;
 }
+
 .mobile-view .party-logo img,
 .mobile-view .candidate-img img {
   width: 80px;
   height: 80px;
 }
+.party-card h3 {
+  text-transform: capitalize;
+}
 td.result img {
   width: 60px;
   border-radius: 50px;
 }
-.party-action a {
+
+.party-action span {
   padding-right: 5px;
 }
-@media (max-width : 450px) {
+
+#err {
+  padding: 2%;
+  display: block;
+  text-align: left;
+  background: #ffffff70;
+  display: none;
+  width: 86%;
+  margin: auto;
+  border-radius: 5px;
+}
+
+#success {
+  padding: 2%;
+  display: block;
+  text-align: left;
+  display: none;
+  width: 86%;
+  margin: auto;
+  border-radius: 5px;
+  color: #09574b;
+  font-size: 18px;
+  font-weight: 900;
+  background: #ffffff70;
+}
+
+#err li {
+  font-size: 16px;
+}
+
+div#err p {
+  color: rgba(255, 0, 0, 0.87);
+}
+#spinner:not([hidden]) {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+#spinner::after {
+content: "";
+width: 60px;
+height: 60px;
+border: 2px solid #f3f3f3;
+border-top: 3px solid #20665a;
+border-radius: 100%;
+will-change: transform;
+animation: spin 1s infinite linear
+}
+/*css code for edit name modal */
+.edit-modal input {
+  width: 90%;
+  box-sizing: border-box;
+  height: 53px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  outline: none;
+  padding-left: 10px;
+  border: 2px solid #09574b;
+  font-size: 16px;
+
+}
+.edit-modal {
+  padding-top: 1px;
+  width: 400px;
+  border-radius: 4px;
+  position: relative;
+  margin: 15% auto;
+  box-sizing: border-box;
+  background: linear-gradient(#fff, #999);
+  background: -moz-linear-gradient(#fff, #999);
+  background: -webkit-linear-gradient(#fff, #999);
+  background: -o-linear-gradient(#fff, #999);
+}
+.edit-modal button {
+  width: 30%;
+  height: 40px;
+  color: white;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  outline: none;
+  font-size: 16px;
+  border: 1px solid #09574b;
+  background: #09574b;
+  text-transform: capitalize;
+  transition: 300ms;
+  cursor: pointer;
+}
+.edit-modal button:hover {
+  background: #277467;
+  border: 1px solid #277467;
+}
+.edit-modal button:active {
+  position: relative;
+  top: 1px;
+}
+.edit-modal h2, .edit-modal h3 {
+  color: #09574b;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.modal-actions {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+}
+.inputName {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+@keyframes spin {
+from {
+  transform: rotate(0deg);
+}
+to {
+  transform: rotate(360deg);
+}
+}
+
+@media (max-width : 590px) {
   .desktop-view {
     display: none;
   }
@@ -592,6 +844,7 @@ td.result img {
     display: block;
   }
 }
+
 @media (max-width:700px) {
   .nav-profile {
     display: none;
@@ -656,11 +909,17 @@ td.result img {
     margin-left: 5%;
   }
 
-  .modal-content {
+  .manifesto-content, .modal-content {
     width: 90%;
-    margin: 20% auto;
+    margin: 25% auto;
   }
-
+  .edit-modal{
+    width: 90%;
+    margin: 33% auto;
+  }
+.search {
+  display: none;
+}
 }
 
 

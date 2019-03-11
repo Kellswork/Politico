@@ -259,7 +259,9 @@ footer {
 td.party-logo>img {
   width: 70px;
 }
-
+td:nth-child(1)>img {
+  width: 70px;
+}
 .dropdown-content {
   position: absolute;
   min-width: 100px;
@@ -356,7 +358,7 @@ td.result img {
   border-radius: 50px;
 }
 #profile-img {
-  width: 43px;
+  width: 40px;
   border-radius: 50%;
   margin-left: 10px;
 }
@@ -396,7 +398,40 @@ a.active {
   width: 80px;
   height: 80px;
 }
+#spinner:not([hidden]) {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+}
 
+#spinner::after {
+content: "";
+width: 60px;
+height: 60px;
+border: 2px solid #f3f3f3;
+border-top: 3px solid #20665a;
+border-radius: 100%;
+will-change: transform;
+animation: spin 1s infinite linear
+}
+
+@keyframes spin {
+from {
+  transform: rotate(0deg);
+}
+to {
+  transform: rotate(360deg);
+}
+}
+button::-moz-focus-inner {
+  border: 0;
+}
 @media (max-width : 450px) {
   .desktop-view {
     display: none;

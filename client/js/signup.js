@@ -1,4 +1,13 @@
-
+const imagePreview = document.getElementById('imagePreview');
+imagePreview.addEventListener('click', (e) => {
+  e.preventDefault();
+  document.getElementById('passportUrl').click();
+});
+document.getElementById('passportUrl').addEventListener('change', (event) => {
+  const url = URL.createObjectURL(event.target.files[0]);
+  imagePreview.src = url;
+  URL.revokeObjectURL(url);
+});
 const signUp = () => {
   const div = document.getElementById('err');
   const signupForm = document.getElementById('signupForm');
@@ -18,21 +27,23 @@ const signUp = () => {
     const json = await response.json();
     div.innerHTML = '';
     spinner.setAttribute('hidden', '');
-    if (json.status === 400) {
+    if (json.status !== 201) {
       json.error.forEach((element) => {
         const content = `<p>${element}</p>`;
         div.style.display = 'block';
         div.style.color = 'red';
         div.innerHTML += content;
       });
-    }
-    if (json.status === 201) {
+    } else {
       div.style.display = 'none';
       window.localStorage.setItem('token', json.data.token);
       window.localStorage.setItem('userid', json.data.user.id);
       window.localStorage.setItem('firstname', json.data.user.firstName);
-      window.location.replace = 'user/dashboard.html';
+      window.localStorage.setItem('profileimg', json.data.user.passportUrl);
+      window.localStorage.setItem('admin', json.data.user.isAdmin);
+      window.location.replace('user/dashboard.html');
     }
+    console.log(json);
   };
 
   request();

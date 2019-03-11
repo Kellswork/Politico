@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Modal</title>
+  <link rel="stylesheet" href="css/admin.css">
+  <style>
+    .edit-modal input {
+  width: 90%;
+  box-sizing: border-box;
+  height: 53px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  outline: none;
+  padding-left: 10px;
+  border: 2px solid #09574b;
+  font-size: 16px;
+
+}
+.edit-modal {
+  width: 400px;
+  border-radius: 4px;
+  position: relative;
+  margin: 8% auto;
+  box-sizing: border-box;
+  background: linear-gradient(#fff, #999);
+  background: linear-gradient(#fff, #999);
+  background: -moz-linear-gradient(#fff, #999);
+  background: -webkit-linear-gradient(#fff, #999);
+  background: -o-linear-gradient(#fff, #999);
+}
+.edit-modal button {
+  width: 30%;
+  height: 40px;
+  color: white;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  outline: none;
+  font-size: 16px;
+  border: 1px solid #09574b;
+  background: #09574b;
+  text-transform: capitalize;
+  transition: 300ms;
+  cursor: pointer;
+}
+.edit-modal button:hover {
+  background: #277467;
+  border: 1px solid #277467;
+}
+.edit-modal button:active {
+  position: relative;
+  top: 1px;
+}
+.edit-modal h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  color: #09574b;
+}
+.modal-actions {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+}
+.inputName {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center
+}
+  </style>
+</head>
+
+<body>
+  <div class="editPartyModal">
+  <div class="edit-modal">
+    <h3>Are You sure You want to delete this party?</h3>
+    <div id="err"></div>
+    <div id="success"></div>
+    <div class="modal-actions">
+      <button type="button" class="btn-cancel">Cancel</button>
+      <button type="button" class="btn-confirm">Confirm</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>

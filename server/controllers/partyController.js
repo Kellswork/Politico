@@ -1,5 +1,5 @@
 import { dataUri } from '../middleware/multer';
-import { uploader } from '../config/cloudinaryConfig';
+import { v2 } from '../config/cloudinaryConfig';
 import db from '../models/db';
 import {
   createParty, getParty, party, updatePartyName, deleteParty,
@@ -12,20 +12,20 @@ class Party {
       let logoUrl;
       if (req.file) {
         const file = dataUri(req).content;
-        const fileUpload = await uploader.upload(file);
+        const fileUpload = await v2.uploader.upload(file, { folder: 'logoUrl/' });
         if (fileUpload) {
           logoUrl = fileUpload.url;
         }
       }
       if (logoUrl === undefined) {
-        res.status(400).json({
+        return res.status(400).json({
           status: 400,
           error: 'please upload image',
         });
       }
       const values = [name, hqAddress, logoUrl];
       const { rows } = await db.query(createParty, values);
-      res.status(201).json({
+      return res.status(201).json({
         status: 201,
         data: rows[0],
       });
