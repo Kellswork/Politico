@@ -13,7 +13,7 @@ const tableQuery = async () => {
       id SERIAL PRIMARY KEY,
       name VARCHAR(50) UNIQUE NOT NULL,
       hqAddress VARCHAR(250) NOT NULL,
-      logoUrl VARCHAR(250) NOT NULL),
+      logoUrl VARCHAR(250) NOT NULL,
       createdAt DATE DEFAULT CURRENT_TIMESTAMP,
       modifiedAt DATE);`);
 
@@ -36,7 +36,7 @@ const tableQuery = async () => {
       name VARCHAR(50) UNIQUE NOT NULL);`);
 
     const candidateTable = await db.query(`CREATE TABLE IF NOT EXISTS candidates(
-      id SERIAL,
+      id SERIAL UNIQUE,
       officeId INT NOT NULL REFERENCES offices(id) ON DELETE CASCADE,
       partyId INT NOT NULL REFERENCES parties(id) ON DELETE CASCADE,
       userId INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
