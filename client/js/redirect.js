@@ -13,7 +13,7 @@ const options = {
   }),
 };
 const request = async () => {
-  const url = 'http://localhost:8080/api/v1/auth/forgot';
+  const url = 'https://politico-kell.herokuapp.com/api/v1/auth/forgot';
   const response = await fetch(url, options);
   const json = await response.json();
   if (json.status === 401) {

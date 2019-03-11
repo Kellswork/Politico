@@ -11,7 +11,7 @@ if (tokenErr) {
 function passwordReset() {
   const email = document.getElementById('email').value;
   const spinner = document.getElementById('spinner');
-  const url = 'http://localhost:8080/api/v1/auth/reset';
+  const url = 'https://politico-kell.herokuapp.com/api/v1/auth/reset';
   const data = { email };
   const options = {
     method: 'POST',

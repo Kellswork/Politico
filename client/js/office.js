@@ -1,7 +1,7 @@
 const spinner = document.getElementById('spinner');
 const getOffice = async () => {
   const partyTable = document.getElementById('partyTable');
-  const url = 'http://localhost:8080/api/v1/offices';
+  const url = 'https://politico-kell.herokuapp.com/api/v1/offices';
   const token = window.localStorage.getItem('token');
   const myHeaders = new Headers({
     'x-auth-token': token,
@@ -49,7 +49,7 @@ const createOffice = async () => {
   const name = document.getElementById('name').value;
   const type = document.getElementById('type');
   const text = type.options[type.selectedIndex].value;
-  const url = 'http://localhost:8080/api/v1/offices';
+  const url = 'https://politico-kell.herokuapp.com/api/v1/offices';
   const data = { name, type: text };
   console.log(data);
   const options = {

@@ -8,7 +8,7 @@ const partyDropDown = async () => {
   defaultOption.textContent = '--Please choose a party--';
   selectParty.add(defaultOption);
   defaultOption.selectedIndex = 0;
-  const url = 'http://localhost:8080/api/v1/parties';
+  const url = 'https://politico-kell.herokuapp.com/api/v1/parties';
   const options = {
     method: 'GET',
     headers: {
@@ -44,7 +44,7 @@ const officeDropDown = async () => {
   defaultOption.textContent = '--Please choose an office--';
   selectOffice.add(defaultOption);
   defaultOption.selectedIndex = 0;
-  const url = 'http://localhost:8080/api/v1/offices';
+  const url = 'https://politico-kell.herokuapp.com/api/v1/offices';
   const options = {
     method: 'GET',
     headers: {
@@ -80,7 +80,7 @@ const nomineeForm = async () => {
   const selectOffice = document.getElementById('selectOffice');
   const officeId = selectOffice.options[selectOffice.selectedIndex].id;
 
-  const url = 'http://localhost:8080/api/v1/offices/nominee';
+  const url = 'https://politico-kell.herokuapp.com/api/v1/offices/nominee';
   const data = {
     officeId,
     partyId,

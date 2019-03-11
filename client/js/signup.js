@@ -13,7 +13,7 @@ const signUp = () => {
   const signupForm = document.getElementById('signupForm');
   const spinner = document.getElementById('spinner');
   const formData = new FormData(signupForm);
-  const url = 'http://localhost:8080/api/v1/auth/signup';
+  const url = 'https://politico-kell.herokuapp.com/api/v1/auth/signup';
   const options = {
     method: 'POST',
     mode: 'cors',

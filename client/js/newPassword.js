@@ -8,7 +8,7 @@ const newPassword = () => {
   const passwordAgain = passwordAgainValue.value;
   const urlParams = new URLSearchParams(window.location.search);
   const token = urlParams.get('token');
-  const url = 'http://localhost:8080/api/v1/auth/reset';
+  const url = 'https://politico-kell.herokuapp.com/api/v1/auth/reset';
   const data = { password, passwordAgain, token };
   const options = {
     method: 'PATCH',

@@ -7,7 +7,7 @@ const userId = localStorage.getItem('userid');
 const spinner = document.getElementById('spinner');
 
 const getUserDetails = async () => {
-  const url = `http://localhost:8080/api/v1/users/${userId}`;
+  const url = `https://politico-kell.herokuapp.com/api/v1/users/${userId}`;
   const token = window.localStorage.getItem('token');
   const options = {
     method: 'GET',

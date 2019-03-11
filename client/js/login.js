@@ -3,15 +3,12 @@ async function login() {
   const spinner = document.getElementById('spinner');
   const email = document.querySelector('#email').value;
   const password = document.querySelector('#password').value;
-  const url = 'http://localhost:8080/api/v1/auth/login';
+  const url = 'https://politico-kell.herokuapp.com/api/v1/auth/login';
 
   const data = {
     email,
     password,
   };
-
-  // const json = await fetchApi('/auth/login', 'POST', data);
-  // console.log(json);
 
   const options = {
     method: 'POST',

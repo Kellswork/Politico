@@ -3,7 +3,7 @@ const getCandidates = async () => {
   const mobileView = document.getElementById('mobileView');
   const manifestoModal = document.querySelector('.manifesto-modal');
   const manifestoContent = document.querySelector('.manifesto-content');
-  const url = 'http://localhost:8080/api/v1/candidates';
+  const url = 'https://politico-kell.herokuapp.com/api/v1/candidates';
   const token = window.localStorage.getItem('token');
   const options = {
     method: 'GET',

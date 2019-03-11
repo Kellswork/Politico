@@ -22,7 +22,7 @@ const createParty = async () => {
   const name = document.getElementById('name');
   const hqAddress = document.getElementById('hqAddress');
   const logoUrl = document.getElementById('logoUrl');
-  const url = 'http://localhost:8080/api/v1/parties';
+  const url = 'https://politico-kell.herokuapp.com/api/v1/parties';
   const options = {
     method: 'POST',
     mode: 'cors',
@@ -69,7 +69,7 @@ createPartybtn.addEventListener('click', (event) => {
 const getParty = async () => {
   const partyTable = document.getElementById('partyTable');
   const mobileView = document.getElementById('mobileView');
-  const url = 'http://localhost:8080/api/v1/parties';
+  const url = 'https://politico-kell.herokuapp.com/api/v1/parties';
   const token = window.localStorage.getItem('token');
   const myHeaders = new Headers({
     'x-auth-token': token,
@@ -205,7 +205,7 @@ const patchParty = () => {
   electionDetails.insertBefore(deletePartyModal, office);
   confirmButton.addEventListener('click', async () => {
     console.log(input.value);
-    const url = `http://localhost:8080/api/v1/parties/${editModal.id}/name`;
+    const url = `https://politico-kell.herokuapp.com/api/v1/parties/${editModal.id}/name`;
     const token = window.localStorage.getItem('token');
     const data = { name: input.value };
     const options = {
@@ -295,7 +295,7 @@ const deleteParty = () => {
 
   electionDetails.insertBefore(deletePartyModal, office);
   deleteButton.addEventListener('click', async () => {
-    const url = `http://localhost:8080/api/v1/parties/${editModal.id}`;
+    const url = `https://politico-kell.herokuapp.com/api/v1/parties/${editModal.id}`;
     const token = window.localStorage.getItem('token');
     const options = {
       method: 'DELETE',

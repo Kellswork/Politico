@@ -11,7 +11,7 @@ const getNominees = async () => {
   closeButton.addEventListener('click', () => {
     manifestoModal.classList.toggle('show-modal');
   });
-  const url = 'http://localhost:8080/api/v1/offices/nominees';
+  const url = 'https://politico-kell.herokuapp.com/api/v1/offices/nominees';
   const token = window.localStorage.getItem('token');
   const options = {
     method: 'GET',
@@ -19,7 +19,7 @@ const getNominees = async () => {
       'x-auth-token': token,
     },
   };
-  // spinner.removeAttribute('hidden');
+   spinner.removeAttribute('hidden');
   const response = await fetch(url, options);
   const json = await response.json();
   if (json.status === 401) {
@@ -116,7 +116,7 @@ const getNominees = async () => {
     partyCard.classList.add('party-card');
     partyCard.appendChild(partyAction);
     mobileView.appendChild(partyCard);
-    // setTimeout(() => spinner.setAttribute('hidden', ''), 1000);
+    setTimeout(() => spinner.setAttribute('hidden', ''), 1000);
   });
 
   window.addEventListener('click', (event) => {
