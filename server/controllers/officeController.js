@@ -1,5 +1,5 @@
-import { createOffice, getOffice, office } from '../models/officeQuery';
-import db from '../models/db';
+import { createOffice, getOffice, office } from "../models/officeQuery";
+import db from "../models/db";
 
 class Office {
   static async createOffice(req, res) {
@@ -9,12 +9,12 @@ class Office {
       const { rows } = await db.query(createOffice, values);
       res.status(201).json({
         status: 201,
-        data: rows[0],
+        data: rows[0]
       });
     } catch (err) {
       return res.status(500).json({
         status: 500,
-        error: err.message,
+        error: err.message
       });
     }
   }
@@ -24,18 +24,18 @@ class Office {
       const result = await db.query(getOffice);
       if (result.rowCount < 1) {
         return res.status(404).json({
-          status: 400,
-          error: 'no office has been created yet',
+          status: 404,
+          error: "no office has been created"
         });
       }
       return res.status(200).json({
         status: 200,
-        data: result.rows,
+        data: result.rows
       });
     } catch (err) {
       return res.status(500).json({
         status: 500,
-        error: err.message,
+        error: err.message
       });
     }
   }
@@ -47,18 +47,18 @@ class Office {
       if (!rows[0]) {
         return res.status(404).json({
           status: 404,
-          error: 'office not found',
+          error: "office not found"
         });
       }
 
       return res.status(200).json({
         status: 200,
-        office: rows[0],
+        office: rows[0]
       });
     } catch (err) {
       return res.status(500).json({
         status: 500,
-        error: err.message,
+        error: err.message
       });
     }
   }

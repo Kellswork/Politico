@@ -82,7 +82,6 @@ const getCandidates = async () => {
   });
   document.addEventListener('click', (e) => {
     if (e.target && e.target.className === 'view-manifesto') {
-      console.log(e.target.id);
       manifestoContent.id = e.target.id;
       manifestoModal.classList.toggle('show-modal');
     }

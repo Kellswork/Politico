@@ -22,7 +22,7 @@ const getOffice = async () => {
     window.location.href = '../login.html';
   }
   if (json.status === 404) {
-    partyTable.innerHTML = `<h2> ${json.error} </h2>`;
+    partyTable.innerHTML = `${json.error}`;
     setTimeout(() => spinner.setAttribute('hidden', ''), 1000);
   }
   json.data.forEach((info) => {
@@ -51,7 +51,6 @@ const createOffice = async () => {
   const text = type.options[type.selectedIndex].value;
   const url = 'https://politico-kell.herokuapp.com/api/v1/offices';
   const data = { name, type: text };
-  console.log(data);
   const options = {
     method: 'POST',
     mode: 'cors',

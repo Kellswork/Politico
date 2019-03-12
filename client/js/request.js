@@ -202,7 +202,6 @@ const registerCandidate = async () => {
     };
     const response = await fetch(url, options);
     const json = await response.json();
-    console.log(json);
     if (json.status === 401) {
       window.localStorage.removeItem('token');
       window.location.href = '../login.html';
@@ -228,7 +227,6 @@ const registerCandidate = async () => {
   };
 
   confirmButton.addEventListener('click', () => {
-    console.log(confirmButton.dataset.status);
     updateRecord(confirmButton.dataset.status);
   });
 };

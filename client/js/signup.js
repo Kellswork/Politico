@@ -25,7 +25,7 @@ const signUp = () => {
     const response = await fetch(url, options);
     const json = await response.json();
     div.innerHTML = '';
-    spinner.setAttribute('hidden', '');
+
     if (json.status !== 201) {
       json.error.forEach((element) => {
         const content = `<p>${element}</p>`;
@@ -42,7 +42,7 @@ const signUp = () => {
       window.localStorage.setItem('admin', json.data.user.isAdmin);
       window.location.replace('user/dashboard.html');
     }
-    console.log(json);
+    spinner.setAttribute('hidden', '');
   };
 
   request();
