@@ -15,7 +15,7 @@ const getParty = async () => {
     window.location.href = '../login.html';
   }
   if (json.status === 404) {
-    partyTable.innerHTML = `<h2> ${json.error} </h2>`;
+    partyTable.innerHTML = `${json.error}`;
     setTimeout(() => spinner.setAttribute('hidden', ''), 1000);
   }
   json.data.forEach((info) => {

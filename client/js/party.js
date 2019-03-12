@@ -9,7 +9,6 @@ imagePreview.addEventListener('click', (e) => {
 document.getElementById('logoUrl').addEventListener('change', (event) => {
   const url = URL.createObjectURL(event.target.files[0]);
   imagePreview.src = url;
-  URL.revokeObjectURL(url);
 });
 
 const createParty = async () => {
@@ -88,6 +87,10 @@ const getParty = async () => {
     window.localStorage.removeItem('profileimg');
     window.localStorage.removeItem('firstname');
     window.location.href = '../login.html';
+  }
+  if (json.status === 404) {
+    partyTable.innerHTML = `${json.error}`;
+    setTimeout(() => spinner.setAttribute('hidden', ''), 1000);
   }
   json.data.forEach((info) => {
     const tr = document.createElement('tr');
@@ -204,10 +207,11 @@ const patchParty = () => {
 
   electionDetails.insertBefore(deletePartyModal, office);
   confirmButton.addEventListener('click', async () => {
-    console.log(input.value);
     const url = `http://localhost:8080/api/v1/parties/${editModal.id}/name`;
     const token = window.localStorage.getItem('token');
-    const data = { name: input.value };
+    const data = {
+      name: input.value
+    };
     const options = {
       method: 'PATCH',
       headers: {
@@ -218,7 +222,6 @@ const patchParty = () => {
     };
     const response = await fetch(url, options);
     const json = await response.json();
-    console.log(json);
     if (json.status === 401) {
       window.localStorage.removeItem('token');
       window.location.href = '../login.html';
@@ -305,7 +308,6 @@ const deleteParty = () => {
     };
     const response = await fetch(url, options);
     const json = await response.json();
-    console.log(json);
     if (json.status === 401) {
       window.localStorage.removeItem('token');
       window.location.href = '../login.html';
@@ -324,7 +326,9 @@ const deleteParty = () => {
     } else {
       modalButtons.style.visibility = 'hidden';
       errMsg.style.display = 'none';
-      setTimeout(() => { h3.textContent = json.message; }, 1000);
+      setTimeout(() => {
+        h3.textContent = json.message;
+      }, 1000);
 
       setTimeout(() => location.reload(), 1500);
     }

@@ -87,7 +87,6 @@ const nomineeForm = async () => {
     userId,
     manifesto,
   };
-  console.log(data);
   const options = {
     method: 'POST',
     mode: 'cors',

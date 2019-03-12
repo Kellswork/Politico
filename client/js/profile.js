@@ -18,7 +18,6 @@ const getUserDetails = async () => {
   spinner.removeAttribute('hidden');
   const response = await fetch(url, options);
   const json = await response.json();
-  console.log(json.data);
   if (json.status === 401) {
     window.localStorage.removeItem('token');
     window.localStorage.removeItem('userid');

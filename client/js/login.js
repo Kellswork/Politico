@@ -10,9 +10,6 @@ async function login() {
     password,
   };
 
-  // const json = await fetchApi('/auth/login', 'POST', data);
-  // console.log(json);
-
   const options = {
     method: 'POST',
     mode: 'cors',
